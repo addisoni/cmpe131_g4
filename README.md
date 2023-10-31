@@ -1,2 +1,5 @@
-# cmpe131_g4
-Group 4 Web Project for SJSU CMPE131
+# CMPE131 Group4 (#insertnamehere)
+- Benjamin Lim (@KatsumiLeaf)
+- Addison Ivan (@addisoni)
+- Stephen Shao (@Nehpets)
+- Najm Masri (@najm-masri)
