@@ -1,29 +1,10 @@
-## Instructions
-- Delete this block before adding to your repository.
-- Delete any instructions you see below they will be within < >
-- This schedule should reflect the meetings from the start of the project until the end of the semester.
-- Write at least 1 meeting per week until the end of the semester
-
 ## Meetings
-### 2023-10-01 at 10:30
-- Who attended the meeting
-- Team updates (15min or less)
-<Each team member gives an update of what they did from the last meeting and what
-they plan to do next. If they are stuck, bring it up here to see if others can
-help.>
-- <name> worked on X. Will work on Y next.
-- pair-programming (optional) (25 mins)
-<- Pair program on one part of the project. Driver will be the person responsible
-for that requirement.>
-- Summarize group progress
 
-### 2023-10-08 at 13:30
-<meeting template would go here>
-<only fill in template once you had the meeting>
-<see example on the last date>
-<use date format YYYY-MM-DD at HH:MM>
-
-### 2023-10-15 at 10:30
-<meeting template would go here>
-<only fill in template once you had the meeting>
-
+### 2023-10-30 at 19:30
+- Attendees: Addison, Benjamin, Najm, and Stephen
+- Milestone 1: Requirements overview (90 minutes)
+- <Addison> Created the public git repository and shared it with group members. Also uploaded README.md, requirements.md, and meetings.md
+- <all> Went over Milestone 1: Requirements and brainstormed about the 14 functional + 2 non-functional requirements needed. We will split the work after verifying if our requirements meet the rubric.
+- Goal is to get this finished by Friday at the latest.
+- Progress today: Made a list of more than 14 possibly functional requirements and 2 non-functional requirements.
+- Meeting Goal: Sync up every Tuesday for Milestone progress.
