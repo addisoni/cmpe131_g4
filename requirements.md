@@ -1,32 +1,29 @@
 ## Functional Requirements
 
-Notes created on webpage are restricted to the corresponding user (other users cannot access note without permission)
-A simple new user registration web page incorporated for users to create their personalized account with a username and password
-Users must validate their passwords (password confirmation) when modifying their existing or when creating new accounts
-Users with previously-made accounts can login with “Remember Me” during password authentication if a previous password was entered correctly for that user
-New users are presented a notification with their account details after correctly filling out the required “Register user link”
-Provided security questions to access account if password is forgotten
-Revision history incorporated into each note—highlighting last known modified date for the note
-Undo/redo button to remodify most recent note
-Dropdown button which sorts organizes notes by ascending/descending order or date 
-Search field which will recursively sort through all the user’s current notes
-Adjustable font styles including italics, bold, size, color #Investigate shapes and arrows 
-  
-*Users can share notes between other users on the website
-*Shared notes have read/write permissions based on the originator’s  
-*Highlight and comments from users (separated from body in notes)
-*Import existing notes from other users into current user’s notebook
-
-
-*Website still functions in offline mode 
-*Filetree/GUI folder structure for notes
-
+**Benjamin**
+- Notes created on webpage are restricted to the corresponding user (other users cannot access note without permission)
+- A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset)
+- Users must validate their passwords (password confirmation) when modifying their existing or when creating new accounts 
+**Stephen**
+- Users with previously-made accounts can login with “Remember Me” during password authentication if a previous password was entered correctly for that user
+- Notifications (window popups) are presented to the user when  filling out the required text fields
+- Forgotten passwords can be reset using stored security question or known password
+**Addison**
+- Revision history incorporated into each note—highlighting last known modified date for the note
+- Undo/redo button to remodify most recent note
+- Dropdown button which sorts notes
+- Search field which will recursively sort through all the user’s current notes
+**Najm**
+- Multiple typefaces and font styles  
+- Hyperlinks are available on every webpage (weblinks)
+- Copy, paste, and duplicate note(s)
+- Modify existing user account details
 
 <using the syntax [](images/ui1.png) add images in a folder called images/ and place sketches of your webpages>
 
 ## Non-functional Requirements
-Passwords must be stored securely in database using SMA256 encryption
-The font size must be no smaller than 12 for all headers on the website
+- Passwords must be stored securely in database using SMA256 encryption
+- The font size must be no smaller than 12 for all headers on the website
 
 <each of the 14 requirements will have a use case associated with it>
 ## Use Cases <Add name of who will write (this specific requirement) and implement (in subsequent milestones) the use case below>
