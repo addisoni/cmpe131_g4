@@ -3,16 +3,16 @@
 **Benjamin**
 - Notes created on webpage are restricted to the corresponding user (other users cannot access note without permission)
 - A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset)
-- Users must validate their passwords (password confirmation) when modifying their existing or when creating new accounts 
+- Users must validate their passwords (password confirmation) when modifying their existing or when creating new accounts\
 **Stephen**
-- Users with previously-made accounts can login with “Remember Me” during password authentication if a previous password was entered correctly for that user
+- Users with previously-made accounts can login with "Remember Me" during password authentication if a previous password was entered correctly for that user
 - Notifications (window popups) are presented to the user when  filling out the required text fields
-- Forgotten passwords can be reset using stored security question or known password
+- Forgotten passwords can be reset using stored security question or known password\
 **Addison**
-- Revision history incorporated into each note—highlighting last known modified date for the note
+- Revision history incorporated into each note-highlighting last known modified date for the note
 - Undo/redo button to remodify most recent note
 - Dropdown button which sorts notes
-- Search field which will recursively sort through all the user’s current notes
+- Search field which will recursively sort through all the user's current notes\
 **Najm**
 - Multiple typefaces and font styles  
 - Hyperlinks are available on every webpage (weblinks)
