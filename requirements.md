@@ -106,6 +106,32 @@
   a. System notifies user that the passwords do not match<br>
   b. System prompts user to enter a matching password<br>
   
-  4\. User enters incorrect password<br>
+4\. User enters incorrect password<br>
   a. The system notifies user that the password was incorrect<br>
   b. The system prompts user to enter a correct password
+
+### 4. Users with previously-made accounts can login with "Remember Me" during password authentication if a previous password was entered correctly for that user
+- **Pre-condition:** Users must type the correct password when logging in
+- **Trigger:** User checks the box of "Remember Me"
+- **Primary Sequence:**
+1. Website has a box which allows users to check
+2. If user checks box, the website will remember the user
+3. If user does not check the box, the website will not remember the user
+4. The system will remember the user and will automatically login into the website for the user
+5. User can ask the website to not remember them anymore if they pressed "Remember Me" before
+6. System will not remember user and will ask for username and password
+7. If user changes password, the website will ask for username and password again
+
+- **Primary Postcondition:**<br>
+1. User checks the "Remember Me" box
+   - The system will remember the username and password in which it will be put in automatically the next time the user uses the wesbite
+2. User does not check the "Remember Me" box
+   - System will not remember the username and password and will ask for the username and password the next time the user uses the website
+
+- **Alternate Sequence:**<br>
+7/. User checks "Remember Me" box, but changes the password afterwards
+   a. The "Remember Me" function would then be reverted
+   b. System will act as if the "Remember Me" function was never on
+
+### 5. Notifications (window popups) are presented to the user when filling out the required text fields
+- **Pre-condition:** 
