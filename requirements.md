@@ -151,3 +151,22 @@
   a. System would not create the account and stay on the same website
   b. User will be presented with an error sign saying what box has not been filled
 
+### 6. Forgotten passwords can be reset using stored security question or known password 
+-  **Pre-condition:** User forgets their password
+-  **Trigger:** User presses the "forget password" button
+-  **Primary Sequence:**
+1. Users would be able to reset password with the press of "forget password"
+2. Users would be directed to another website for forgotten passwords
+3. Users need to answer security questions in which they created while creating their account
+4. Users can also retype their old password in which they can create a new password afterwards
+
+- **Primary Postcondition:**<br>
+1. User finishes answering all the security questions right
+   -Users are able to change their password
+2. User types in old password
+   -Users are able to change thier old password into a new password
+
+- **Alternate Sequence:**<br>
+3/. User does not answer the security questions correclty
+  a. User gets shown an error and have 3 tries left 
+  b. After the theree failed attempts, user would be locked out for security purposes
