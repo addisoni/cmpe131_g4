@@ -134,4 +134,20 @@
    b. System will act as if the "Remember Me" function was never on
 
 ### 5. Notifications (window popups) are presented to the user when filling out the required text fields
-- **Pre-condition:** 
+- **Pre-condition:** Users press create account and start putting information in
+- **Trigger:** Users press create account
+- **Primary Sequence:**
+1. When they press "Create Account" users will be sent to another site with a form for putting in information
+2. Users will insert necessary information in each specific box
+3. Users will see which boxes are necessary for information with an asterisk next to the question
+4. Users will be presented with certain questions like birth date, username, password, and name
+
+- **Primary Postcondition:**<br>
+1. User fill in all necessary information
+   - System will create the account and input in system
+  
+- **Alternate Sequence:**<br>
+3/. User does not fill in information in the question with astericks
+  a. System would not create the account and stay on the same website
+  b. User will be presented with an error sign saying what box has not been filled
+
