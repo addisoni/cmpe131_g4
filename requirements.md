@@ -107,6 +107,7 @@
   a. The system notifies user that the password was incorrect<br>
   b. The system prompts user to enter a correct password
 
+## Use Cases <Stephen>
 ### 4. Users with previously-made accounts can login with "Remember Me" during password authentication if a previous password was entered correctly for that user
 - **Pre-condition:** Users must type the correct password when logging in
 - **Trigger:** User checks the box of "Remember Me"
@@ -168,6 +169,7 @@ User does not answer the security questions correclty
   a. User gets shown an error and have 3 tries left 
   b. After the theree failed attempts, user would be locked out for security purposes
 
+## Use Cases <Najm>
 ### 7. Multiple typefaces and font styles
 -  **Summary:** User creates a note and is able to customize the text with typefaces and font styles
 -  **Pre-condition:** User is logged in and creates a new note
@@ -249,7 +251,7 @@ User inserts incorrect info, like for names they type in numbers, so an error oc
 - **NonFunctional Requirements:**<br>
 1. Application displays in Spanish
 
-
+## Use Cases <Addison>
 ### 11. Revision history from previous savestates
 -  **Pre-condition:** User has created account and started or appended current note 
 -  **Trigger:** User hovers/views pane with past revision 
