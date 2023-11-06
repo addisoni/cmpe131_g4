@@ -1,4 +1,5 @@
 ## Meetings - Sync every Tuesday for project milestones
+### Coordinating milestone meetings at least once a week
 
 ### 2023-11-05 at 19:15
 - Attendees: Addison, Benjamin, and Najm
