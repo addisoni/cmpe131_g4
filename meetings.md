@@ -1,5 +1,10 @@
 ## Meetings - Sync every Tuesday for project milestones
 
+### 2023-11-05 at 19:15
+- Attendees: Addison, Benjamin, and Najm
+- Milestone 1: Requirements check-up on progress (25 minutes)
+- <Current attendees> Checked up on everyone’s progress to see if everything is looking complete. Majority of use-cases + rough sketches are done.
+
 ### 2023-11-02 at 20:40
 - Attendees: Addison, Benjamin, Najm, and Stephen
 - Milestone 1: Requirements Use-case splitting work (15 minutes)
