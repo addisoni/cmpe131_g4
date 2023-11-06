@@ -171,68 +171,87 @@
   a. User gets shown an error and have 3 tries left 
   b. After the theree failed attempts, user would be locked out for security purposes
 
-###7 Multiple typefaces and font styles
--Summary: User creates a note and is able to customize the text with typefaces and font styles
--Actor: User
--Pre-condition: User is logged in and creates a new note
--Trigger: User highlights a portion of the text they want to customize.
--Primary Sequence: 
-    1)User logs into account, opens to notes list
-    2)User creates new note or selects existing note they want to customize 
-    3)User highlights the portion of the text they want to customize then selects the font style and         typeface they want
-    4)The text is displayed with how they want and they save the note. 
--Alternate Sequence: User selects the wrong note to customize. 
--Postconditions: Note is edited and customized font/typeface is saved.
--Non functional requirements: It changes the font within 1 second
--Glossary: User: person who wants to edit their note
+### 7. Multiple typefaces and font styles
+-  **Summary:** User creates a note and is able to customize the text with typefaces and font styles
+-  **Pre-condition:** User is logged in and creates a new note
+-  **Trigger:** User highlights a portion of the text they want to customize.
+-  **Primary Sequence:**
+1. User logs into account, opens to notes list
+2. User creates new note or selects existing note they want to customize 
+3. User highlights the portion of the text they want to customize then selects the font style and typeface they want
+4. The text is displayed with how they want and they save the note. 
 
-###8 Hyperlinks are available on every webpage (weblinks)
--Summary: User can add hyperlinks to text in a note and navigate to it
--Actor: User
--Pre-condition: User is logged in, creates a new note
--Trigger: User selects the note that had the text and highlights the text they want to add the         hyperlink to. 
--Primary Sequence: 
-    1)User logs into account, opens to notes list
-    2)User selects new or existing note they want to hyperlink
-    3)User interacts with the application to insert a hyperlink and enters the URL and link text for         it. 
-    4)The hyperlink is created and displays it within the text so that the user can navigate to it         when the hyperlink is clicked. 
--Alternate Sequence: User inserts an incorrect link for a hyperlink that doesn’t exist and an error occurs.
--Postconditions: Note now contains hyperlink within the chosen text
--Non functional requirements: hyperlink functions fast without delay
--Glossary: User: person who wants to edit their note
+- **Primary Postcondition:**<br>
+1. Note is edited and customized font/typeface is saved.
+   
+- **Alternate Sequence:**<br>
+3/. User selects the wrong note to customize. 
+  
+- **NonFunctional Requirements:**<br>
+1. It changes the font within 1 second
 
-###9 Copy, paste, and duplicate note(s)
--Summary: User can copy, paste, and duplicate their notes
--Actor: User
--Pre-condition: User is logged in and can view their notes
--Trigger: User selects the note they want to copy/paste/duplicate. 
--Primary Sequence: 
-    1)User logs into account, opens to notes list
-    2)User selects note they want to copy/paste/duplicate
-    3)User clicks “copy” to the note they want to copy
-    4)User creates new note and clicks “paste” to paste the copied note onto the new note
-    5)User selects a note and clicks “duplicate” which will create a duplicate copy of that same note
-    6)User saves, and can later access and edit the new notes. 
--Alternate Sequence: User selects more than one note to copy/duplicate which will result in an error
--Postconditions: The note that was copied/pasted/duplicated is now in a new note that contains it.
--Non functional requirements: It copy/pastes/duplicates in 2 seconds. 
--Glossary: User: person who wants to edit their note
 
-###10 Modify existing user account details
--Summary: User can modify existing user account info/details
--Actor: User
--Pre-condition: User is logged into their account of this application
--Trigger: User navigates to account settings and selects the info they want to modify
--Primary Sequence: 
-    1)User logs into account
-    2)User navigates to account settings and selects the info they want to modify
-    3)User types in the new information 
-    4)User clicks save changes
-    5)Application processes the changes and updates the user’s account info
--Alternate Sequence: User inserts incorrect info, like for names they type in numbers, so an error occurs. 
--Postconditions: The user’s account info is updated and saved
--Non functional requirements: Application displays in Spanish
--Glossary: User: person who wants to edit their note
+### 8. Hyperlinks are available on every webpage (weblinks)
+-  **Summary:**  User can add hyperlinks to text in a note and navigate to it
+-  **Pre-condition:**  User is logged in, creates a new note
+-  **Trigger:** User selects the note that had the text and highlights the text they want to add the hyperlink to. 
+-  **Primary Sequence:**
+1. User logs into account, opens to notes list
+2. User selects new or existing note they want to hyperlink
+3. User interacts with the application to insert a hyperlink and enters the URL and link text for it. 
+4. The hyperlink is created and displays it within the text so that the user can navigate to it when the hyperlink is clicked.
+
+- **Primary Postcondition:**<br>
+1. Note now contains hyperlink within the chosen text
+   
+- **Alternate Sequence:**<br>
+3/. User inserts an incorrect link for a hyperlink that doesn’t exist and an error occurs.
+  
+- **NonFunctional Requirements:**<br>
+1. hyperlink functions fast without delay
+
+
+### 9. Copy, paste, and duplicate note(s)
+-  **Summary:**  User can copy, paste, and duplicate their notes
+-  **Pre-condition:** User is logged in and can view their notes
+-  **Trigger:** User selects the note they want to copy/paste/duplicate. 
+-  **Primary Sequence:**
+1. User logs into account, opens to notes list
+2. User selects note they want to copy/paste/duplicate
+3. User clicks “copy” to the note they want to copy
+4. User creates new note and clicks “paste” to paste the copied note onto the new note
+5. User selects a note and clicks “duplicate” which will create a duplicate copy of that same note
+6. User saves, and can later access and edit the new notes. 
+
+- **Primary Postcondition:**<br>
+1. The note that was copied/pasted/duplicated is now in a new note that contains it.
+   
+- **Alternate Sequence:**<br>
+3/. User selects more than one note to copy/duplicate which will result in an error
+  
+- **NonFunctional Requirements:**<br>
+1. It copy/pastes/duplicates in 2 seconds. 
+
+### 10. Modify existing user account details
+-  **Summary:** User can modify existing user account info/details
+-  **Pre-condition:** User is logged into their account of this application
+-  **Trigger:** User navigates to account settings and selects the info they want to modify
+-  **Primary Sequence:**
+1. User logs into account
+2. User navigates to account settings and selects the info they want to modify
+3. User types in the new information 
+4. User clicks save changes
+5. Application processes the changes and updates the user’s account info
+
+- **Primary Postcondition:**<br>
+1. he user’s account info is updated and saved
+   
+- **Alternate Sequence:**<br>
+3/. User inserts incorrect info, like for names they type in numbers, so an error occurs. 
+  
+- **NonFunctional Requirements:**<br>
+1. Application displays in Spanish
+
 
 ### 11. Revision history
 -  **Pre-condition:** User has created account and started or appended current note 
