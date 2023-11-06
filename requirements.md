@@ -19,13 +19,10 @@
 - Copy, paste, and duplicate note(s)
 - Modify existing user account details
 
-<using the syntax [](images/ui1.png) add images in a folder called images/ and place sketches of your webpages>
-
 ## Non-functional Requirements
 - Passwords must be stored securely in database using SMA256 encryption
 - The font size must be no smaller than 12 for all headers on the website
 
-<each of the 14 requirements will have a use case associated with it>
 ## Use Cases <Benjamin>
 ### 1. Notes created on webpage are restricted to corresponding user
 - **Pre-condition:** User is logged into their account
@@ -129,7 +126,7 @@
    - System will not remember the username and password and will ask for the username and password the next time the user uses the website
 
 - **Alternate Sequence:**<br>
-7/. User checks "Remember Me" box, but changes the password afterwards
+User checks "Remember Me" box, but changes the password afterwards
    a. The "Remember Me" function would then be reverted
    b. System will act as if the "Remember Me" function was never on
 
@@ -147,7 +144,7 @@
    - System will create the account and input in system
   
 - **Alternate Sequence:**<br>
-3/. User does not fill in information in the question with astericks
+User does not fill in information in the question with astericks
   a. System would not create the account and stay on the same website
   b. User will be presented with an error sign saying what box has not been filled
 
@@ -167,7 +164,7 @@
    -Users are able to change thier old password into a new password
 
 - **Alternate Sequence:**<br>
-3/. User does not answer the security questions correclty
+User does not answer the security questions correclty
   a. User gets shown an error and have 3 tries left 
   b. After the theree failed attempts, user would be locked out for security purposes
 
@@ -185,7 +182,7 @@
 1. Note is edited and customized font/typeface is saved.
    
 - **Alternate Sequence:**<br>
-3/. User selects the wrong note to customize. 
+User selects the wrong note to customize. 
   
 - **NonFunctional Requirements:**<br>
 1. It changes the font within 1 second
@@ -205,7 +202,7 @@
 1. Note now contains hyperlink within the chosen text
    
 - **Alternate Sequence:**<br>
-3/. User inserts an incorrect link for a hyperlink that doesn’t exist and an error occurs.
+User inserts an incorrect link for a hyperlink that doesn’t exist and an error occurs.
   
 - **NonFunctional Requirements:**<br>
 1. hyperlink functions fast without delay
@@ -227,7 +224,7 @@
 1. The note that was copied/pasted/duplicated is now in a new note that contains it.
    
 - **Alternate Sequence:**<br>
-3/. User selects more than one note to copy/duplicate which will result in an error
+User selects more than one note to copy/duplicate which will result in an error
   
 - **NonFunctional Requirements:**<br>
 1. It copy/pastes/duplicates in 2 seconds. 
@@ -247,13 +244,13 @@
 1. he user’s account info is updated and saved
    
 - **Alternate Sequence:**<br>
-3/. User inserts incorrect info, like for names they type in numbers, so an error occurs. 
+User inserts incorrect info, like for names they type in numbers, so an error occurs. 
   
 - **NonFunctional Requirements:**<br>
 1. Application displays in Spanish
 
 
-### 11. Revision history
+### 11. Revision history from previous savestates
 -  **Pre-condition:** User has created account and started or appended current note 
 -  **Trigger:** User hovers/views pane with past revision 
 -  **Primary Sequence:**
@@ -269,7 +266,7 @@ Previous/post modified date(s) are shown in revision header
 1. User opens previously created note and navigates to revision header
 2. No modifications to note was made, no revisions previously made, revision history is blank/nonexistent
 
-### 12. Undo/Redo Changes
+### 12. Undo/Redo Changes from previous savestate
 -  **Pre-condition:** User has modified existing note(s) and has made recent changes (same session)
 -  **Trigger:** User clicks on undo/redo button in toolbar
 -  **Primary Sequence:**
@@ -284,7 +281,7 @@ Note is remodified to most recent revision (since last save)
 - **Alternate Sequence:**<br>
 Clicking on Undo button, changed to “Redo”, reverts back to original state (before any “Undo” changes were made)
 
-### 13. Sort notes
+### 13. Sortable notes
 -  **Pre-condition:** User has at least one saved note in list
 -  **Trigger:** User clicks on sort dropdown menu in toolbar and selects sorting option
 -  **Primary Sequence:**
@@ -305,7 +302,7 @@ Notes are sorted based on the selected dropdown conditions (above)
 2. User clicks on dropdown item but no notes are available (no changes are made)
 
 
-### 14. Search Field
+### 14. Search field for notes list
 -  **Pre-condition:** User has at least one saved note in list
 -  **Trigger:** User clicks on sort dropdown menu in toolbar
 -  **Primary Sequence:**
