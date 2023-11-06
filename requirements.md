@@ -233,3 +233,74 @@
 -Postconditions: The user’s account info is updated and saved
 -Non functional requirements: Application displays in Spanish
 -Glossary: User: person who wants to edit their note
+
+### 11. Revision history
+-  **Pre-condition:** User has created account and started or appended current note 
+-  **Trigger:** User hovers/views pane with past revision 
+-  **Primary Sequence:**
+1. User logs into account, opens to notes list
+2. User creates new note (per previous usecase)
+3. User types at least one character/number into note
+4. User saves note and navigates to revision header in note bar
+
+- **Primary Postcondition:**<br>
+Previous/post modified date(s) are shown in revision header
+
+- **Alternate Sequence:**<br>
+1. User opens previously created note and navigates to revision header
+2. No modifications to note was made, no revisions previously made, revision history is blank/nonexistent
+
+### 12. Undo/Redo Changes
+-  **Pre-condition:** User has modified existing note(s) and has made recent changes (same session)
+-  **Trigger:** User clicks on undo/redo button in toolbar
+-  **Primary Sequence:**
+1. User logs into account, opens to notes list
+2. User creates or opens existing note
+3. User modifies existing note (recent changes) and saves note
+4. User clicks undo button and returns back to previous save state 
+
+- **Primary Postcondition:**<br>
+Note is remodified to most recent revision (since last save)
+
+- **Alternate Sequence:**<br>
+Clicking on Undo button, changed to “Redo”, reverts back to original state (before any “Undo” changes were made)
+
+### 13. Sort notes
+-  **Pre-condition:** User has at least one saved note in list
+-  **Trigger:** User clicks on sort dropdown menu in toolbar and selects sorting option
+-  **Primary Sequence:**
+1. User logs into account, opens to notes list
+2. User navigates to toolbar and clicks on sort dropdown button
+3. User clicks on one of the available options in dropdown menu:
+	-Date Added
+	-Date Modified
+	-Title Ascending
+	-Title Descending
+4. Dropdown menu title shows selected sorting method (based from list above) 
+
+- **Primary Postcondition:**<br>
+Notes are sorted based on the selected dropdown conditions (above)
+
+- **Alternate Sequence:**<br>
+1. User selects dropdown item above then re-selects another category from the dropdown menu
+2. User clicks on dropdown item but no notes are available (no changes are made)
+
+
+### 14. Search Field
+-  **Pre-condition:** User has at least one saved note in list
+-  **Trigger:** User clicks on sort dropdown menu in toolbar
+-  **Primary Sequence:**
+1. User logs into account, opens to notes list
+2. User navigates to toolbar and clicks on search field 
+3. User begins typing contents/string and pressing enter to start search
+4. Content condensed based on typed content from user
+
+- **Primary Postcondition:**<br>
+Notes are condensed based on the query written by the user in the search field
+
+- **Alternate Sequence:**<br>
+1. Typed content does not match any string from the existing notes, “no results found” is displayed
+2. No notes have been created, displays “No notes have been created and saved, please create and save a note first”
+
+
+
