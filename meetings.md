@@ -1,6 +1,12 @@
 ## Meetings - Sync every Tuesday for project milestones
 ### Coordinating milestone meetings at least once a week
 
+### 2023-11-13 at 20:35
+- Attendees: Addison, Benjamin, Najm, and Stephen
+- Milestone 2: Initial Implementation - Split up the functional requirements (15 minutes)
+- <all> Picked out 9 functional requirements to work on and split it up among ourselves (2 2 3 2)
+- Goal is to meetup on Sunday (11/19) to go over everyone's portion of their work and submit it by then.
+
 ### 2023-11-05 at 19:15
 - Attendees: Addison, Benjamin, and Najm
 - Milestone 1: Requirements check-up on progress (30 minutes)
