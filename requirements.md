@@ -80,32 +80,29 @@
   a. The system displays a message saying this space can't be left blank<br>
   b. The system prompts user to enter an answer to the security question
 
-### 3. Users must validate their passwords (password confirmation) when modifying their existing account
+### 3. Users must retype their original password in order to change to a new password. 
 - **Pre-condition:** User is logged in
-- **Trigger:** User enters "Modify Account" option
+- **Trigger:** User enters "Change password" option
 - **Primary Sequence:**
-1. The system prompts user what they would like to modify (i.e. Username, password, and/or security question)
-2. User modifies their account details
-3. The system prompts user to enter their current password to successfully modify new account details
-4. User enters current password
-5. The system prompts user "Are you sure?"
-6. User clicks on confirmation
-7. The system proceeds to modify account details
+1. The system prompts user what they would like to change password
+2. The system prompts user to enter their current password to successfully modify new account details
+3. User enters current password
+4. User enters new password in "new password" column
+5. User enters new password again to make sure it is the right password in "re-type new password" column 
+6. The system prompts user "Are you sure?"
+7. User clicks on confirmation
+8. The system proceeds to changes password
 
 - **Primary Postconditions:**<br>
-1. Account is successfully modified
-    - The system displays a "Successfully modified" message to user with their new account details to copy
-2. Account is unsuccessfully modified
-    - The system informs the user it was unable to modify their account and to try again
+1. Password is successfully changed
+    - The system displays a "Successfully changes" message to user with their new account details to copy
+2. User types in the wrong original password
+    - The system informs the user the original password was incorrect
 
 - **Alternate Sequence:**<br>
-2\. User enters all information but an incorrect matching password<br>
+7\. User enters all information but an incorrect matching password<br>
   a. System notifies user that the passwords do not match<br>
   b. System prompts user to enter a matching password<br>
-  
-4\. User enters incorrect password<br>
-  a. The system notifies user that the password was incorrect<br>
-  b. The system prompts user to enter a correct password
 
 ## Use Cases <Stephen>
 ### 4. Users with previously-made accounts can login with "Remember Me" during password authentication if a previous password was entered correctly for that user
