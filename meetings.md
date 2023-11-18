@@ -1,6 +1,11 @@
 ## Meetings - Sync every Tuesday for project milestones
 ### Coordinating milestone meetings at least once a week
 
+### 2023-11-17 at 21:30
+- Attendees: Addison, Benjamin, Najm, and Stephen
+- Milestone 1: Revised requirements.md document to re-adjust requirements to professor's recommendations/criteria for the project
+- Verified new requirements are aligned for all teammates 
+
 ### 2023-11-13 at 20:35
 - Attendees: Addison, Benjamin, Najm, and Stephen
 - Milestone 2: Initial Implementation - Split up the functional requirements (15 minutes)
