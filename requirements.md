@@ -28,14 +28,13 @@
 - **Pre-condition:** User is logged into their account
 - **Trigger:** User creates a note
 - **Primary Sequence:**
-1. User clicks a button on the webpage that says "Create new note" when hovered over.
-2. System prompts user to enter title for the note.
-3. User enters title for the note.
-4. System prompts user if they would like to give permission (Read or Read & Write) to another user.
-5. User enters other users to give permission to (Read or Read & Write).
-6. User submits the note creation.
-7. System creates new note with given conditions (Title & Other user permissions).
-8. User is taken to newly created note after system is finished creating.
+1. System prompts user to enter title for the note.
+2. User enters title for the note.
+3. System prompts user if they would like to give permission (Read or Read & Write) to another user.
+4. User enters other users to give permission to (Read or Read & Write).
+5. User submits the note creation.
+6. System creates new note with given conditions (Title & Other user permissions).
+7. User is taken to newly created note after system is finished creating.
 
 - **Primary Postconditions:**<br>
 1. Note is successfully created on the webpage
@@ -57,9 +56,7 @@
 - **Trigger:** User clicks "Create new account" 
 - **Primary Sequence:**
 1. System presents user with a simple account creation page (Username, Password, Password confirmation, and a Security question)
-2. User enters username
-3. User enters password
-4. User enters password again
+2. User enters credentials for account
 5. User selects one of five security questions to answer
 6. User enters answer to security question
 7. User clicks on "Finish creating account"
@@ -67,9 +64,7 @@
 
 - **Primary Postconditions:**<br>
 1. Account is successfully created
-    - The system displays their successfully created account on the screen with their information to copy down
-2. Account is unsuccessfully created
-    - The system informs the user it was unable to create an account and to try again
+    - The system displays their successfully created account on the screen
 
 - **Alternate Sequence:**<br>
 4\. Password does not match with previous password<br>
@@ -80,71 +75,41 @@
   a. The system displays a message saying this space can't be left blank<br>
   b. The system prompts user to enter an answer to the security question
 
-### 3. Users must retype their original password in order to change to a new password. 
-- **Pre-condition:** User is logged in
-- **Trigger:** User enters "Change password" option
+### 3. Logout of user account
+- **Pre-condition:** User is already logged into existin account
+- **Trigger:** User presses on "Logout" button in menu
 - **Primary Sequence:**
-1. The system prompts user what they would like to change password
-2. The system prompts user to enter their current password to successfully modify new account details
-3. User enters current password
-4. User enters new password in "new password" column
-5. User enters new password again to make sure it is the right password in "re-type new password" column 
-6. The system prompts user "Are you sure?"
-7. User clicks on confirmation
-8. The system proceeds to changes password
+1. User is returned to login window
+2. User account is no longer in session
 
-- **Primary Postconditions:**<br>
-1. Password is successfully changed
-    - The system displays a "Successfully changes" message to user with their new account details to copy
-2. User types in the wrong original password
-    - The system informs the user the original password was incorrect
-
-- **Alternate Sequence:**<br>
-7\. User enters all information but an incorrect matching password<br>
-  a. System notifies user that the passwords do not match<br>
-  b. System prompts user to enter a matching password<br>
+- **Primary Postcondition:**<br>
+1. User account credentials are removed from session
+2. User is unable to access previous user's notes
 
 ## Use Cases <Stephen>
-### 4. Users with previously-made accounts can login with "Remember Me" during password authentication if a previous password was entered correctly for that user
-- **Pre-condition:** Users must type the correct password when logging in
-- **Trigger:** User checks the box of "Remember Me"
+### 4. Create new notes
+- **Pre-condition:** Users must already have an account and be logged in
+- **Trigger:** User clicks on new note button
 - **Primary Sequence:**
-1. Website has a box which allows users to check
-2. If user checks box, the website will remember the user
-3. If user does not check the box, the website will not remember the user
-4. The system will remember the user and will automatically login into the website for the user
-5. User can ask the website to not remember them anymore if they pressed "Remember Me" before
-6. System will not remember user and will ask for username and password
-7. If user changes password, the website will ask for username and password again
+1. Window pane transitions away from original note view (note list)
+2. User is presented with blank note (no text within new note)
+3. User is able to start editing new note in view
 
 - **Primary Postcondition:**<br>
-1. User checks the "Remember Me" box
-   - The system will remember the username and password in which it will be put in automatically the next time the user uses the wesbite
-2. User does not check the "Remember Me" box
-   - System will not remember the username and password and will ask for the username and password the next time the user uses the website
+1. A new note is added to the user's note pane (directory)
+2. Note is saved to user's profile
 
-- **Alternate Sequence:**<br>
-User checks "Remember Me" box, but changes the password afterwards
-   a. The "Remember Me" function would then be reverted
-   b. System will act as if the "Remember Me" function was never on
-
-### 5. Notifications (window popups) are presented to the user when filling out the required text fields
-- **Pre-condition:** Users press create account and start putting information in
-- **Trigger:** Users press create account
+### 5. Inerstable tables into notes
+- **Pre-condition:** Note previously exists
+- **Trigger:** User clicks on table to insert into note
 - **Primary Sequence:**
-1. When they press "Create Account" users will be sent to another site with a form for putting in information
-2. Users will insert necessary information in each specific box
-3. Users will see which boxes are necessary for information with an asterisk next to the question
-4. Users will be presented with certain questions like birth date, username, password, and name
+1. Table view (sizing) appears, requesting row and column dimension for requested table
+2. Table size is copied into note document
+3. Table is readily available to be modified by the user (inputting text into individual fields)
 
 - **Primary Postcondition:**<br>
-1. User fill in all necessary information
-   - System will create the account and input in system
-  
-- **Alternate Sequence:**<br>
-User does not fill in information in the question with astericks
-  a. System would not create the account and stay on the same website
-  b. User will be presented with an error sign saying what box has not been filled
+1. Requested table size/demension is displayed
+2. Table modifications are available to the user (add/remove columns or rows)
 
 ### 6. Forgotten passwords can be reset using stored security question or known password 
 -  **Pre-condition:** User forgets their password
@@ -175,37 +140,30 @@ User does not answer the security questions correclty
 1. User logs into account, opens to notes list
 2. User creates new note or selects existing note they want to customize 
 3. User highlights the portion of the text they want to customize then selects the font style and typeface they want
-4. The text is displayed with how they want and they save the note. 
+4. User clicks on one of the typeface buttons (Bold, italicize, etc.)
 
 - **Primary Postcondition:**<br>
-1. Note is edited and customized font/typeface is saved.
-   
+1. Note is edited and customized font/typeface is saved
+2. The text is displayed with the specified font/typeface in the notes
+
 - **Alternate Sequence:**<br>
 User selects the wrong note to customize. 
-  
-- **NonFunctional Requirements:**<br>
-1. It changes the font within 1 second
 
-
-### 8. Hyperlinks are available on every webpage (weblinks)
--  **Summary:**  User can add hyperlinks to text in a note and navigate to it
--  **Pre-condition:**  User is logged in, creates a new note
--  **Trigger:** User selects the note that had the text and highlights the text they want to add the hyperlink to. 
+### 8. User is able to create folders to organize notes
+-  **Summary:**  Users are able to add notes to folders for additional organization
+-  **Pre-condition:**  User is logged in, at least one note exists
+-  **Trigger:** User clicks "new folder" button
 -  **Primary Sequence:**
-1. User logs into account, opens to notes list
-2. User selects new or existing note they want to hyperlink
-3. User interacts with the application to insert a hyperlink and enters the URL and link text for it. 
-4. The hyperlink is created and displays it within the text so that the user can navigate to it when the hyperlink is clicked.
+1. User specifies custom name for the folder
+2. A new folder is created in the pane/directory view
+3. Existing note is moved to the new folder
 
 - **Primary Postcondition:**<br>
-1. Note now contains hyperlink within the chosen text
+1. Navigating to folder will show new note with custom name
    
 - **Alternate Sequence:**<br>
-User inserts an incorrect link for a hyperlink that doesn’t exist and an error occurs.
-  
-- **NonFunctional Requirements:**<br>
-1. hyperlink functions fast without delay
-
+1. Folder already exists, user is able to add new or other notes to folder
+2. Folder exists, user is able to rename folder to another name
 
 ### 9. Copy, paste, and duplicate note(s)
 -  **Summary:**  User can copy, paste, and duplicate their notes
@@ -223,10 +181,7 @@ User inserts an incorrect link for a hyperlink that doesn’t exist and an error
 1. The note that was copied/pasted/duplicated is now in a new note that contains it.
    
 - **Alternate Sequence:**<br>
-User selects more than one note to copy/duplicate which will result in an error
-  
-- **NonFunctional Requirements:**<br>
-1. It copy/pastes/duplicates in 2 seconds. 
+1. User selects more than one note to copy/duplicate which will result in an error
 
 ### 10. Modify existing user account details
 -  **Summary:** User can modify existing user account info/details
@@ -244,12 +199,9 @@ User selects more than one note to copy/duplicate which will result in an error
    
 - **Alternate Sequence:**<br>
 User inserts incorrect info, like for names they type in numbers, so an error occurs. 
-  
-- **NonFunctional Requirements:**<br>
-1. Application displays in Spanish
 
 ## Use Cases <Addison>
-### 11. Revision history from previous savestates
+### 11. View revision history from past savestates
 -  **Pre-condition:** User has created account and started or appended current note 
 -  **Trigger:** User hovers/views pane with past revision 
 -  **Primary Sequence:**
@@ -265,7 +217,7 @@ Previous/post modified date(s) are shown in revision header
 1. User opens previously created note and navigates to revision header
 2. No modifications to note was made, no revisions previously made, revision history is blank/nonexistent
 
-### 12. Undo/Redo Changes from previous savestate
+### 12. Undo/Redo revision history (restore pre-existing note savestates)
 -  **Pre-condition:** User has modified existing note(s) and has made recent changes (same session)
 -  **Trigger:** User clicks on undo/redo button in toolbar
 -  **Primary Sequence:**
