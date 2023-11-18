@@ -1,37 +1,32 @@
 ## Functional Requirements
 
-### Benjamin
-- Notes created on webpage are restricted to the corresponding user (other users cannot access note without permission)
-- A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset)
-- Users must validate their passwords (password confirmation) when modifying their existing or when creating new accounts
-### Stephen
-- Users with previously-made accounts can login with "Remember Me" during password authentication if a previous password was entered correctly for that user
-- Notifications (window popups) are presented to the user when  filling out the required text fields
-- Forgotten passwords can be reset using stored security question or known password\
-### Addison
-- Revision history incorporated into each note-highlighting last known modified date for the note
-- Undo/redo button to remodify most recent note
-- Dropdown button which sorts notes
-- Search field which will recursively sort through all the user's current notes\
-### Najm
-- Multiple typefaces and font styles  
-- Hyperlinks are available on every webpage (weblinks)
-- Copy, paste, and duplicate note(s)
-- Modify existing user account details
+1. Notes created on webpage are restricted to the corresponding user (other users cannot access note without permission)
+2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset)
+3. Users must validate their passwords (password confirmation) when modifying their existing or when creating new accounts
+4. Users with previously-made accounts can login with "Remember Me" during password authentication if a previous password was entered correctly for that user
+5. Notifications (window popups) are presented to the user when  filling out the required text fields
+6. Forgotten passwords can be reset using stored security question or known password\
+7. Revision history incorporated into each note-highlighting last known modified date for the note
+8. Undo/redo button to remodify most recent note
+9. Dropdown button which sorts notes
+10. Search field which will recursively sort through all the user's current notes\
+11. Multiple typefaces and font styles
+12. Hyperlinks are available on every webpage (weblinks)
+13. Copy, paste, and duplicate note(s)
+14. Modify existing user account details
 
 ## Non-functional Requirements
-- Passwords must be stored securely in database using SMA256 encryption
-- The font size must be no smaller than 12 for all headers on the website
+- Only expected to work on Google Chrome
+- Webpages should load in less than 2 seconds
 
-## Use Cases <Benjamin>
-### 1. Notes created on webpage are restricted to corresponding user
+## Use Cases 
+### 1. Notes created on webpage are restricted to corresponding user (Benjamin Lim)
 - **Pre-condition:** User is logged into their account with an existing note
 - **Trigger:** User modifies user permission for note
 - **Primary Sequence:**
 1. User enters other users to give permission to (Read or Read & Write) for existing note.
 2. User modifies note permissions and saves changes
 3. System creates new note with given conditions (Title & Other user permissions).
-
 
 - **Primary Postconditions:**<br>
 1. Note permission status displays succesfull changes to permissions
@@ -49,7 +44,7 @@
 3. Note is unsuccessfully created
     - The system does not display newly created note and notifies the user
 
-### 2. A simple user registration web page is incorporated for new users to create their personalized with a username, password, and security question to reset their password
+### 2. A simple user registration web page is incorporated for new users to create their personalized with a username, password, and security question to reset their password (Benjamin Lim)
 - **Pre-condition:** User is on the notes app webpage
 - **Trigger:** User clicks "Create new account" 
 - **Primary Sequence:**
@@ -73,7 +68,7 @@
   a. The system displays a message saying this space can't be left blank<br>
   b. The system prompts user to enter an answer to the security question
 
-### 3. Logout of user account
+### 3. Logout of user account (Benjamin Lim)
 - **Pre-condition:** User is already logged into existin account
 - **Trigger:** User presses on "Logout" button in menu
 - **Primary Sequence:**
@@ -84,8 +79,7 @@
 1. User account credentials are removed from session
 2. User is unable to access previous user's notes
 
-## Use Cases <Stephen>
-### 4. Create new notes
+### 4. Create new notes (Stephen Shao)
 - **Pre-condition:** Users must already have an account and be logged in
 - **Trigger:** User clicks on new note button
 - **Primary Sequence:**
@@ -97,7 +91,7 @@
 1. A new note is added to the user's note pane (directory)
 2. Note is saved to user's profile
 
-### 5. Inerstable tables into notes
+### 5. Inerstable tables into notes (Stephen Shao)
 - **Pre-condition:** Note previously exists
 - **Trigger:** User clicks on table to insert into note
 - **Primary Sequence:**
@@ -109,7 +103,7 @@
 1. Requested table size/demension is displayed
 2. Table modifications are available to the user (add/remove columns or rows)
 
-### 6. Forgotten passwords can be reset using stored security question or known password 
+### 6. Forgotten passwords can be reset using stored security question or known password (Stephen Shao)
 -  **Pre-condition:** User forgets their password
 -  **Trigger:** User presses the "forget password" button
 -  **Primary Sequence:**
@@ -129,8 +123,7 @@ User does not answer the security questions correclty
   a. User gets shown an error and have 3 tries left 
   b. After the theree failed attempts, user would be locked out for security purposes
 
-## Use Cases <Najm>
-### 7. Multiple typefaces and font styles
+### 7. Multiple typefaces and font styles (Najm Masri)
 -  **Summary:** User creates a note and is able to customize the text with typefaces and font styles
 -  **Pre-condition:** User is logged in and creates a new note
 -  **Trigger:** User highlights a portion of the text they want to customize.
@@ -147,7 +140,7 @@ User does not answer the security questions correclty
 - **Alternate Sequence:**<br>
 User selects the wrong note to customize. 
 
-### 8. User is able to create folders to organize notes
+### 8. User is able to create folders to organize notes (Najm Masri)
 -  **Summary:**  Users are able to add notes to folders for additional organization
 -  **Pre-condition:**  User is logged in, at least one note exists
 -  **Trigger:** User clicks "new folder" button
@@ -163,7 +156,7 @@ User selects the wrong note to customize.
 1. Folder already exists, user is able to add new or other notes to folder
 2. Folder exists, user is able to rename folder to another name
 
-### 9. Copy, paste, and duplicate note(s)
+### 9. Copy, paste, and duplicate note(s) (Najm Masri)
 -  **Summary:**  User can copy, paste, and duplicate their notes
 -  **Pre-condition:** User is logged in and can view their notes
 -  **Trigger:** User selects the note they want to copy/paste/duplicate. 
@@ -181,7 +174,7 @@ User selects the wrong note to customize.
 - **Alternate Sequence:**<br>
 1. User selects more than one note to copy/duplicate which will result in an error
 
-### 10. Modify existing user account details
+### 10. Modify existing user account details (Najm Masri)
 -  **Summary:** User can modify existing user account info/details
 -  **Pre-condition:** User is logged into their account of this application
 -  **Trigger:** User navigates to account settings and selects the info they want to modify
@@ -198,8 +191,7 @@ User selects the wrong note to customize.
 - **Alternate Sequence:**<br>
 User inserts incorrect info, like for names they type in numbers, so an error occurs. 
 
-## Use Cases <Addison>
-### 11. View revision history from past savestates
+### 11. View revision history from past savestates (Addison Ivan)
 -  **Pre-condition:** User has created account and started or appended current note 
 -  **Trigger:** User hovers/views pane with past revision 
 -  **Primary Sequence:**
@@ -215,7 +207,7 @@ Previous/post modified date(s) are shown in revision header
 1. User opens previously created note and navigates to revision header
 2. No modifications to note was made, no revisions previously made, revision history is blank/nonexistent
 
-### 12. Undo/Redo revision history (restore pre-existing note savestates)
+### 12. Undo/Redo revision history (restore pre-existing note savestates) (Addison Ivan)
 -  **Pre-condition:** User has modified existing note(s) and has made recent changes (same session)
 -  **Trigger:** User clicks on undo/redo button in toolbar
 -  **Primary Sequence:**
@@ -230,7 +222,7 @@ Note is remodified to most recent revision (since last save)
 - **Alternate Sequence:**<br>
 Clicking on Undo button, changed to “Redo”, reverts back to original state (before any “Undo” changes were made)
 
-### 13. Sortable notes
+### 13. Sortable notes (Addison Ivan)
 -  **Pre-condition:** User has at least one saved note in list
 -  **Trigger:** User clicks on sort dropdown menu in toolbar and selects sorting option
 -  **Primary Sequence:**
@@ -251,7 +243,7 @@ Notes are sorted based on the selected dropdown conditions (above)
 2. User clicks on dropdown item but no notes are available (no changes are made)
 
 
-### 14. Search field for notes list
+### 14. Search field for notes list (Addison Ivan)
 -  **Pre-condition:** User has at least one saved note in list
 -  **Trigger:** User clicks on sort dropdown menu in toolbar
 -  **Primary Sequence:**
@@ -266,6 +258,3 @@ Notes are condensed based on the query written by the user in the search field
 - **Alternate Sequence:**<br>
 1. Typed content does not match any string from the existing notes, “no results found” is displayed
 2. No notes have been created, displays “No notes have been created and saved, please create and save a note first”
-
-
-
