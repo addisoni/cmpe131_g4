@@ -22,11 +22,11 @@
 ## Use Cases 
 ### 1. Notes created on webpage are restricted to corresponding user (Benjamin Lim)
 - **Pre-condition:** User is logged into their account with an existing note
-- **Trigger:** User modifies user permission for note
+- **Trigger:** User clicks on a permissions button
 - **Primary Sequence:**
 1. User enters other users to give permission to (Read or Read & Write) for existing note.
-2. User modifies note permissions and saves changes
-3. System creates new note with given conditions (Title & Other user permissions).
+2. User modifies note permissions and saves changes.
+3. System updates note with given conditions.
 
 - **Primary Postconditions:**<br>
 1. Note permission status displays succesfull changes to permissions
@@ -37,12 +37,12 @@
   a. The system notifies user there is no title <br>
   b. The system prompts user to enter a valid title (Alphanumeric longer than 0 characters) <br>
 
-2\. User chooses not to give any permissions to other user <br>
+  2\. User chooses not to give any permissions to other user <br>
   a. The system prompts user "Are you sure?" <br>
   b. User confirms confirmation
 
-3. Note is unsuccessfully created
-    - The system does not display newly created note and notifies the user
+  3\. Note is unsuccessfully created <br>
+  a. The system does not display newly created note and notifies the user
 
 ### 2. A simple user registration web page is incorporated for new users to create their personalized with a username, password, and security question to reset their password (Benjamin Lim)
 - **Pre-condition:** User is on the notes app webpage
@@ -56,8 +56,8 @@
 8. System creates account
 
 - **Primary Postconditions:**<br>
-1. Account is successfully created
-    - The system displays their successfully created account on the screen
+1. Account is successfully created <br>
+   - The system displays their successfully created account on the screen
 
 - **Alternate Sequence:**<br>
 4\. Password does not match with previous password<br>
@@ -69,7 +69,7 @@
   b. The system prompts user to enter an answer to the security question
 
 ### 3. Logout of user account (Benjamin Lim)
-- **Pre-condition:** User is already logged into existin account
+- **Pre-condition:** User is already logged into existing account
 - **Trigger:** User presses on "Logout" button in menu
 - **Primary Sequence:**
 1. User is returned to login window
@@ -114,9 +114,9 @@
 
 - **Primary Postcondition:**<br>
 1. User finishes answering all the security questions right
-   -Users are able to change their password
+   - Users are able to change their password
 2. User types in old password
-   -Users are able to change thier old password into a new password
+   - Users are able to change thier old password into a new password
 
 - **Alternate Sequence:**<br>
 User does not answer the security questions correclty
