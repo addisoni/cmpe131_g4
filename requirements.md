@@ -25,31 +25,29 @@
 
 ## Use Cases <Benjamin>
 ### 1. Notes created on webpage are restricted to corresponding user
-- **Pre-condition:** User is logged into their account
-- **Trigger:** User creates a note
+- **Pre-condition:** User is logged into their account with an existing note
+- **Trigger:** User modifies user permission for note
 - **Primary Sequence:**
-1. System prompts user to enter title for the note.
-2. User enters title for the note.
-3. System prompts user if they would like to give permission (Read or Read & Write) to another user.
-4. User enters other users to give permission to (Read or Read & Write).
-5. User submits the note creation.
-6. System creates new note with given conditions (Title & Other user permissions).
-7. User is taken to newly created note after system is finished creating.
+1. User enters other users to give permission to (Read or Read & Write) for existing note.
+2. User modifies note permissions and saves changes
+3. System creates new note with given conditions (Title & Other user permissions).
+
 
 - **Primary Postconditions:**<br>
-1. Note is successfully created on the webpage
-    - The system displays the user's newly created note on their webpage
-2. Note is unsuccessfully created
-    - The system does not display newly created note and notifies the user
+1. Note permission status displays succesfull changes to permissions
+2. Note heirachy for note permissions show respective users with correct Read and Write permissions
 
 - **Alternate Sequence:**<br>
-3\. User does not enter a title for the note <br>
+1\. User does not enter a title for the note <br>
   a. The system notifies user there is no title <br>
   b. The system prompts user to enter a valid title (Alphanumeric longer than 0 characters) <br>
 
-  5\. User chooses not to give any permissions to other user <br>
+2\. User chooses not to give any permissions to other user <br>
   a. The system prompts user "Are you sure?" <br>
   b. User confirms confirmation
+
+3. Note is unsuccessfully created
+    - The system does not display newly created note and notifies the user
 
 ### 2. A simple user registration web page is incorporated for new users to create their personalized with a username, password, and security question to reset their password
 - **Pre-condition:** User is on the notes app webpage
