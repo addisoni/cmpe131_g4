@@ -1,18 +1,31 @@
 ## Functional Requirements
 
 1. Notes created on webpage are restricted to the corresponding user 
+
 2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset)
+
 3. Logout of user account
+
 4. Create new notes
+
 5. Insertable tables into notes
+
 6. Forgotten passwords can be reset using stored security question or known password
+
 7. Multiple typefaces and font styles
+
 8. User is able to create folders to organize notes
+
 9. Copy, paste, and duplicate note(s)
+
 10. Modify existing user account details
+
 11. Revision history incorporated into each note-highlighting last known modified date for the note
+
 12. Undo/redo button to remodify most recent note
+
 13. Dropdown button which sorts notes
+
 14. Search field which will recursively sort through all the user's current notes
 
 ## Non-functional Requirements
