@@ -1,19 +1,19 @@
 ## Functional Requirements
 
-1. Notes created on webpage are restricted to the corresponding user (other users cannot access note without permission)
+1. Notes created on webpage are restricted to the corresponding user 
 2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset)
-3. Users must validate their passwords (password confirmation) when modifying their existing or when creating new accounts
-4. Users with previously-made accounts can login with "Remember Me" during password authentication if a previous password was entered correctly for that user
-5. Notifications (window popups) are presented to the user when  filling out the required text fields
-6. Forgotten passwords can be reset using stored security question or known password\
-7. Revision history incorporated into each note-highlighting last known modified date for the note
-8. Undo/redo button to remodify most recent note
-9. Dropdown button which sorts notes
-10. Search field which will recursively sort through all the user's current notes\
-11. Multiple typefaces and font styles
-12. Hyperlinks are available on every webpage (weblinks)
-13. Copy, paste, and duplicate note(s)
-14. Modify existing user account details
+3. Logout of user account
+4. Create new notes
+5. Insertable tables into notes
+6. Forgotten passwords can be reset using stored security question or known password
+7. Multiple typefaces and font styles
+8. User is able to create folders to organize notes
+9. Copy, paste, and duplicate note(s)
+10. Modify existing user account details
+11. Revision history incorporated into each note-highlighting last known modified date for the note
+12. Undo/redo button to remodify most recent note
+13. Dropdown button which sorts notes
+14. Search field which will recursively sort through all the user's current notes
 
 ## Non-functional Requirements
 - Only expected to work on Google Chrome
@@ -91,7 +91,7 @@
 1. A new note is added to the user's note pane (directory)
 2. Note is saved to user's profile
 
-### 5. Inerstable tables into notes (Stephen Shao)
+### 5. Insertable tables into notes (Stephen Shao)
 - **Pre-condition:** Note previously exists
 - **Trigger:** User clicks on table to insert into note
 - **Primary Sequence:**
