@@ -34,8 +34,11 @@ def notes():
 def createaccount():
     form = CreateAccount()
     print(form.validate_on_submit())
-         
+
     if form.validate_on_submit():
+            if not form.security_answer.data.isalpha():
+                 flash('Invalid security answer! Please only enter letters.', 'danger')
+                 return redirect('createaccount')
             hashed_pw = generate_password_hash(form.password.data, method='scrypt', salt_length = 16)
             hashed_sa = generate_password_hash(form.security_answer.data, method='scrypt', salt_length=16)
             u = User(username=form.username.data, password_hash=hashed_pw,
