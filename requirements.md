@@ -20,13 +20,13 @@
 
 10. Modify existing user account details
 
-11. Revision history incorporated into each note-highlighting last known modified date for the note
+11. View revision history from past savestates
 
-12. Undo/redo button to remodify most recent note
+12. Undo/Redo revision history (restore pre-existing note savestates)
 
-13. Dropdown button which sorts notes
+13. Sortable notes
 
-14. Search field which will recursively sort through all the user's current notes
+14. Search field for notes list
 
 ## Non-functional Requirements
 - Only expected to work on Google Chrome
