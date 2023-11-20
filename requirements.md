@@ -50,7 +50,7 @@
   a. The system prompts user "Are you sure?" <br>
   b. User confirms confirmation
 
-### 2. A simple user registration web page is incorporated for new users to create their personalized with a username, password, and security question to reset their password (Benjamin Lim)
+### 2. A simple user registration web page is incorporated for new users to create their personalized account with a username, password, and security question to reset their password (Benjamin Lim)
 - **Pre-condition:** User is on the notes app webpage
 - **Trigger:** User clicks "Create new account" 
 - **Primary Sequence:**
