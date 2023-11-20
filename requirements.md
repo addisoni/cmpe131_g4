@@ -33,16 +33,9 @@
 2. Note heirachy for note permissions show respective users with correct Read and Write permissions
 
 - **Alternate Sequence:**<br>
-1\. User does not enter a title for the note <br>
-  a. The system notifies user there is no title <br>
-  b. The system prompts user to enter a valid title (Alphanumeric longer than 0 characters) <br>
-
-  2\. User chooses not to give any permissions to other user <br>
+1\. User chooses not to give any permissions to other user <br>
   a. The system prompts user "Are you sure?" <br>
   b. User confirms confirmation
-
-  3\. Note is unsuccessfully created <br>
-  a. The system does not display newly created note and notifies the user
 
 ### 2. A simple user registration web page is incorporated for new users to create their personalized with a username, password, and security question to reset their password (Benjamin Lim)
 - **Pre-condition:** User is on the notes app webpage
@@ -50,21 +43,21 @@
 - **Primary Sequence:**
 1. System presents user with a simple account creation page (Username, Password, Password confirmation, and a Security question)
 2. User enters credentials for account
-5. User selects one of five security questions to answer
-6. User enters answer to security question
-7. User clicks on "Finish creating account"
-8. System creates account
+3. User selects one of five security questions to answer
+4. User enters answer to security question
+5. User clicks on "Finish creating account"
+6. System creates account
 
 - **Primary Postconditions:**<br>
 1. Account is successfully created <br>
    - The system displays their successfully created account on the screen
 
 - **Alternate Sequence:**<br>
-4\. Password does not match with previous password<br>
+2\. Password does not match with previous password<br>
   a. The system notifies user that passwords do not match <br>
   b. The system prompts user to enter a matching password<br>
 
-  6\. User does not enter an answer to the security question<br>
+  4\. User does not enter an answer to the security question<br>
   a. The system displays a message saying this space can't be left blank<br>
   b. The system prompts user to enter an answer to the security question
 
