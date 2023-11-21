@@ -1,7 +1,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
+<h1 class="New">
     This is the notes page for {{ name }}
 </h1>
+
+
+<body>
+    <div class="field has-addons has-addons-centered">
+      <p class="control">
+        <button class="button">
+          <span class="icon">
+            <i class="fas fa-bold"></i>
+          </span>
+          <span><b>Bold</b></span>
+        </button>
+      </p>
+      <p class="control">
+        <button class="button">
+          <span class="icon">
+            <i class="fas fa-italic"></i>
+          </span>
+          <span><i>Italic</i></span>
+        </button>
+      </p>
+      <p class="control">
+        <button class="button">
+          <span class="icon">
+            <i class="fas fa-underline"></i>
+          </span>
+          <span><u>Underline</u></span>
+        </button>
+      </p>
+    </div>
+    <div id="NoteID">
+        <textarea name=noteContent style="border:outset 2px orange" rows="25" cols="75"></textarea>
+    </div>
+        <div class="buttons is-centered">
+            <form name="Note Submit" method="POST" novalidate>
+                <button class="button is-success" name="Note Submit">Save Note</button>
+            </form>
+            <form name="Note Delete" method="POST" novalidate>
+                <button class="button is-danger">Delete Note</button>
+            </form>
+        </div>
+</body>
+
 {% endblock %}

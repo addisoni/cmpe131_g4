@@ -1,8 +1,8 @@
 from flask import flash, redirect, render_template, url_for
 from flask_login import login_user, login_required, logout_user, current_user
-from .forms import CreateAccount, LoginForm
+from .forms import *
 from app import myapp_obj, db, login_manager
-from app.models import User
+from app.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
 
 @myapp_obj.route("/")
@@ -30,7 +30,19 @@ def login():
 @myapp_obj.route("/notes", methods=['GET', 'POST'])
 @login_required
 def notes():
-     return render_template('notes.html', name=current_user.username)
+
+    newNote = CreateNote()
+    #deleteNote = DeleteNote()
+    print(newNote.validate_on_submit())
+    #print(deleteNote.validate_on_submit())
+
+    
+    if newNote.validate_on_submit():
+            u = Notes(name=newNote.nameType2.data)
+            db.session.add(u)
+            db.session.commit()
+
+    return render_template('notes.html', form=newNote)
 
 @myapp_obj.route("/createaccount", methods=['GET', 'POST'])
 def createaccount():

@@ -22,3 +22,8 @@ class CreateAccount(FlaskForm):
     security_answer = StringField('Security Answer', validators=[DataRequired()])
     
     submit = SubmitField('Create Account')
+
+class CreateNote(FlaskForm):
+    nameType = StringField('Note Name', validators=[DataRequired()])
+    nameType2 = StringField('Note Name2', validators=[DataRequired()])
+    submit = SubmitField('Note Submit')

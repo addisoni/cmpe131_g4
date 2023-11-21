@@ -14,4 +14,10 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-    
+
+
+class Notes(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    noteBody = db.Column(db.String,nullable=True)
+    userID = db.Column(db.Integer, db.ForeignKey('user.id'))
+    #Input more here

@@ -18,7 +18,7 @@ login_manager = LoginManager(myapp_obj)
 login_manager.login_view = 'login'
 
 with myapp_obj.app_context():
-    from app.models import User
+    from app.models import *
     db.create_all()
 
 from app import routes
