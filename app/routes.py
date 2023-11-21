@@ -31,18 +31,17 @@ def login():
 @login_required
 def notes():
 
-    newNote = manageNotes()
+    form = manageNotes()
     #deleteNote = DeleteNote()
-    print(newNote.validate_on_submit())
+    print(form.validate_on_submit())
     #print(deleteNote.validate_on_submit())
 
-    
-    if newNote.validate_on_submit():
-            u = Notes(name=newNote.createNote.data)
+    if form.validate_on_submit():
+            u = User(noteBody=form.noteBody.data)
             db.session.add(u)
             db.session.commit()
 
-    return render_template('Notes2.html', form=newNote)
+    return render_template('Notes2.html', form=form)
 
 @myapp_obj.route("/createaccount", methods=['GET', 'POST'])
 def createaccount():

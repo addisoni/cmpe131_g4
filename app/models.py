@@ -8,6 +8,8 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128), nullable=False)
     security_question = db.Column(db.String(128), nullable=False)
     security_answer = db.Column(db.String(128), nullable=False)
+    noteBody = db.Column(db.String,nullable=True)
+    userID = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -22,4 +24,6 @@ class Notes(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     noteBody = db.Column(db.String,nullable=True)
     userID = db.Column(db.Integer, db.ForeignKey('user.id'))
-    #Input more here
+    
+    def __repr__(self):
+        return '<User {}>'.format(self.noteBody)
