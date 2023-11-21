@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
 from wtforms.validators import DataRequired, EqualTo
+from markupsafe import Markup
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -24,6 +25,5 @@ class CreateAccount(FlaskForm):
     submit = SubmitField('Create Account')
 
 class CreateNote(FlaskForm):
-    nameType = StringField('Note Name', validators=[DataRequired()])
-    nameType2 = StringField('Note Name2', validators=[DataRequired()])
-    submit = SubmitField('Note Submit')
+    submit_value = Markup('<span class="oi oi-check" title="Submit"></span>')
+    submit = SubmitField('Submit')
