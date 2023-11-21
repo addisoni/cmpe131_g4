@@ -3,7 +3,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 from .forms import CreateAccount, LoginForm
 from app import myapp_obj, db, login_manager
 from app.models import User
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 @myapp_obj.route("/")
 @myapp_obj.route("/home.html")
@@ -16,13 +16,15 @@ def login():
 
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-
-        if user and user.password_hash == form.password.data:
-             login_user(user)
-             return redirect(url_for('notes'))
+        if user:
+            if check_password_hash(user.password_hash, form.password.data):
+                 login_user(user)
+                 return redirect(url_for('notes'))
+            else:
+                 flash('Incorrect Password - Please try again!')
         else:
-             flash('Login failed. Check your username and password.', 'danger')
-
+             flash('User does not exist')
+             
     return render_template('login.html', form=form)
 
 @myapp_obj.route("/notes", methods=['GET', 'POST'])
