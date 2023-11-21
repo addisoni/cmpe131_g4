@@ -24,6 +24,7 @@ class CreateAccount(FlaskForm):
     
     submit = SubmitField('Create Account')
 
-class CreateNote(FlaskForm):
-    submit_value = Markup('<span class="oi oi-check" title="Submit"></span>')
+class manageNotes(FlaskForm):
+    #submit_value = Markup('<span class="oi oi-check" title="Submit"></span>')
+    createNote = StringField('Note', validators=[DataRequired()])
     submit = SubmitField('Submit')
