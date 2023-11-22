@@ -1,5 +1,6 @@
 from app import db
 from flask_login import UserMixin
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(UserMixin, db.Model):
@@ -8,8 +9,6 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128), nullable=False)
     security_question = db.Column(db.String(128), nullable=False)
     security_answer = db.Column(db.String(128), nullable=False)
-    noteBody = db.Column(db.String,nullable=True)
-    userID = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -22,8 +21,9 @@ class User(UserMixin, db.Model):
 
 class Notes(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    noteBody = db.Column(db.String,nullable=True)
-    userID = db.Column(db.Integer, db.ForeignKey('user.id'))
-    
+    title = db.Column(db.String, nullable=False)
+    body = db.Column(db.Text, nullable=True)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow().replace(microsecond=0))
+
     def __repr__(self):
-        return '<User {}>'.format(self.noteBody)
+        return '<Notes {}>'.format(self.body)

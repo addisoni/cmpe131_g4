@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, url_for
+from flask import flash, redirect, render_template, url_for, request
 from flask_login import login_user, login_required, logout_user, current_user
 from .forms import *
 from app import myapp_obj, db, login_manager
@@ -19,7 +19,7 @@ def login():
         if user:
             if check_password_hash(user.password_hash, form.password.data):
                  login_user(user)
-                 return redirect(url_for('notes'))
+                 return redirect(url_for('notePage'))
             else:
                  flash('Incorrect Password - Please try again!')
         else:
@@ -27,21 +27,46 @@ def login():
              
     return render_template('login.html', form=form)
 
-@myapp_obj.route("/notes", methods=['GET', 'POST'])
+@myapp_obj.route("/notePage", methods=['GET', 'POST'])
 @login_required
-def notes():
+def notePage():
+    if request.method == 'POST':
+        try:
+            print(f'Title: {request.form["title"]}')
+            print(f'Body: {request.form["body"]}')
+        except:
+            print("No forms here")
 
-    form = manageNotes()
-    #deleteNote = DeleteNote()
-    print(form.validate_on_submit())
-    #print(deleteNote.validate_on_submit())
+        try:
+            title = request.form["title"]
+            body = request.form["body"]
+            
+            if title.strip():
+                if body.strip():
+                    n = Notes(title=title, body=body)
+                    print(n)
+                    db.session.add(n)
+                    db.session.commit()
+        except ValueError as err:
+            print(err)
 
-    if form.validate_on_submit():
-            u = User(noteBody=form.noteBody.data)
-            db.session.add(u)
-            db.session.commit()
+        return redirect(url_for('notePage'))
 
-    return render_template('Notes2.html', form=form)
+    post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
+    return render_template('notePage.html', notes=post_notes)
+
+@myapp_obj.route('/rm/<int:note_id>', methods=['POST'])
+def delete_note(note_id):
+    rm_note = Notes.query.first_or_404(note_id)
+    db.session.delete(rm_note)
+    db.session.commit()
+    return redirect(url_for('notePage'))
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
+
 
 @myapp_obj.route("/createaccount", methods=['GET', 'POST'])
 def createaccount():
@@ -78,3 +103,4 @@ def logout():
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
