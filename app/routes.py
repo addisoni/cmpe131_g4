@@ -62,12 +62,6 @@ def delete_note(note_id):
     db.session.commit()
     return redirect(url_for('notePage'))
 
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    app.run(debug=True)
-
-
 @myapp_obj.route("/createaccount", methods=['GET', 'POST'])
 def createaccount():
     form = CreateAccount()
