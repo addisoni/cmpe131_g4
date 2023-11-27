@@ -21,8 +21,26 @@ class CreateAccount(FlaskForm):
         ('q5', 'What was the name of your first pet?')],
         validators=[DataRequired()])
     security_answer = StringField('Security Answer', validators=[DataRequired()])
-    
     submit = SubmitField('Create Account')
+
+class ForgotPassword(FlaskForm):
+    username = StringField('Username:', validators=[DataRequired()])
+    security_question = SelectField('Security Question:', choices=[
+        ('q1', 'What city were you born in?'),
+        ('q2', 'What was your childhood nickname?'),
+        ('q3', 'What was the name of your first childhood friend?'),
+        ('q4', 'Who is your most memorable teacher?'),
+        ('q5', 'What was the name of your first pet?')],
+        validators=[DataRequired()])
+    security_answer = StringField('Security Question Answer:', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class ResetPassword(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired(), EqualTo('confirm', message = 'Passwords must match')])
+    confirm = PasswordField('Repeat Password')
+    submit = SubmitField('Reset Password')
+
+
 """
 class Noteriety(FlaskForm):
     title = StringField('title', validators=[DataRequired()])

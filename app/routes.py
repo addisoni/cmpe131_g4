@@ -24,7 +24,7 @@ def login():
                  flash('Incorrect Password - Please try again!')
         else:
              flash('User does not exist')
-             
+
     return render_template('login.html', form=form)
 
 @myapp_obj.route("/notePage", methods=['GET', 'POST'])
@@ -40,7 +40,7 @@ def notePage():
         try:
             title = request.form["title"]
             body = request.form["body"]
-            
+
             if title.strip():
                 if body.strip():
                     n = Notes(title=title, body=body)
@@ -83,6 +83,7 @@ def createaccount():
             return redirect('login')
 
     return render_template('create_account.html', form=form)
+
 @myapp_obj.route("/members/<string:name>/")
 def getMember(name):
     return escape(name)
@@ -98,3 +99,20 @@ def logout():
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@myapp_obj.route("/forgotpassword", methods=['GET'])
+def forgotpassword():
+    form = ForgotPassword()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user:
+            if check_security_question(user.security_question, form.security_question.data):
+                login_user(user)
+            if check_security_answer_hash(user.security_answer, form.security_password.data):
+                login_user(user)
+                return redirect(url_for('ResetPassword'))
+            else:
+                flash('User does not exist')
+        else:
+                flash('Wrong answer try again')
+    return render_template('forgotpassword.html', form=form)
