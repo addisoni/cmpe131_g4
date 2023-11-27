@@ -21,4 +21,6 @@ with myapp_obj.app_context():
     from app.models import User
     db.create_all()
 
+
+
 from app import routes
