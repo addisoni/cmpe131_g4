@@ -1,6 +1,6 @@
 ## Functional Requirements
 
-1. Notes created on webpage are restricted to the corresponding user 
+1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection
 
 2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset)
 
@@ -33,22 +33,23 @@
 - Webpages should load in less than 2 seconds
 
 ## Use Cases 
-### 1. Notes created on webpage are restricted to corresponding user (Benjamin Lim)
-- **Pre-condition:** User is logged into their account with an existing note
-- **Trigger:** User clicks on a permissions button
+### 1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection (Benjamin Lim)
+- **Pre-condition:** User is logged into their account
+- **Trigger:** User accesses their notes on home or search page
 - **Primary Sequence:**
-1. User enters other users to give permission to (Read or Read & Write) for existing note.
-2. User modifies note permissions and saves changes.
-3. System updates note with given conditions.
+1. User clicks on visiblity button (Make Public/Make Private button)
+2. System changes note's visibility to other users
 
 - **Primary Postconditions:**<br>
-1. Note permission status displays succesfull changes to permissions
-2. Note heirachy appears on all accounts if originator's note permissions is set to public
+1. Note visibility button changes to the opposite of what the user clicked on
+   (i.e. If user clicked on "Make Public", it would change to "Make Private" if
+   they want to privatize their note and vice versa)
+2. Note successfully appears on other users home or search page but they should only
+   be able to view it and not modify it
 
 - **Alternate Sequence:**<br>
-1\. User chooses not to give any permissions (withdraws) <br>
-  a. The system prompts user "Are you sure?" <br>
-  b. User confirms confirmation
+1\. User does not click on the visibility button<br>
+  a. The system keeps the note private by default
 
 ### 2. A simple user registration web page is incorporated for new users to create their personalized account with a username, password, and security question to reset their password (Benjamin Lim)
 - **Pre-condition:** User is on the notes app webpage
