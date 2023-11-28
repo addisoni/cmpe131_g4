@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 
 {% block content%}
-<html>
-<head>
-  <title>Flask Example</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-</head>
 <form method="GET"">
     <div class="form-group pull-right">
       <label class="text-lg" for="query" style="font-size: 16pt; font-weight:bold">Search Bar: </label>
@@ -26,5 +21,4 @@
         <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
     </form>
 {% endfor %}
-</html>
 {% endblock %}
