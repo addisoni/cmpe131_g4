@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo
 from markupsafe import Markup
 
@@ -23,9 +23,5 @@ class CreateAccount(FlaskForm):
     security_answer = StringField('Security Answer', validators=[DataRequired()])
 
     submit = SubmitField('Create Account')
-"""
-class Noteriety(FlaskForm):
-    title = StringField('title', validators=[DataRequired()])
-    body = StringField('body')
-    submit = SubmitField('submit')
-"""
+
+
