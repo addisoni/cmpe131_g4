@@ -1,9 +1,11 @@
 from flask import flash, redirect, render_template, url_for, request, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
-from .forms import *
+from .forms import ResetPassword, CreateAccount, ForgotPassword
+from .utils import hash_new_password
 from app import myapp_obj, db, login_manager
 from app.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
+from app.forms import ForgotPassword, LoginForm
 
 sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
 
@@ -41,7 +43,7 @@ def login():
                  flash('Incorrect Password - Please try again!')
         else:
              flash('User does not exist')
-             
+
     return render_template('login.html', form=form)
 
 @myapp_obj.route("/notePage", methods=['GET', 'POST'])
@@ -57,7 +59,7 @@ def notePage():
         try:
             title = request.form["title"]
             body = request.form["body"]
-            
+
             if title.strip():
                 if body.strip():
                     n = Notes(title=title, body=body)
@@ -136,3 +138,51 @@ def logout():
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@myapp_obj.route("/forgotpassword", methods=['GET', 'POST'])
+def forgotpassword():
+    form = ForgotPassword()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user:
+            if check_security_question(user.security_question, form.security_question.data):
+                if check_security_answer_hash(user.security_answer, form.security_answer.data):
+
+                    return redirect(url_for('resetpassword', username=user.username))
+                else:
+                    flash('Wrong answer, please try again.')
+            else:
+                flash('Incorrect security question.')
+        else:
+            flash('User does not exist.')
+
+    return render_template('forgotpassword.html', form=form)
+
+def check_security_question(user_security_question, provided_security_question):
+    return user_security_question == provided_security_question
+
+def check_security_answer_hash(user_security_answer_hash, provided_security_answer):
+    return check_password_hash(user_security_answer_hash, provided_security_answer)
+
+@myapp_obj.route("/resetpassword/<username>", methods=['GET', 'POST'])
+def resetpassword(username):
+    form = ResetPassword()
+
+    if form.validate_on_submit():
+        if form.new_password.data != form.confirm_password.data:
+            flash('New password and confirmed password do not match. Please try again.')
+            return redirect(url_for('resetpassword', username=username))
+
+        user = User.query.filter_by(username=username).first()
+
+        if user:
+            new_password_hash = generate_password_hash(form.new_password.data)
+            user.password_hash = new_password_hash
+            db.session.commit()
+
+            flash('Password reset successful. You can now log in with your new password.')
+            return redirect(url_for('login'))
+        else:
+            flash('User not found. Password reset failed.')
+
+    return render_template('resetpassword.html', form=form)
