@@ -263,4 +263,4 @@ Notes are condensed based on the query written by the user in the search field
 
 - **Alternate Sequence:**<br>
 1. Typed content does not match any string from the existing notes, “no results found” is displayed
-2. No notes have been created, displays “No notes have been created and saved, please create and save a note first”
+2. No notes have been created, returns "no results found"
