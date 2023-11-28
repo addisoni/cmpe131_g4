@@ -43,10 +43,10 @@
 
 - **Primary Postconditions:**<br>
 1. Note permission status displays succesfull changes to permissions
-2. Note heirachy for note permissions show respective users with correct Read and Write permissions
+2. Note heirachy appears on all accounts if originator's note permissions is set to public
 
 - **Alternate Sequence:**<br>
-1\. User chooses not to give any permissions to other user <br>
+1\. User chooses not to give any permissions (withdraws) <br>
   a. The system prompts user "Are you sure?" <br>
   b. User confirms confirmation
 
