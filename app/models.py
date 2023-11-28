@@ -23,7 +23,8 @@ class Notes(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     body = db.Column(db.Text, nullable=True)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow().replace(microsecond=0))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.today().replace(microsecond=0))
 
     def __repr__(self):
         return '<Notes {}>'.format(self.body)
+
