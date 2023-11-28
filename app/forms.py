@@ -21,7 +21,7 @@ class CreateAccount(FlaskForm):
         ('q5', 'What was the name of your first pet?')],
         validators=[DataRequired()])
     security_answer = StringField('Security Answer', validators=[DataRequired()])
-    
+
     submit = SubmitField('Create Account')
 """
 class Noteriety(FlaskForm):

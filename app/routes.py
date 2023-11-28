@@ -83,9 +83,6 @@ def createaccount():
             return redirect('login')
 
     return render_template('create_account.html', form=form)
-@myapp_obj.route("/members/<string:name>/")
-def getMember(name):
-    return escape(name)
 
 @myapp_obj.route('/logout')
 @login_required
