@@ -24,22 +24,22 @@ class CreateAccount(FlaskForm):
     submit = SubmitField('Create Account')
 
 class ForgotPassword(FlaskForm):
-    username = StringField('Username:', validators=[DataRequired()])
-    security_question = SelectField('Security Question:', choices=[
+    username = StringField('Username', validators=[DataRequired()])
+    security_question = SelectField('Security Question', choices=[
         ('q1', 'What city were you born in?'),
         ('q2', 'What was your childhood nickname?'),
         ('q3', 'What was the name of your first childhood friend?'),
         ('q4', 'Who is your most memorable teacher?'),
         ('q5', 'What was the name of your first pet?')],
         validators=[DataRequired()])
-    security_answer = StringField('Security Question Answer:', validators=[DataRequired()])
+    security_answer = PasswordField('Security Answer', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class ResetPassword(FlaskForm):
-    password = PasswordField('Password', validators=[DataRequired(), EqualTo('confirm', message = 'Passwords must match')])
-    confirm = PasswordField('Repeat Password')
+    username = StringField('Username', validators=[DataRequired()])
+    new_password = PasswordField('New Password', validators=[DataRequired()])
+    confirm_new_password = PasswordField('Confirm New Password', validators=[DataRequired(), EqualTo('new_password')])
     submit = SubmitField('Reset Password')
-
 
 """
 class Noteriety(FlaskForm):
