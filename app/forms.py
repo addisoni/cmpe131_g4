@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo
 from markupsafe import Markup
+from wtforms.fields import TextAreaField, HiddenField
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -23,6 +24,18 @@ class CreateAccount(FlaskForm):
     security_answer = StringField('Security Answer', validators=[DataRequired()])
     submit = SubmitField('Create Account')
 
+class NoteForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    body = TextAreaField('Body', render_kw={'class': 'editor'})  # Add this line
+    submit = SubmitField('Submit')
+    action = HiddenField()
+    
+class ModifyAccountForm(FlaskForm):
+    username = StringField('New Username')
+    password = PasswordField('New Password', validators=[EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField('Repeat New Password')
+    security_question = SelectField('New Security Question', choices=[
+
 class ForgotPassword(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     security_question = SelectField('Security Question', choices=[
@@ -40,14 +53,3 @@ class ResetPassword(FlaskForm):
     new_password = PasswordField('New Password', validators=[DataRequired()])
     confirm_new_password = PasswordField('Confirm New Password', validators=[DataRequired(), EqualTo('new_password')])
     submit = SubmitField('Reset Password')
-
-"""
-class Noteriety(FlaskForm):
-    title = StringField('title', validators=[DataRequired()])
-    body = StringField('body')
-    submit = SubmitField('submit')
-"""
-
-
-
-
