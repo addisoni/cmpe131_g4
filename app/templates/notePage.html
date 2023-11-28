@@ -4,7 +4,6 @@
 <html>
 <head>
   <title>Flask Example</title>
-  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 </head>
 <body>
@@ -13,7 +12,6 @@
     <br>
     <br>
     <form method="POST" action="">
-      {{ form.hidden_tag() }}
       <div class="text-lg">
         <label class="block" for="title" style="font-size: 16pt; font-weight:bold">Title: </label>
         <input class="text-gray-700" id="title" name="title" style="font-size: 16pt" type="text" placeholder="Enter Note Title">
@@ -21,7 +19,7 @@
       <br>
       <div class="field has-addons has-addons-centered">
         <p class="control">
-          <button class="button" type="button" onclick="quill.format('bold', true)">
+          <button class="button">
             <span class="icon">
               <i class="fas fa-bold"></i>
             </span>
@@ -29,7 +27,7 @@
           </button>
         </p>
         <p class="control">
-          <button class="button" type="button" onclick="quill.format('italic', true)">
+          <button class="button">
             <span class="icon">
               <i class="fas fa-italic"></i>
             </span>
@@ -37,7 +35,7 @@
           </button>
         </p>
         <p class="control">
-          <button class="button" type="button" onclick="quill.format('underline', true)">
+          <button class="button">
             <span class="icon">
               <i class="fas fa-underline"></i>
             </span>
@@ -48,41 +46,21 @@
       <div>
         <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Body: </label>
         <br>
-        <div id="editor" style="height: 300px;"></div>
-        <textarea name="body" style="display:none;" id="body" rows="20" cols="40"></textarea>
+        <textarea class="text-lg" id="body" name="body" rows="20" cols="40" style="font-size: 16pt; border:outset 2px orange" placeholder="Start Typing Here..."></textarea>
       </div>
       <button class="button is-success" name="Note Submit" type="submit">Save Note</button>
-      <button type="submit" name="action" value="copy">Copy</button>
-      <button type="submit" name="action" value="paste">Paste</button>
-      <button type="submit" name="action" value="duplicate">Duplicate</button>
-  </form>
-      {% for note in notes %}
-      <div class="text-lg" style="float: left">
-          <br>
-          <h2 class="text-lg" style="font-size: 16pt; font-weight:bold" >Note {{ note.id }}: {{ note.title }}</h2>
-          <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
-          <br>
-          <form method="POST" action="/rm/{{ note.id }}">
-            <button class="button is-danger" name="Note Delete" type="submit">Delete Note</button>
-          </form>
-          <form method="POST" action="">
-            <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
-      </div>
-      {% endfor %}
-    </div>
     </form>
   </div>
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script>
-      var quill = new Quill('#editor', {
-        theme: 'snow'
-      });
-
-      // When the form is submitted, update the hidden textarea with Quill's HTML content
-      document.querySelector('form').onsubmit = function() {
-        document.querySelector('#body').value = quill.root.innerHTML;
-      };
-    </script>
-  </body>
+</body>     
 </html>
+
+
 {% endblock %}
+
+
+
+
+
+
+
+
