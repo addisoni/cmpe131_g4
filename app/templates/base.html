@@ -26,6 +26,9 @@
                                 Search
                             </a>
                                 {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('modifyaccount') }}" class="navbar-item">
+                                    Modify Account
+                                </a>
                                 <a href="{{url_for('logout')}}" class="navbar-item">
                                     Logout
                                 </a>
