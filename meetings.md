@@ -2,10 +2,10 @@
 ### Coordinating milestone meetings at least once a week
 
 ### 2023-11-28 at 21:00
-- Attendees: Addison, Benjamin, and Najm
-- Milestone 2: Verified everyone's progress and implemented all features with pull requests for some commits
-- Togther, verified we have at least 9 requirements for M2
-- README.md to be completed by 11/29.
+ - Attendees: Addison, Benjamin, and Najm
+ - Milestone 2: Did pull requests for everyone's requirement portion (3 hours)
+ - <Current attendees> Had some merge conflicts that occurred in the process of doing pull requests which we resolved
+ - Updated our README.md file and made it look neat along with a logo and table of contents
 
 ### 2023-11-27 at 21:05
 - Attendees: Addison, Benjamin, and Stephen
