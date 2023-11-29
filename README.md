@@ -111,7 +111,7 @@ Alternatively, running the website via python
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/notePage.png" alt="Logo" width="250" height="250">
+    <img src="images/readme/notePage.png" alt="Logo" width="858" height="550">
   </a>
 </div>
 
@@ -120,7 +120,7 @@ Alternatively, running the website via python
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/noteCreated.png" alt="Logo" width="250" height="250">
+    <img src="images/readme/noteCreated.png" alt="Logo" width="858" height="800">
   </a>
 </div>
 
