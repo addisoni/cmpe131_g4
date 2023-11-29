@@ -19,39 +19,13 @@
         <input class="text-gray-700" id="title" name="title" style="font-size: 16pt" type="text" placeholder="Enter Note Title">
       </div>
       <br>
-      <div class="field has-addons has-addons-centered">
-        <p class="control">
-          <button class="button" type="button" onclick="quill.format('bold', true)">
-            <span class="icon">
-              <i class="fas fa-bold"></i>
-            </span>
-            <span><b>Bold</b></span>
-          </button>
-        </p>
-        <p class="control">
-          <button class="button" type="button" onclick="quill.format('italic', true)">
-            <span class="icon">
-              <i class="fas fa-italic"></i>
-            </span>
-            <span><i>Italic</i></span>
-          </button>
-        </p>
-        <p class="control">
-          <button class="button" type="button" onclick="quill.format('underline', true)">
-            <span class="icon">
-              <i class="fas fa-underline"></i>
-            </span>
-            <span><u>Underline</u></span>
-          </button>
-        </p>
-      </div>
       <div>
         <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Body: </label>
         <br>
         <div id="editor" style="height: 300px;"></div>
         <textarea name="body" style="display:none;" id="body" rows="20" cols="40"></textarea>
       </div>
-      <button class="button is-success" name="Note Submit" type="submit">Save Note</button>
+      <button class="button" name="Note Submit" type="submit">Save Note</button>
       <button type="submit" name="action" value="copy">Copy</button>
       <button type="submit" name="action" value="paste">Paste</button>
       <button type="submit" name="action" value="duplicate">Duplicate</button>
