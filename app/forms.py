@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, EqualTo
 from markupsafe import Markup
 from wtforms.fields import TextAreaField, HiddenField
 
+#All forms 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])

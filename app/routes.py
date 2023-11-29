@@ -17,13 +17,14 @@ sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
 def home():
     #pull sorting name from html file
     sort_type = request.form.get('sorting') 
-
     #Determine how notes are sorted (displayed)
     if sort_type == 'DateCreated':
         post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
+        print(post_notes)
 
     if sort_type == 'AscendingName':
         post_notes = Notes.query.order_by(Notes.title).all()
+        print(post_notes)
 
     if sort_type == 'DescendingName':
         post_notes = Notes.query.order_by(Notes.title.desc()).all()
@@ -60,7 +61,7 @@ def notePage():
 
             if title.strip():
                 if body.strip():
-                    n = Notes(title=title, body=body, user_id=current_user.id)
+                    n = Notes(title=formatted_title, body=body, user_id=current_user.id)
                     db.session.add(n)
                     db.session.commit()
                     flash('Note duplicated successfully!', 'success')

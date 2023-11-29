@@ -124,7 +124,6 @@ Alternatively, running the website via python
   </a>
 </div>
 
-   
 5. Forgotten passwords can be reset using stored security question or known password **(Stephen Shao)**
     
 6. Multipletypefaces and font styles **(Najm Masri)**
@@ -136,6 +135,7 @@ Alternatively, running the website via python
 9. Multiple note sorting options **(Addison Ivan)**
     
 10. Search field for notes list **(Addison Ivan)**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
