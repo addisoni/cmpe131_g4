@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_msearch import Search
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import os
