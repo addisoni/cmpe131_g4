@@ -57,28 +57,21 @@ typefaces and font styles, have the ability to share them to the public or keep 
 ### Prerequisites
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/release/python-370/)
 
-Make sure you have the following libraries installed:
-* Refer to the [Requirements](https://github.com/addisoni/cmpe131_g4/blob/main/requirements3.txt) file:
-  ```sh
-  pip3 install -r requirements3.txt
-  ```
-  
-* pip3
-  ```sh
-  pip3 install flask flask-login flask-sqlalchemy flask-wtf WTForms SQLAlchemy
-  ```
-  
 ### Installation and running
 
 1. Clone the repo
    ```sh
    git clone https://github.com/addisoni/cmpe131_g4
    ```
-2. Access the app project
+2. Install the following libraries from [Requirements](https://github.com/addisoni/cmpe131_g4/blob/main/requirements3.txt)
+    ```sh
+    pip3 install -r requirements3.txt
+    ```
+3. Access the app project
    ```sh
    cd cmpe131_g4
    ```
-3. Running the website
+4. Running the website
    ```sh
    flask run
    ```
