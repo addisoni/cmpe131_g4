@@ -57,15 +57,16 @@ typefaces and font styles, have the ability to share them to the public or keep 
 ### Prerequisites
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/release/python-370/)
 
-Make sure you have the following libraries installed:
-* Refer to the [Requirements](https://github.com/addisoni/cmpe131_g4/blob/main/requirements3.txt) file:
+Make sure you have the following libraries installed before running Notetastic:<br>
+(Run these commands in the terminal)
+* Refer to and download the [Requirements](https://github.com/addisoni/cmpe131_g4/blob/main/requirements3.txt) file then install using the pip3 command:
   ```sh
   pip3 install -r requirements3.txt
   ```
 
-* pip3
+* Alternatively
   ```sh
-  pip3 install flask flask-login flask-sqlalchemy flask-wtf WTForms SQLAlchemy
+  pip3 install flask-login flask-sqlalchemy flask-wtf
   ```
   
 ### Installation and running
