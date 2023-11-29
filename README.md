@@ -55,13 +55,19 @@ typefaces and font styles, have the ability to share them to the public or keep 
 ## Getting Started
 
 ### Prerequisites
+[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/release/python-370/)
 
-Make sure you have the following libraries installed (or refer to this [Libraries](https://github.com/addisoni/cmpe131_g4/blob/main/requirements3.txt)):
+Make sure you have the following libraries installed:
+* Refer to the [Requirements](https://github.com/addisoni/cmpe131_g4/blob/main/requirements3.txt) file:
+  ```sh
+  pip3 install -r requirements3.txt
+  ```
+  
 * pip3
   ```sh
-  pip3 install flask-login flask-sqlalchemy flask-wtf
+  pip3 install flask flask-login flask-sqlalchemy flask-wtf WTForms SQLAlchemy
   ```
-
+  
 ### Installation and running
 
 1. Clone the repo
@@ -85,7 +91,7 @@ Make sure you have the following libraries installed (or refer to this [Librarie
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Implementation -->
-## Functional Requirements Implemented
+## Functional Requirements (To-Date)
 
 1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection **(Benjamin Lim)**
    
