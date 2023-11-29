@@ -9,13 +9,16 @@ from app import myapp_obj, db, login_manager
 from app.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
 
+#list of sorting note options 
 sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
 
 @myapp_obj.route("/")
 @myapp_obj.route("/home.html",methods=['GET', 'POST'])
 def home():
-    sort_type = request.form.get('sorting')
+    #pull sorting name from html file
+    sort_type = request.form.get('sorting') 
 
+    #Determine how notes are sorted (displayed)
     if sort_type == 'DateCreated':
         post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
 
@@ -26,19 +29,23 @@ def home():
         post_notes = Notes.query.order_by(Notes.title.desc()).all()
 
     else:
+        #otherwise just query all available notes to current user
         post_notes = Notes.query.all()
 
-    return render_template('home.html',notes=post_notes,sort_list=sort_list)
+    #notes, sort_list variables are relayed to html file
+    return render_template('home.html',notes=post_notes,sort_list=sort_list) 
 
 @myapp_obj.route("/notePage", methods=['GET', 'POST'])
 @login_required
 def notePage():
     form = NoteForm()
-    title_default = form.title.raw_data
+    #pull title and body data to check for input (error check)
+    title_default = form.title.raw_data 
     body_default = form.body.raw_data
 
     if form.validate_on_submit():
-        action = request.form.get('action')
+        #pull sorting name from html file
+        action = request.form.get('action') 
 
         if action == 'copy':
             # Implement the logic for copying the note
@@ -59,29 +66,31 @@ def notePage():
                     flash('Note duplicated successfully!', 'success')
 
         else:
-            # Handle other actions or form submissions
+            #only submit queries remain, prep to save note to database
             title = form.title.data
             body = form.body.data
 
             if title.strip():
                 if body.strip():
+                    #get the title, body, and specified user to add to database
                     n = Notes(title=title, body=body, user_id=current_user.id)
                     db.session.add(n)
                     db.session.commit()
 
-        # Clear the action field to avoid interference with regular note submission
+        #Clear the action field to avoid interference with regular note submission
         form.action.data = ''
 
         return redirect(url_for('home'))
 
+    #return error page if note titles were attempted to be saved, copied, etc. without a string inputted 
     if title_default == [""] or None:
         if body_default != ["<p><br></p>"] or None:
             return redirect(url_for('error'))
 
-    post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
-    return render_template('notePage.html', form=form, notes=post_notes)
+    #if nothing else, proceed back to notePage
+    return render_template('notePage.html', form=form)
 
-
+#Error page
 @myapp_obj.route("/error", methods=['GET', 'POST'])
 def error():
     return render_template('error.html')
@@ -138,22 +147,27 @@ def modifyaccount():
 @myapp_obj.route("/search.html", methods=['GET', 'POST'])
 @login_required
 def search():
-    print(request.args.get('query'))
+    #pull data from search field (query)
     query = request.args.get('query')
+    #If there is a value for query, return with parsed string
     if query:
         search_notes = Notes.query.filter(Notes.title.contains(query) | Notes.body.contains(query))
     else:
+        #else return all available notes to the user
         search_notes = Notes.query.all()
 
     return render_template('search.html',notes=search_notes)
 
 @myapp_obj.route("/<int:note_id>/view", methods=["GET", "POST"])
 def view_note(note_id):
+    #simply return requested specific note_id details to forefront in HMTL view
     note = Notes.query.get_or_404(note_id)
     return render_template("view_note.html", note=note)
 
 @myapp_obj.route('/<int:note_id>/rm', methods=['POST'])
 def delete_note(note_id):
+    #Given the for loop in the html file, this will pull the corresponding ID based on the specific POST request region and delete the file from the database
+    #after database entry is deleted, refresh to the main home page (with recently deleted note no longer present)
     rm_note = Notes.query.first_or_404(note_id)
     db.session.delete(rm_note)
     db.session.commit()

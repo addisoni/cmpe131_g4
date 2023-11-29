@@ -21,10 +21,12 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
 class Notes(db.Model):
+    #create the database entries for all notes, this includes the specific ID (queried note), and the remaining data including title/body/timestamp
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     body = db.Column(db.Text, nullable=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.today().replace(microsecond=0))
+    #incorporate user_id and public to enable/disable note sharing between users and isolate notes from other users (when private)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     public = db.Column(db.Boolean, default=False)
 

@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="notetastic_logo.png" alt="Logo" width="250" height="250">
+    <img src="images/readme/notetastic_logo.png" alt="Logo" width="250" height="250">
   </a>
 </div>
 
@@ -105,6 +105,24 @@ Alternatively, running the website via python
 3. Logout of user account **(Benjamin Lim)**
    
 4. Create new notes **(Addison Ivan)**
+### Notes can be created using the notes pane after logging in:
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/notePage.png" alt="Logo" width="250" height="250">
+  </a>
+</div>
+
+### After note is created, you can create additional notes or manage your notes on the hompepage 
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/noteCreated.png" alt="Logo" width="250" height="250">
+  </a>
+</div>
+
    
 5. Forgotten passwords can be reset using stored security question or known password **(Stephen Shao)**
     
