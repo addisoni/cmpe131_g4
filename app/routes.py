@@ -62,7 +62,7 @@ def notePage():
 
             if title.strip():
                 if body.strip():
-                    n = Notes(title=title, body=body)
+                    n = Notes(title=title, body=body, user_id=current_user.id)
                     print(n)
                     db.session.add(n)
                     db.session.commit()
@@ -85,6 +85,11 @@ def search():
 
     return render_template('search.html',notes=search_notes)
 
+@myapp_obj.route("/<int:note_id>/view", methods=["GET", "POST"])
+def view_note(note_id):
+    note = Notes.query.get_or_404(note_id)
+    return render_template("view_note.html", note=note)
+
 @myapp_obj.route("/<int:note_id>/edit", methods=["GET", "POST"])
 def edit_notes(note_id):
     if request.method == "POST":
@@ -104,6 +109,18 @@ def delete_note(note_id):
     db.session.commit()
     return redirect(url_for('home'))
 
+@myapp_obj.route('/<int:note_id>/toggle_visibility', methods=['POST'])
+def toggle_visibility(note_id):
+    note = Notes.query.get_or_404(note_id)
+
+    if note.user_id == current_user.id:
+        note.public = not note.public
+        db.session.commit()
+
+    if request.referrer and 'search' in request.referrer:
+        return redirect(url_for('search'))
+    else:
+        return redirect(url_for('home'))
 
 @myapp_obj.route("/createaccount", methods=['GET', 'POST'])
 def createaccount():
@@ -137,6 +154,13 @@ def logout():
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+@myapp_obj.context_processor
+def utility_processor():
+    def get_username(user_id):
+        user = User.query.get(user_id)
+        return user.username if user else None
+    return dict(get_username=get_username)
 
 @myapp_obj.route("/forgotpassword", methods=['GET', 'POST'])
 def forgotpassword():

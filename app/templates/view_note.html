@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    <h1 class="" style="font-size: 24pt; font-weight:bold">Note Content</h1>
+    <br>
+    <h2><b>Title:</b> {{ note.title }}</h2>
+    <p><b>Body:</b> {{ note.body }}</p>
+    <br>
+    <form method="POST" action="{{url_for('home')}}">
+        <button class="button is-info" name="Home" type="submit">Back to Home</button>
+    </form>
+
+</body>
+
+{% endblock %}
