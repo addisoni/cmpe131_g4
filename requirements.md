@@ -1,6 +1,6 @@
 ## Functional Requirements
 
-1. Notes created on webpage are restricted to the corresponding user 
+1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection
 
 2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset)
 
@@ -20,11 +20,11 @@
 
 10. Modify existing user account details
 
-11. View revision history from past savestates
+11. View revision history from past savestate
 
 12. Undo/Redo revision history (restore pre-existing note savestates)
 
-13. Sortable notes
+13. Multiple Note sorting options
 
 14. Search field for notes list
 
@@ -33,22 +33,23 @@
 - Webpages should load in less than 2 seconds
 
 ## Use Cases 
-### 1. Notes created on webpage are restricted to corresponding user (Benjamin Lim)
-- **Pre-condition:** User is logged into their account with an existing note
-- **Trigger:** User clicks on a permissions button
+### 1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection (Benjamin Lim)
+- **Pre-condition:** User is logged into their account
+- **Trigger:** User accesses their notes on home or search page
 - **Primary Sequence:**
-1. User enters other users to give permission to (Read or Read & Write) for existing note.
-2. User modifies note permissions and saves changes.
-3. System updates note with given conditions.
+1. User clicks on visiblity button (Make Public/Make Private button)
+2. System changes note's visibility to other users
 
 - **Primary Postconditions:**<br>
-1. Note permission status displays succesfull changes to permissions
-2. Note heirachy for note permissions show respective users with correct Read and Write permissions
+1. Note visibility button changes to the opposite of what the user clicked on
+   (i.e. If user clicked on "Make Public", it would change to "Make Private" if
+   they want to privatize their note and vice versa)
+2. Note successfully appears on other users home or search page but they should only
+   be able to view it and not modify it
 
 - **Alternate Sequence:**<br>
-1\. User chooses not to give any permissions to other user <br>
-  a. The system prompts user "Are you sure?" <br>
-  b. User confirms confirmation
+1\. User does not click on the visibility button<br>
+  a. The system keeps the note private by default
 
 ### 2. A simple user registration web page is incorporated for new users to create their personalized account with a username, password, and security question to reset their password (Benjamin Lim)
 - **Pre-condition:** User is on the notes app webpage
@@ -207,7 +208,7 @@ User inserts incorrect info, like for names they type in numbers, so an error oc
 4. User saves note and navigates to revision header in note bar
 
 - **Primary Postcondition:**<br>
-Previous/post modified date(s) are shown in revision header
+Previous/post modified date is shown in revision pane
 
 - **Alternate Sequence:**<br>
 1. User opens previously created note and navigates to revision header
@@ -228,7 +229,7 @@ Note is remodified to most recent revision (since last save)
 - **Alternate Sequence:**<br>
 Clicking on Undo button, changed to “Redo”, reverts back to original state (before any “Undo” changes were made)
 
-### 13. Sortable notes (Addison Ivan)
+### 13. Multiple note sorting options (Addison Ivan)
 -  **Pre-condition:** User has at least one saved note in list
 -  **Trigger:** User clicks on sort dropdown menu in toolbar and selects sorting option
 -  **Primary Sequence:**
@@ -236,7 +237,6 @@ Clicking on Undo button, changed to “Redo”, reverts back to original state (
 2. User navigates to toolbar and clicks on sort dropdown button
 3. User clicks on one of the available options in dropdown menu:
 	-Date Added
-	-Date Modified
 	-Title Ascending
 	-Title Descending
 4. Dropdown menu title shows selected sorting method (based from list above) 
@@ -254,13 +254,13 @@ Notes are sorted based on the selected dropdown conditions (above)
 -  **Trigger:** User clicks on sort dropdown menu in toolbar
 -  **Primary Sequence:**
 1. User logs into account, opens to notes list
-2. User navigates to toolbar and clicks on search field 
+2. User navigates to search bar and clicks within search field 
 3. User begins typing contents/string and pressing enter to start search
-4. Content condensed based on typed content from user
+4. Content filtered based on typed content from user
 
 - **Primary Postcondition:**<br>
 Notes are condensed based on the query written by the user in the search field
 
 - **Alternate Sequence:**<br>
 1. Typed content does not match any string from the existing notes, “no results found” is displayed
-2. No notes have been created, displays “No notes have been created and saved, please create and save a note first”
+2. No notes have been created, returns "no results found"
