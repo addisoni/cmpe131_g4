@@ -1,11 +1,10 @@
 from flask import flash, redirect, render_template, url_for, request, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
-from .forms import ResetPassword, CreateAccount, ForgotPassword
+from .forms import *
 from .utils import hash_new_password
 from app import myapp_obj, db, login_manager
 from app.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.forms import ForgotPassword, LoginForm
 
 sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
 
@@ -29,6 +28,50 @@ def home():
 
     return render_template('home.html',notes=post_notes,sort_list=sort_list)
 
+@myapp_obj.route("/notePage", methods=['GET', 'POST'])
+@login_required
+def notePage():
+    form = NoteForm()
+
+    if form.validate_on_submit():
+        action = request.form.get('action')
+
+        if action == 'copy':
+            # Implement the logic for copying the note
+            flash('Note copied successfully!', 'success')
+        elif action == 'paste':
+            # Implement the logic for pasting the note
+            flash('Note pasted successfully!', 'success')
+        elif action == 'duplicate':
+            # Implement the logic for duplicating the note
+            title = form.title.data
+            body = form.body.data
+
+            if title.strip():
+                if body.strip():
+                    n = Notes(title=title, body=body, user_id=current_user.id)
+                    db.session.add(n)
+                    db.session.commit()
+                    flash('Note duplicated successfully!', 'success')
+        else:
+            # Handle other actions or form submissions
+            title = form.title.data
+            body = form.body.data
+
+            if title.strip():
+                if body.strip():
+                    n = Notes(title=title, body=body, user_id=current_user.id)
+                    db.session.add(n)
+                    db.session.commit()
+
+        # Clear the action field to avoid interference with regular note submission
+        form.action.data = ''
+
+        return redirect(url_for('home'))
+
+    post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
+    return render_template('notePage.html', form=form, notes=post_notes)
+
 @myapp_obj.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -46,32 +89,36 @@ def login():
 
     return render_template('login.html', form=form)
 
-@myapp_obj.route("/notePage", methods=['GET', 'POST'])
+@myapp_obj.route("/modifyaccount", methods=['GET', 'POST'])
 @login_required
-def notePage():
-    if request.method == 'POST':
-        try:
-            print(f'Title: {request.form["title"]}')
-            print(f'Body: {request.form["body"]}')
-        except:
-            print("No forms here")
+def modifyaccount():
+    form = ModifyAccountForm()
 
-        try:
-            title = request.form["title"]
-            body = request.form["body"]
+    if form.validate_on_submit():
+        user = current_user
 
-            if title.strip():
-                if body.strip():
-                    n = Notes(title=title, body=body, user_id=current_user.id)
-                    print(n)
-                    db.session.add(n)
-                    db.session.commit()
-        except ValueError as err:
-            print(err)
+        # Update username
+        if form.username.data:
+            user.username = form.username.data
 
-        return redirect(url_for('home'))
+        # Update password
+        if form.password.data:
+            user.set_password(form.password.data)
 
-    return render_template('notePage.html')
+        # Update security question and answer
+        if form.security_question.data:
+            user.security_question = form.security_question.data
+        if form.security_answer.data:
+            hashed_sa = hashed_sa = generate_password_hash(form.security_answer.data)
+            user.security_answer = hashed_sa
+
+        # Commit changes to the database
+        db.session.commit()
+
+        flash('Account modified successfully!', 'success')
+        return redirect(url_for('notePage'))
+
+    return render_template('modifyexistingnote.html', form=form)
 
 @myapp_obj.route("/search.html", methods=['GET', 'POST'])
 @login_required
