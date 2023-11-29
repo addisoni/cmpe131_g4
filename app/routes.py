@@ -90,18 +90,6 @@ def view_note(note_id):
     note = Notes.query.get_or_404(note_id)
     return render_template("view_note.html", note=note)
 
-@myapp_obj.route("/<int:note_id>/edit", methods=["GET", "POST"])
-def edit_notes(note_id):
-    if request.method == "POST":
-        if request.form["title"]:
-            Notes.query.get(note_id).title = request.form["title"]
-            db.session.commit()
-            return open_note(note_id)
-        else:
-            return render_template("edit_note.html", notes=Notes.query.get(note_id))
-
-    return render_template("edit_note.html", notes=Notes.query.get(note_id))
-
 @myapp_obj.route('/<int:note_id>/rm', methods=['POST'])
 def delete_note(note_id):
     rm_note = Notes.query.first_or_404(note_id)
