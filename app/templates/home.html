@@ -1,61 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<html>
-<br>
-<br>
 <h1 class="title">
     Welcome to Notetastic!
 </h1>
-<h2 class="subtitle" style="float: center">
+<h2 class="subtitle">
     A simple and friendly web-based note app
 </h2>
-  <div class="container" style="float: top">
-    <div class="row justify-content-center" style="float: top">
-        <div class="col-2">
-            <form name="post" action="{{ url_for('home') }}" method="POST">
-              <label for="sorting">Sort Notes: </label>
-              <br>
-                <select name="sorting" class="selectpicker form-control">
-                    <option value=''>- Sorting Options -</option>
-                    {% for sort_by in sort_list %}
-                    <option value="{{ sort_by }}" {% if sort_by == sort_list %}selected="selected"{% endif %}> {{ sort_by }}</option>
-                    {% endfor %}
-                </select>
-                <input type="submit" value="Submit">
-                <br>
-            </form>
-            {% for note in notes %}
-                {% if note.user_id == current_user.id or note.public %}
-                    <br>
-                    <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
-                    <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
-                    <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
-                    <br>
-                    <form method="POST" action="{{ note.id }}/view">
-                        <button class="button is-warning" name="Note View" type="submit">View Note</button>
-                    </form>
-                    {% if note.user_id == current_user.id %}
-                    <form method="POST" action="{{ note.id }}/rm">
-                        <button class="button is-danger" name="Note Delete" type="submit">Delete Note</button>
-                    </form>
-                        <form method="POST" action="{{ note.id }}/toggle_visibility">
-                            <button class="button is-info" name="Toggle Visibility" type="submit">
-                                {% if note.public %}
-                                    Make Private
-                                {% else %}
-                                    Make Public
-                                {% endif %}
-                        </button>
-                    </form>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-  </div>
-</html>
-
-
 {% endblock %}
-

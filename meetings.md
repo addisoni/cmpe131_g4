@@ -1,12 +1,6 @@
 ## Meetings - Sync every Tuesday for project milestones
 ### Coordinating milestone meetings at least once a week
 
-### 2023-11-27 at 21:05
-- Attendees: Addison, Benjamin, and Stephen
-- Milestone 2: Initial Implementation - Had a meeting to see everyone's progress and did some debugging and pull requests for some of them (50 minutes)
-- Togther, we have verified that we finished about 6 or more of the required 9 requirements for M2 and will complete them all by 11/28.
-- README.md will be worked on in-class as a group on 11/28.
-
 ### 2023-11-17 at 21:30
 - Attendees: Addison, Benjamin, Najm, and Stephen
 - Milestone 1: Revised requirements.md document to re-adjust requirements to professor's recommendations/criteria for the project
