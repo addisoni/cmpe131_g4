@@ -4,7 +4,6 @@
 <html>
 <head>
   <title>Flask Example</title>
-  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 </head>
 <body>
@@ -13,17 +12,14 @@
     <br>
     <br>
     <form method="POST" action="">
-      {{ form.hidden_tag() }}
       <div class="text-lg">
         <label class="block" for="title" style="font-size: 16pt; font-weight:bold">Title: </label>
         <input class="text-gray-700" id="title" name="title" style="font-size: 16pt" type="text" placeholder="Enter Note Title">
       </div>
-      <br>
       <div>
         <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Body: </label>
         <br>
-        <div id="editor" style="height: 300px;"></div>
-        <textarea name="body" style="display:none;" id="body" rows="20" cols="40"></textarea>
+        <textarea class="text-lg" id="body" name="body" rows="20" cols="40" style="font-size: 16pt; border:outset 2px orange" placeholder="Start Typing Here..."></textarea>
       </div>
       <button class="button" name="Note Submit" type="submit">Save Note</button>
       <button type="submit" name="action" value="copy">Copy</button>
@@ -43,19 +39,8 @@
             <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
       </div>
       {% endfor %}
-    </div>
-
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script>
-      var quill = new Quill('#editor', {
-        theme: 'snow'
-      });
-
-      // When the form is submitted, update the hidden textarea with Quill's HTML content
-      document.querySelector('form').onsubmit = function() {
-        document.querySelector('#body').value = quill.root.innerHTML;
-      };
-    </script>
-  </body>
+  </div>
+</body>     
 </html>
+
 {% endblock %}
