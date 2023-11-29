@@ -1,6 +1,7 @@
 from flask import flash, redirect, render_template, url_for, request
 from . import myapp_obj
 from .models import User
+from flask import flash, redirect, render_template, url_for, request, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
 from .forms import ResetPassword, CreateAccount, ForgotPassword
 from .utils import hash_new_password
@@ -9,10 +10,27 @@ from app.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.forms import ForgotPassword, LoginForm
 
+sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
+
 @myapp_obj.route("/")
-@myapp_obj.route("/home.html")
+@myapp_obj.route("/home.html",methods=['GET', 'POST'])
 def home():
-    return render_template('home.html')
+    sort_type = request.form.get('sorting')
+    print(sort_type)
+    if sort_type == 'DateCreated':
+        post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
+
+    if sort_type == 'AscendingName':
+        post_notes = Notes.query.order_by(Notes.title).all()
+
+    if sort_type == 'DescendingName':
+        post_notes = Notes.query.order_by(Notes.title.desc()).all()
+
+    else:
+        print("Issue with Button generator, no input found")
+        post_notes = Notes.query.all()
+
+    return render_template('home.html',notes=post_notes,sort_list=sort_list)
 
 @myapp_obj.route("/login", methods=['GET', 'POST'])
 def login():
@@ -47,24 +65,53 @@ def notePage():
 
             if title.strip():
                 if body.strip():
-                    n = Notes(title=title, body=body)
+                    n = Notes(title=title, body=body, user_id=current_user.id)
                     print(n)
                     db.session.add(n)
                     db.session.commit()
         except ValueError as err:
             print(err)
 
-        return redirect(url_for('notePage'))
+        return redirect(url_for('home'))
 
-    post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
-    return render_template('notePage.html', notes=post_notes)
+    return render_template('notePage.html')
 
-@myapp_obj.route('/rm/<int:note_id>', methods=['POST'])
+@myapp_obj.route("/search.html", methods=['GET', 'POST'])
+@login_required
+def search():
+    print(request.args.get('query'))
+    query = request.args.get('query')
+    if query:
+        search_notes = Notes.query.filter(Notes.title.contains(query) | Notes.body.contains(query))
+    else:
+        search_notes = Notes.query.all()
+
+    return render_template('search.html',notes=search_notes)
+
+@myapp_obj.route("/<int:note_id>/view", methods=["GET", "POST"])
+def view_note(note_id):
+    note = Notes.query.get_or_404(note_id)
+    return render_template("view_note.html", note=note)
+
+@myapp_obj.route('/<int:note_id>/rm', methods=['POST'])
 def delete_note(note_id):
     rm_note = Notes.query.first_or_404(note_id)
     db.session.delete(rm_note)
     db.session.commit()
-    return redirect(url_for('notePage'))
+    return redirect(url_for('home'))
+
+@myapp_obj.route('/<int:note_id>/toggle_visibility', methods=['POST'])
+def toggle_visibility(note_id):
+    note = Notes.query.get_or_404(note_id)
+
+    if note.user_id == current_user.id:
+        note.public = not note.public
+        db.session.commit()
+
+    if request.referrer and 'search' in request.referrer:
+        return redirect(url_for('search'))
+    else:
+        return redirect(url_for('home'))
 
 @myapp_obj.route("/createaccount", methods=['GET', 'POST'])
 def createaccount():
@@ -88,10 +135,6 @@ def createaccount():
 
     return render_template('create_account.html', form=form)
 
-@myapp_obj.route("/members/<string:name>/")
-def getMember(name):
-    return escape(name)
-
 @myapp_obj.route('/logout')
 @login_required
 def logout():
@@ -102,6 +145,13 @@ def logout():
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+@myapp_obj.context_processor
+def utility_processor():
+    def get_username(user_id):
+        user = User.query.get(user_id)
+        return user.username if user else None
+    return dict(get_username=get_username)
 
 @myapp_obj.route("/forgotpassword", methods=['GET', 'POST'])
 def forgotpassword():

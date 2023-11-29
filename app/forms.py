@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo
 from markupsafe import Markup
 
@@ -47,3 +47,7 @@ class Noteriety(FlaskForm):
     body = StringField('body')
     submit = SubmitField('submit')
 """
+
+
+
+

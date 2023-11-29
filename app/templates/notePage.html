@@ -16,39 +16,15 @@
         <label class="block" for="title" style="font-size: 16pt; font-weight:bold">Title: </label>
         <input class="text-gray-700" id="title" name="title" style="font-size: 16pt" type="text" placeholder="Enter Note Title">
       </div>
-      <br>
-      <div class="field has-addons has-addons-centered">
-        <p class="control">
-          <button class="button">
-            <span class="icon">
-              <i class="fas fa-bold"></i>
-            </span>
-            <span><b>Bold</b></span>
-          </button>
-        </p>
-        <p class="control">
-          <button class="button">
-            <span class="icon">
-              <i class="fas fa-italic"></i>
-            </span>
-            <span><i>Italic</i></span>
-          </button>
-        </p>
-        <p class="control">
-          <button class="button">
-            <span class="icon">
-              <i class="fas fa-underline"></i>
-            </span>
-            <span><u>Underline</u></span>
-          </button>
-        </p>
-      </div>
       <div>
         <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Body: </label>
         <br>
         <textarea class="text-lg" id="body" name="body" rows="20" cols="40" style="font-size: 16pt; border:outset 2px orange" placeholder="Start Typing Here..."></textarea>
       </div>
-      <button class="button is-success" name="Note Submit" type="submit">Save Note</button>
+      <button class="button" name="Note Submit" type="submit">Save Note</button>
+      <button type="submit" name="action" value="copy">Copy</button>
+      <button type="submit" name="action" value="paste">Paste</button>
+      <button type="submit" name="action" value="duplicate">Duplicate</button>
   </form>
       {% for note in notes %}
       <div class="text-lg" style="float: left">
@@ -63,16 +39,8 @@
             <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
       </div>
       {% endfor %}
-</body>
+  </div>
+</body>     
 </html>
 
-
 {% endblock %}
-
-
-
-
-
-
-
-
