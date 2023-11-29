@@ -1,7 +1,5 @@
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -112,7 +110,5 @@ Make sure you have the following libraries installed (or refer to this [Librarie
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/addisoni/cmpe131_g4/graphs/contributors
 [Flask-url]: https://flask.palletsprojects.com/en/3.0.x/
 [Flask.com]: https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white
