@@ -15,7 +15,7 @@ sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
 @myapp_obj.route("/home.html",methods=['GET', 'POST'])
 def home():
     sort_type = request.form.get('sorting')
-    print(sort_type)
+
     if sort_type == 'DateCreated':
         post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
 
@@ -26,7 +26,6 @@ def home():
         post_notes = Notes.query.order_by(Notes.title.desc()).all()
 
     else:
-        print("Issue with Button generator, no input found")
         post_notes = Notes.query.all()
 
     return render_template('home.html',notes=post_notes,sort_list=sort_list)
@@ -35,6 +34,8 @@ def home():
 @login_required
 def notePage():
     form = NoteForm()
+    title_default = form.title.raw_data
+    body_default = form.body.raw_data
 
     if form.validate_on_submit():
         action = request.form.get('action')
@@ -56,6 +57,7 @@ def notePage():
                     db.session.add(n)
                     db.session.commit()
                     flash('Note duplicated successfully!', 'success')
+
         else:
             # Handle other actions or form submissions
             title = form.title.data
@@ -72,8 +74,18 @@ def notePage():
 
         return redirect(url_for('home'))
 
+    if title_default == [""] or None:
+        if body_default != ["<p><br></p>"] or None:
+            return redirect(url_for('error'))
+
     post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
     return render_template('notePage.html', form=form, notes=post_notes)
+
+
+@myapp_obj.route("/error", methods=['GET', 'POST'])
+def error():
+    return render_template('error.html')
+
 
 @myapp_obj.route("/login", methods=['GET', 'POST'])
 def login():

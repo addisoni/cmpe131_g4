@@ -44,7 +44,7 @@ class ResetPassword(FlaskForm):
 
 class NoteForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    body = TextAreaField('Body', render_kw={'class': 'editor'})  # Add this line
+    body = TextAreaField('Body', render_kw={'class': 'editor'}, validators=[DataRequired()])
     submit = SubmitField('Submit')
     action = HiddenField()
     
@@ -60,14 +60,6 @@ class ModifyAccountForm(FlaskForm):
         ('q5', 'What was the name of your first pet?')])
     security_answer = StringField('New Security Answer')
     submit = SubmitField('Modify Account')
-
-
-"""
-class Noteriety(FlaskForm):
-    title = StringField('title', validators=[DataRequired()])
-    body = StringField('body')
-    submit = SubmitField('submit')
-"""
 
 
 

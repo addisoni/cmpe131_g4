@@ -98,6 +98,9 @@
 1. A new note is added to the user's note pane (directory)
 2. Note is saved to user's profile
 
+- **Alternate Sequence:**<br>
+1. No text for title is inputted (returns an error message) 
+
 ### 5. Insertable tables into notes (Stephen Shao)
 - **Pre-condition:** Note previously exists
 - **Trigger:** User clicks on table to insert into note
@@ -262,5 +265,5 @@ Notes are sorted based on the selected dropdown conditions (above)
 Notes are condensed based on the query written by the user in the search field
 
 - **Alternate Sequence:**<br>
-1. Typed content does not match any string from the existing notes, “no results found” is displayed
-2. No notes have been created, returns "no results found"
+1. Typed content does not match any string from the existing notes (no notes displayed)
+2. No notes have been created, like above no notes displayed
