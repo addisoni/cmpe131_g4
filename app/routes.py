@@ -1,4 +1,6 @@
 from flask import flash, redirect, render_template, url_for, request
+from . import myapp_obj
+from .models import User
 from flask_login import login_user, login_required, logout_user, current_user
 from .forms import ResetPassword, CreateAccount, ForgotPassword
 from .utils import hash_new_password
@@ -111,7 +113,7 @@ def forgotpassword():
             if check_security_question(user.security_question, form.security_question.data):
                 if check_security_answer_hash(user.security_answer, form.security_answer.data):
 
-                    return redirect(url_for('resetpassword', username=user.username))
+                    return redirect(url_for('resetpassword'))
                 else:
                     flash('Wrong answer, please try again.')
             else:
@@ -127,25 +129,25 @@ def check_security_question(user_security_question, provided_security_question):
 def check_security_answer_hash(user_security_answer_hash, provided_security_answer):
     return check_password_hash(user_security_answer_hash, provided_security_answer)
 
-@myapp_obj.route("/resetpassword/<username>", methods=['GET', 'POST'])
-def resetpassword(username):
+@myapp_obj.route("/resetpassword", methods=['GET', 'POST'])
+def resetpassword():
     form = ResetPassword()
 
     if form.validate_on_submit():
-        if form.new_password.data != form.confirm_password.data:
-            flash('New password and confirmed password do not match. Please try again.')
-            return redirect(url_for('resetpassword', username=username))
-
-        user = User.query.filter_by(username=username).first()
-
-        if user:
-            new_password_hash = generate_password_hash(form.new_password.data)
-            user.password_hash = new_password_hash
-            db.session.commit()
-
-            flash('Password reset successful. You can now log in with your new password.')
-            return redirect(url_for('login'))
+        if form.new_password.data != form.confirm_new_password.data:
+            flash('New password and confirmed password do not match. Please try again.', 'danger')
         else:
-            flash('User not found. Password reset failed.')
+            username = form.username.data
+            user = User.query.filter_by(username=username).first()
+
+            if user:
+                new_password_hash = generate_password_hash(form.new_password.data, method='scrypt', salt_length=16)
+                user.password_hash = new_password_hash
+                db.session.commit()
+
+                flash('Password reset successful. You can now log in with your new password.', 'success')
+                return redirect(url_for('login'))
+            else:
+                flash('User not found. Password reset failed.', 'danger')
 
     return render_template('resetpassword.html', form=form)
