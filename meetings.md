@@ -1,6 +1,12 @@
 ## Meetings - Sync every Tuesday for project milestones
 ### Coordinating milestone meetings at least once a week
 
+### 2023-11-28 at 21:00 
+- Attendees: Addison, Benjamin, and Najm
+- Milestone 2: Did pull requests for everyone's requirement portion (3 hours)
+- <Addison, Benjamin, and Najm> Had some merge conflicts that occurred in the process of doing pull requests which we resolved
+- <Benjamin> Updated our README.md file and made it look neat along with a logo and table of contents
+
 ### 2023-11-27 at 21:05
 - Attendees: Addison, Benjamin, and Stephen
 - Milestone 2: Initial Implementation - Had a meeting to see everyone's progress and did some debugging and pull requests for some of them (50 minutes)
