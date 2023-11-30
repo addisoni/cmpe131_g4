@@ -155,7 +155,38 @@ Alternatively, running the website via python
 </div>
 
 5. Forgotten passwords can be reset using stored security question or known password **(Stephen Shao)**
-    
+### Users can reset password by selecting the forgot password function on the top right:
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/Location_of_Forgot_Password.png" alt="Logo" width="858" height="800">
+  </a>a>
+</div>
+
+### Users then gets redirected to another site in which they are asked for username and security answer:
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/Forgot_Password_Site.png" alt="Logo" width="858" height="800">
+  </a>a>
+</div>
+
+### Once users type in the correct answer, they will be sent to the reset password site in which they need to type in a new password and retype the new password:
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/Reset_Password_Site.png" alt="Logo" width="858" height="800">
+  </a>a>
+</div>
+
+### Once users type in the new password and confirm it, they will be relocated to the login page:
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/Back_to_Login_Page.png" alt="Logo" width="858" height="800">
+  </a>a>
+</div>
+
 6. Multipletypefaces and font styles **(Najm Masri)**
     
 7. Copy, paste, and duplicate note(s) **(Najm Masri)**
