@@ -138,14 +138,13 @@ User does not answer the security questions correclty
 -  **Pre-condition:** User is logged in and creates a new note
 -  **Trigger:** User highlights a portion of the text they want to customize.
 -  **Primary Sequence:**
-1. User logs into account, opens to notes list
-2. User creates new note or selects existing note they want to customize 
-3. User highlights the portion of the text they want to customize then selects the font style and typeface they want
-4. User clicks on one of the typeface buttons (Bold, italicize, etc.)
+1. User highlights the portion of the text they want to customize then selects the font style and typeface they want
+2. User clicks on one of the typeface buttons (Bold, italicize, etc.)
+3. User begins typing text in body
 
 - **Primary Postcondition:**<br>
-1. Note is edited and customized font/typeface is saved
-2. The text is displayed with the specified font/typeface in the notes
+1. The text is displayed with the specified font/typeface in the notes
+2. Note is saved with customized font/typeface
 
 - **Alternate Sequence:**<br>
 User selects the wrong note to customize. 
@@ -164,7 +163,6 @@ User selects the wrong note to customize.
    
 - **Alternate Sequence:**<br>
 1. Folder already exists, user is able to add new or other notes to folder
-2. Folder exists, user is able to rename folder to another name
 
 ### 9. Copy, paste, and duplicate note(s) (Najm Masri)
 -  **Summary:**  User can copy, paste, and duplicate their notes
@@ -202,16 +200,14 @@ User selects the wrong note to customize.
 User inserts incorrect info, like for names they type in numbers, so an error occurs. 
 
 ### 11. View revision history from past savestates (Addison Ivan)
--  **Pre-condition:** User has created account and started or appended current note 
--  **Trigger:** User hovers/views pane with past revision 
+-  **Pre-condition:** User has created account and appends current existing note 
+-  **Trigger:** User clicks on note revision pane
 -  **Primary Sequence:**
-1. User logs into account, opens to notes list
-2. User creates new note (per previous usecase)
-3. User types at least one character/number into note
-4. User saves note and navigates to revision header in note bar
+1. User types at least one new character/number into current note
+3. User saves note and navigates to revision header in note bar
 
 - **Primary Postcondition:**<br>
-Previous/post modified date is shown in revision pane
+1. Original modified date and new revision (from Primary Sequence) are shown in revision pane
 
 - **Alternate Sequence:**<br>
 1. User opens previously created note and navigates to revision header
