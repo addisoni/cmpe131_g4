@@ -210,13 +210,14 @@ def utility_processor():
 @myapp_obj.route("/forgotpassword", methods=['GET', 'POST'])
 def forgotpassword():
     form = ForgotPassword()
-
+#checks the database if the user exists or not
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
+        #checks the database if the user's security question and answers exists
             if check_security_question(user.security_question, form.security_question.data):
                 if check_security_answer_hash(user.security_answer, form.security_answer.data):
-
+#if everything checks out, they get sent to the resetpassword link
                     return redirect(url_for('resetpassword'))
                 else:
                     flash('Wrong answer, please try again.')
@@ -226,29 +227,29 @@ def forgotpassword():
             flash('User does not exist.')
 
     return render_template('forgotpassword.html', form=form)
-
+#checks the database if the security question is right
 def check_security_question(user_security_question, provided_security_question):
     return user_security_question == provided_security_question
-
+#checks the database if the security answer is right 
 def check_security_answer_hash(user_security_answer_hash, provided_security_answer):
     return check_password_hash(user_security_answer_hash, provided_security_answer)
 
 @myapp_obj.route("/resetpassword", methods=['GET', 'POST'])
 def resetpassword():
     form = ResetPassword()
-
+#checks if the passwords match when retyping
     if form.validate_on_submit():
         if form.new_password.data != form.confirm_new_password.data:
             flash('New password and confirmed password do not match. Please try again.', 'danger')
         else:
             username = form.username.data
             user = User.query.filter_by(username=username).first()
-
+#when users type the new password and confirms the new password, the database will rewrite the old password with the new password 
             if user:
                 new_password_hash = generate_password_hash(form.new_password.data, method='scrypt', salt_length=16)
                 user.password_hash = new_password_hash
                 db.session.commit()
-
+#when it is successful, it will redirect user to the login page 
                 flash('Password reset successful. You can now log in with your new password.', 'success')
                 return redirect(url_for('login'))
             else:
