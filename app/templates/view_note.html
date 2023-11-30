@@ -7,10 +7,16 @@
     <h2><b>Title:</b> {{ note.title }}</h2>
     <p><b>Body:</b> {{ note.body }}</p>
     <br>
-    <form method="POST" action="{{url_for('home')}}">
-        <button class="button is-info" name="Home" type="submit">Back to Home</button>
+    <form method="POST" action="{{ request.referrer }}">
+        <button class="button is-info" name="Home" type="submit">
+            {% if 'home' in request.referrer %}
+                Back to Home
+            {% elif 'search' in request.referrer %}
+                Back to search
+            {% else %}
+                Back
+            {% endif %}
+        </button>
     </form>
-
 </body>
-
 {% endblock %}
