@@ -1,8 +1,9 @@
 {% extends "base.html"%}
 
 {% block content %}
+<!-- Home HTML where all links will usually go to -->
 <html>
-<br>
+<br> 
 <br>
 <h1 class="title">
     Welcome to Notetastic!
@@ -17,6 +18,7 @@
             <form name="post" action="{{ url_for('home') }}" method="POST">
               <label for="sorting">Sort Notes: </label>
               <br>
+              <!-- We create the sort list dropdown menu and iterate over each sorting option (list of modes in routes.py) -->
                 <select name="sorting" class="selectpicker form-control">
                     <option value=''>- Sorting Options -</option>
                     {% for sort_by in sort_list %}
@@ -27,6 +29,7 @@
                 <br>
             </form>
             {% endif %}
+            <!-- We iterate over all notes, and check for every note whether the present user is the originator or whether the note is public or not -->
             {% for note in notes %}
                 {% if note.user_id == current_user.id or note.public %}
                     <br>
