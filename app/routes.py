@@ -42,6 +42,7 @@ def notePage():
     form = NoteForm()
 
     if form.validate_on_submit():
+        print("NOOOOO")
         title = form.title.data
         body = form.body.data
 
@@ -51,6 +52,15 @@ def notePage():
             db.session.commit()
 
         return redirect(url_for('home'))
+
+    #Check if no input is in body, if not return an error
+    title_default = form.title.data
+    body_default = form.body.data
+    if title_default == '' or None:
+        print("ok")
+        if body_default != "<p><br></p>" or None:
+            print("here")
+            return redirect(url_for('error'))
 
     return render_template('notePage.html', form=form)
 

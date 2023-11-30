@@ -3,6 +3,6 @@ import os,sys
 
 #myapp_obj.run(debug=True,host='0.0.0.0', port=#)
 if __name__ == '__main__':
-	myapp_obj.run(debug=True)
+	myapp_obj.run(debug=True,host='0.0.0.0', port=5050)
 	sys.exit(1)
 
