@@ -4,6 +4,7 @@
 <html>
 <head>
   <title>Flask Example</title>
+  <!-- include two diff stylesheets-->
   <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 </head>
@@ -27,6 +28,7 @@
       </div>
       <button type="submit" name="action" value="submit">Save Note</button>
     </form>
+    <!--include quill editor javascript file-->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
       var quill = new Quill('#editor', {

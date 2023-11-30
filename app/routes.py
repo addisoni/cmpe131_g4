@@ -85,8 +85,10 @@ def login():
 @myapp_obj.route("/modifyaccount", methods=['GET', 'POST'])
 @login_required
 def modifyaccount():
+    # create a modifyaccountform instance
     form = ModifyAccountForm()
 
+    # get curr user
     if form.validate_on_submit():
         user = current_user
 
@@ -108,7 +110,10 @@ def modifyaccount():
         # Commit changes to the database
         db.session.commit()
 
+        # success message
         flash('Account modified successfully!', 'success')
+
+        #redirect to notepage when done modifying account details
         return redirect(url_for('notePage'))
 
     return render_template('modifyexistingnote.html', form=form)
