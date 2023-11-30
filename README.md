@@ -99,11 +99,38 @@ Alternatively, running the website via python
 <!-- Implementation -->
 ## Functional Requirements (To-Date)
 
-1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection **(Benjamin Lim)**
-   
-2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset) **(Benjamin Lim)**
-   
-3. Logout of user account **(Benjamin Lim)**
+1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection **(Benjamin Lim)** <br>
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/private-public.png" alt="Logo" width="238" height="243">
+  </a>
+</div>
+
+2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset) **(Benjamin Lim)** <br>
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/createaccount_1.png" alt="Logo" width="531" height="65">
+  </a>
+</div>
+
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/createaccount_2.png" alt="Logo" width="415" height="361">
+  </a>
+</div>
+
+3. Logout of user account **(Benjamin Lim)** <br>
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/logout_1.png" alt="Logo" width="404" height="51">
+  </a>
+</div>
+
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/logout_2.png" alt="Logo" width="293" height="327">
+  </a>
+</div>
    
 4. Create new notes **(Addison Ivan)**
 ### Notes can be created using the notes pane after logging in:
