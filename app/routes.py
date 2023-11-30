@@ -20,11 +20,9 @@ def home():
     #Determine how notes are sorted (displayed)
     if sort_type == 'DateCreated':
         post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
-        print(post_notes)
 
     elif sort_type == 'AscendingName':
         post_notes = Notes.query.order_by(Notes.title).all()
-        print(post_notes)
 
     elif sort_type == 'DescendingName':
         post_notes = Notes.query.order_by(Notes.title.desc()).all()
@@ -42,7 +40,6 @@ def notePage():
     form = NoteForm()
 
     if form.validate_on_submit():
-        print("NOOOOO")
         title = form.title.data
         body = form.body.data
 
@@ -57,9 +54,7 @@ def notePage():
     title_default = form.title.data
     body_default = form.body.data
     if title_default == '' or None:
-        print("ok")
         if body_default != "<p><br></p>" or None:
-            print("here")
             return redirect(url_for('error'))
 
     return render_template('notePage.html', form=form)
@@ -178,7 +173,6 @@ def toggle_visibility(note_id):
 @myapp_obj.route("/createaccount", methods=['GET', 'POST'])
 def createaccount():
     form = CreateAccount()
-    print(form.validate_on_submit())
 
     if form.validate_on_submit():
         if not form.security_answer.data.isalpha():
