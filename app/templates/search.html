@@ -9,6 +9,7 @@
       <button class="btn btn-default" type="submit"> Search </button>
     </div>
 </form>
+<!-- We iterate over all notes, and check for every note whether the present user is the originator or whether the note is public or not -->
 {% for note in notes %}
     {% if note.user_id == current_user.id or note.public %}
         <br>
