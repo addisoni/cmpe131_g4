@@ -162,7 +162,8 @@ User selects the wrong note to customize.
 1. Navigating to folder will show new note with custom name
    
 - **Alternate Sequence:**<br>
-1. Folder already exists, user is able to add new or other notes to folder
+1. Folder already exists, error is displayed indicating there is a name conflict
+2. No notes exist, folder is created anyway (no notes to move to folder)
 
 ### 9. Copy, paste, and duplicate note(s) (Najm Masri)
 -  **Summary:**  User can copy, paste, and duplicate their notes
@@ -200,18 +201,21 @@ User selects the wrong note to customize.
 User inserts incorrect info, like for names they type in numbers, so an error occurs. 
 
 ### 11. View revision history from past savestates (Addison Ivan)
--  **Pre-condition:** User has created account and appends current existing note 
+-  **Pre-condition:** User has created account and creates a new note 
 -  **Trigger:** User clicks on note revision pane
 -  **Primary Sequence:**
-1. User types at least one new character/number into current note
-3. User saves note and navigates to revision header in note bar
+1. User types at least one new character/number into new note
+2. User saves note
+3. User reopens note and modifies at least one character
+4. User navigates to revision header in revision pane
+5. In revision pane, multiple entries appear for past revisions
 
 - **Primary Postcondition:**<br>
 1. Original modified date and new revision (from Primary Sequence) are shown in revision pane
 
 - **Alternate Sequence:**<br>
 1. User opens previously created note and navigates to revision header
-2. No modifications to note was made, no revisions previously made, revision history is blank/nonexistent
+2. No prior modifications to note was made (no revisions previously made) revision history is blank/nonexistent
 
 ### 12. Undo/Redo revision history (restore pre-existing note savestates) (Addison Ivan)
 -  **Pre-condition:** User has modified existing note(s) and has made recent changes (same session)
