@@ -1,6 +1,11 @@
 ## Meetings - Sync every Tuesday for project milestones
 ### Coordinating milestone meetings at least once a week
 
+### 2023-11-29 at 21:30 
+- Attendees: Addison, Benjamin, Najm, and Stephen
+- Mileston 2: Finished up rubric requires (40 minutes)
+- Updated README.md with instructions on how to work each requirement and function of the website
+
 ### 2023-11-28 at 21:00
  - Attendees: Addison, Benjamin, and Najm
  - Milestone 2: Did pull requests for everyone's requirement portion (3 hours)
