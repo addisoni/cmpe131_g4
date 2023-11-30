@@ -133,6 +133,9 @@ Alternatively, running the website via python
 9. Multiple note sorting options **(Addison Ivan)**
     
 ### We can sort our newly created notes in various orders, such as Ascending, Descending, or by Date:
+```sh
+   Navigate to menubar and click on the Home tab
+   ```
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
@@ -148,6 +151,9 @@ Alternatively, running the website via python
 
 10. Search field for notes list **(Addison Ivan)**
 ### We can also search for and within our newly created notes, including both note title and body contents:
+```sh
+   Navigate to menubar and click on the Search tab
+   ```
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
