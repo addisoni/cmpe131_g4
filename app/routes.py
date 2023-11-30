@@ -22,11 +22,11 @@ def home():
         post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
         print(post_notes)
 
-    if sort_type == 'AscendingName':
+    elif sort_type == 'AscendingName':
         post_notes = Notes.query.order_by(Notes.title).all()
         print(post_notes)
 
-    if sort_type == 'DescendingName':
+    elif sort_type == 'DescendingName':
         post_notes = Notes.query.order_by(Notes.title.desc()).all()
 
     else:
@@ -102,14 +102,19 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
+        # Queries the database for user with the provided username
         user = User.query.filter_by(username=form.username.data).first()
         if user:
+            # checks if password provided by user matches the hashed password in the database
             if check_password_hash(user.password_hash, form.password.data):
                  login_user(user)
+                 # if it matches, redirect to user's note page
                  return redirect(url_for('notePage'))
             else:
+                # if it does not match, flash a message
                  flash('Incorrect Password - Please try again!')
         else:
+            # if they input a username that isn't in the database, flash message
              flash('User does not exist')
 
     return render_template('login.html', form=form)
@@ -176,12 +181,17 @@ def delete_note(note_id):
 
 @myapp_obj.route('/<int:note_id>/toggle_visibility', methods=['POST'])
 def toggle_visibility(note_id):
+    # Queries database for the note with the attached note_id or return an 404 error if none found
     note = Notes.query.get_or_404(note_id)
 
+    # Checks if the current user is the owner of the note
     if note.user_id == current_user.id:
+        # Toggles visibility status (public/private) of the note
         note.public = not note.public
+        # Commits the change to the database (0 means private (by default) and 1 means public)
         db.session.commit()
 
+    # Checks for a referrer and if 'search' is also in the referrer URL
     if request.referrer and 'search' in request.referrer:
         return redirect(url_for('search'))
     else:
@@ -193,25 +203,30 @@ def createaccount():
     print(form.validate_on_submit())
 
     if form.validate_on_submit():
-            if not form.security_answer.data.isalpha():
-                 flash('Invalid security answer! Please only enter letters.', 'danger')
-                 return redirect('createaccount')
-            hashed_pw = generate_password_hash(form.password.data, method='scrypt', salt_length = 16)
-            hashed_sa = generate_password_hash(form.security_answer.data, method='scrypt', salt_length=16)
-            u = User(username=form.username.data, password_hash=hashed_pw,
-                     security_question=form.security_question.data,
-                     security_answer=hashed_sa)
-            db.session.add(u)
-            db.session.commit()
+        if not form.security_answer.data.isalpha():
+            flash('Invalid security answer! Please only enter letters.', 'danger')
+            return redirect('createaccount')
+        
+        # Hashes both the password and security answer using scrypt
+        hashed_pw = generate_password_hash(form.password.data, method='scrypt', salt_length = 16)
+        hashed_sa = generate_password_hash(form.security_answer.data, method='scrypt', salt_length=16)
 
-            flash('Account created successfully!', 'success')
-            return redirect('login')
+        # Creates a new user with provided data and commits to the database
+        u = User(username=form.username.data, password_hash=hashed_pw,
+            security_question=form.security_question.data,
+            security_answer=hashed_sa)
+        db.session.add(u)
+        db.session.commit()
 
+        # Flashes a message to user when they successfully create their account and redirects them to the login page to login
+        flash('Account created successfully!', 'success')
+        return redirect('login')
     return render_template('create_account.html', form=form)
 
 @myapp_obj.route('/logout')
 @login_required
 def logout():
+    # Simply logs out the user and flashes a message to them
      logout_user()
      flash('You have been logged out.', 'info')
      return redirect(url_for('login'))
@@ -223,6 +238,8 @@ def load_user(user_id):
 @myapp_obj.context_processor
 def utility_processor():
     def get_username(user_id):
+        # Queries the database for a user with the provided user_id attached to them then returns the user if they exist, otherwise
+        # return none
         user = User.query.get(user_id)
         return user.username if user else None
     return dict(get_username=get_username)
