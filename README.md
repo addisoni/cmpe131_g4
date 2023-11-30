@@ -133,42 +133,44 @@ Alternatively, running the website via python
 9. Multiple note sorting options **(Addison Ivan)**
     
 ### We can sort our newly created notes in various orders, such as Ascending, Descending, or by Date:
-```sh
-   Navigate to menubar and click on the Home tab
-   ```
+
+#### Navigate to menubar and click on the Home tab
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/noteAscending.png" alt="Logo" width="858" height="550">
+    <img src="images/readme/noteAscending.png" alt="Logo" width="300" height="550">
   </a>
 </div>
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/noteDescending.png" alt="Logo" width="858" height="800">
+    <img src="images/readme/noteDescending.png" alt="Logo" width="300" height="500">
   </a>
 </div>
 
 10. Search field for notes list **(Addison Ivan)**
 ### We can also search for and within our newly created notes, including both note title and body contents:
-```sh
-   Navigate to menubar and click on the Search tab
-   ```
+
+#### Navigate to menubar and click on the Search tab
+
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/searchBar.png" alt="Logo" width="858" height="550">
+    <img src="images/readme/searchBar.png" alt="Logo" width="500" height="800">
   </a>
 </div>
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/searchResult.png" alt="Logo" width="858" height="800">
+    <img src="images/readme/searchResult.png" alt="Logo" width="500" height="500">
   </a>
 </div>
+
+#### You can also search for contents in the main search bar by the note's contents as well, such as "Pie" in the examplee below:
+   
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/noteContents.png" alt="Logo" width="858" height="800">
+    <img src="images/readme/noteContents.png" alt="Logo" width="500" height="500">
   </a>
 </div>
 
