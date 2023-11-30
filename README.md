@@ -100,7 +100,7 @@ Alternatively, running the website via python
 ## Functional Requirements (To-Date)
 
 1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection **(Benjamin Lim)** <br>
-## The user can click on this button to make their notes private (only they can see it) or public (all users in the database can view it)
+### The user can click on this button to make their notes private (only they can see it) or public (all users in the database can view it)
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/private-public.png" alt="Logo" width="238" height="243">
@@ -108,14 +108,14 @@ Alternatively, running the website via python
 </div>
 
 2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset) **(Benjamin Lim)** <br>
-## Click on the "Create Account" button
+### Click on the "Create Account" button
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/createaccount_1.png" alt="Logo" width="531" height="65">
   </a>
 </div>
 
-## Enter your account details
+### Enter your account details
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/createaccount_2.png" alt="Logo" width="415" height="361">
@@ -123,14 +123,14 @@ Alternatively, running the website via python
 </div>
 
 3. Logout of user account **(Benjamin Lim)** <br>
-## Click on the "Logout" button to logout of your current session
+### Click on the "Logout" button to logout of your current session
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/logout_1.png" alt="Logo" width="404" height="51">
   </a>
 </div>
 
-## Puts you back onto to the login page when you're successfully logged out
+### Puts you back onto to the login page when you're successfully logged out
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/logout_2.png" alt="Logo" width="293" height="327">
