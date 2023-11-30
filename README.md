@@ -188,12 +188,26 @@ Alternatively, running the website via python
 </div>
 
 6. Multipletypefaces and font styles **(Najm Masri)**
-    
-7. Copy, paste, and duplicate note(s) **(Najm Masri)**
-    
+### Notes can be written using multipletypefaces and font styles:
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/typefaces and font styles.png" alt="Logo" width="858" height="550">
+  </a>
+</div>
+
+### You can use the italics, underline, and bold feature as well include links, change font size, add numbers or bullet points, and undo.
+        
 8. Modify existing user account details **(Najm Masri)**
+  ### You can modify existing user account details my clicking modify account in the upper right corner. Then you will be able to modify it, such as changing your username, password, and security questions and then save it. 
+  <br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/modifyaccountdetails.png" alt="Logo" width="858" height="550">
+  </a>
+</div>
     
-9. Multiple note sorting options **(Addison Ivan)**
+10. Multiple note sorting options **(Addison Ivan)**
     
 ### We can sort our newly created notes in various orders, such as Ascending, Descending, or by Date:
 
