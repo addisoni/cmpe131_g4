@@ -40,55 +40,18 @@ def home():
 @login_required
 def notePage():
     form = NoteForm()
-    #pull title and body data to check for input (error check)
-    title_default = form.title.raw_data 
-    body_default = form.body.raw_data
 
     if form.validate_on_submit():
-        #pull sorting name from html file
-        action = request.form.get('action') 
+        title = form.title.data
+        body = form.body.data
 
-        if action == 'copy':
-            # Implement the logic for copying the note
-            flash('Note copied successfully!', 'success')
-        elif action == 'paste':
-            # Implement the logic for pasting the note
-            flash('Note pasted successfully!', 'success')
-        elif action == 'duplicate':
-            # Implement the logic for duplicating the note
-            title = form.title.data
-            body = form.body.data
-
-            if title.strip():
-                if body.strip():
-                    n = Notes(title=formatted_title, body=body, user_id=current_user.id)
-                    db.session.add(n)
-                    db.session.commit()
-                    flash('Note duplicated successfully!', 'success')
-
-        else:
-            #only submit queries remain, prep to save note to database
-            title = form.title.data
-            body = form.body.data
-
-            if title.strip():
-                if body.strip():
-                    #get the title, body, and specified user to add to database
-                    n = Notes(title=title, body=body, user_id=current_user.id)
-                    db.session.add(n)
-                    db.session.commit()
-
-        #Clear the action field to avoid interference with regular note submission
-        form.action.data = ''
+        if title.strip() and body.strip():
+            n = Notes(title=title, body=body, user_id=current_user.id)
+            db.session.add(n)
+            db.session.commit()
 
         return redirect(url_for('home'))
 
-    #return error page if note titles were attempted to be saved, copied, etc. without a string inputted 
-    if title_default == [""] or None:
-        if body_default != ["<p><br></p>"] or None:
-            return redirect(url_for('error'))
-
-    #if nothing else, proceed back to notePage
     return render_template('notePage.html', form=form)
 
 #Error page
