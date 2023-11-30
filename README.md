@@ -107,7 +107,6 @@ Alternatively, running the website via python
    
 4. Create new notes **(Addison Ivan)**
 ### Notes can be created using the notes pane after logging in:
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
@@ -116,7 +115,6 @@ Alternatively, running the website via python
 </div>
 
 ### After note is created, you can create additional notes or manage your notes on the hompepage 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
@@ -134,8 +132,39 @@ Alternatively, running the website via python
     
 9. Multiple note sorting options **(Addison Ivan)**
     
-10. Search field for notes list **(Addison Ivan)**
+### We can sort our newly created notes in various orders, such as Ascending, Descending, or by Date:
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/noteAscending.png" alt="Logo" width="858" height="550">
+  </a>
+</div>
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/noteDescending.png" alt="Logo" width="858" height="800">
+  </a>
+</div>
 
+10. Search field for notes list **(Addison Ivan)**
+### We can also search for and within our newly created notes, including both note title and body contents:
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/searchBar.png" alt="Logo" width="858" height="550">
+  </a>
+</div>
+<br />
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/searchResult.png" alt="Logo" width="858" height="800">
+  </a>
+</div>
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/noteContents.png" alt="Logo" width="858" height="800">
+  </a>
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
