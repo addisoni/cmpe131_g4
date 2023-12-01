@@ -33,7 +33,7 @@ Stephen Shao (@stephen-shao)
       </ul>
     </li>
     <li><a href="#how-to-use-our-website">How to use our website</a></li>
-    <li><a href="#functional-requirements-implemented">Functional Requirements Implemeneted</li>
+    <li><a href="#functional-requirements-to-date">Functional Requirements (To-Date)</li>
   </ol>
 </details>
 
