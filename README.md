@@ -41,6 +41,10 @@ Stephen Shao (@stephen-shao)
         <li><a href="#modify-account-details">Modify account details</a></li>
       </ul>
     <li><a href="#notes-functions">Notes Functions</li>
+      <li><a href="#creating-notes">Creating notes</a></li>
+      <li><a href="#adding-different-typefaces-and-font-styles">Adding different typesfaces and font styles</a></li>
+      <li><a href="#searching-for-notes">Searching for notes</a></li>
+      <li><a href="#sorting-notes">Sorting notes</a></li>
     <li><a href="#functional-requirements-to-date">Functional Requirements (To-Date)</li>
   </ol>
 </details>
