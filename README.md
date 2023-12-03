@@ -151,9 +151,9 @@ Alternatively, running the website via python
 4. Once successful, you will be redirected to the "**Reset Password**" where you can create a new password which will replace your current one
 
 ### Modify account details
-1. Click on "Modify Account" button on top
+1. Click on "**Modify Account**" button on top
 
-2. Enter the user information you want to change, i.e. username, password, security question/answer then click the "Modify Account" button to implement those changes to your account
+2. Enter the user information you want to change, i.e. username, password, security question/answer then click the "**Modify Account**" button to implement those changes to your account
 
 ## Notes Functions
 
@@ -165,25 +165,39 @@ Alternatively, running the website via python
   </a>
 </div>
 
-2. To save the note after inputting the title and body, click on "Save Note"
+2. To save the note after inputting the title and body, click on "**Save Note**"
 
 3. After saving, you will be redirected to the home page where you can view, delete, modify, or change the note's visibility to other users.
 
-4. To create another new note, click the "Notes" button on top and do the same thing as mentioned in step 2
+4. To create another new note, click the "**Notes**" button on top and do the same thing as mentioned in step 2
 
 ### Adding different typefaces and font styles
-1. You can modify your text with different typefaces and font styles using the buttons within the red box.
+1. You can modify your text with different typefaces and font styles using the buttons under '**Body**'
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/typefaces_fontstyles.png" alt="Logo" width="1051" height="452">
+    <img src="images/readme/typefaces and font styles.png" alt="Logo" width="1005" height="526">
   </a>
 </div>
 
 ### Searching for notes
+1. Navigate to the bar on top and click on the "**Search**" tab
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/search_tab.png" alt="Logo" width="404" height="54">
+  </a>
+</div>
 
+2. You can search for notes containing the title or body that you inputted as shown below
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/searchBar.png" alt="Logo" width="200" height="511">
+    <img src="images/readme/searchResult.png" alt="Logo" width="430" height="511">
+    <img src="images/readme/noteContents.png" alt="Logo" width="430" height="426">
+  </a>
+</div>
 
 ### Sorting notes
-1. If you aren't already on it, click on the "Home" button on top
+1. If you aren't already on it, click on the "**Home**" tab on top
    
 2. Here, you can sort by the title ascending/descending or by date created
 
