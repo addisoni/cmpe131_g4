@@ -32,11 +32,15 @@ Stephen Shao (@stephen-shao)
         <li><a href="#installation-and-running">Installation and running</a></li>
       </ul>
     </li>
-    <li><a href="#how-to-use-our-website">How to use our website</a></li>
+    <li><a href="#user-account-functions">User Account Functions</a></li>
       <ul>
-        <li><a href="#user-account-functions">User Account Functions</a></li>
-        <li><a href="#notes-function">Notes Function</a></li>
+        <li><a href="#creating-a-new-account">Creating a new account</a></li>
+        <li><a href="#logging-in">Logging in</a></li>
+        <li><a href="#logging-out">Logging out</a></li>
+        <li><a href="#forgot-password">Forgot password</a></li>
+        <li><a href="#modify-account-details">Modify account details</a></li>
       </ul>
+    <li><a href="#notes-functions">Notes Functions</li>
     <li><a href="#functional-requirements-to-date">Functional Requirements (To-Date)</li>
   </ol>
 </details>
@@ -95,9 +99,9 @@ Alternatively, running the website via python
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- General Instructions -->
-## How to use our website!
+## User Account Functions
 ### Creating a new account
-1. Click on "**Create Account**"
+1. Click on "**Create Account**" button on top
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/createaccount_1.png" alt="Logo" width="531" height="65">
@@ -135,7 +139,7 @@ Alternatively, running the website via python
 </div>
 
 ### Forgot password
-1. Click on "**Forgot Password**"
+1. Click on "**Forgot Password**" button on top
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/forgot_password_1.png" alt="Logo" width="531" height="54">
@@ -144,11 +148,44 @@ Alternatively, running the website via python
 
 2. Enter the username and the correct security answer associated with it
    
-4. Once successful, you will be redirected to the "**Reset Password**" where you can create a new password which will replace your current one in the database
+4. Once successful, you will be redirected to the "**Reset Password**" where you can create a new password which will replace your current one
 
 ### Modify account details
+1. Click on "Modify Account" button on top
 
-### Notes Function:
+2. Enter the user information you want to change, i.e. username, password, security question/answer then click the "Modify Account" button to implement those changes to your account
+
+## Notes Functions
+
+### Creating notes
+1. After logging in, you will be redirected to the notes creation page where you can create new notes
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/notePage.png" alt="Logo" width="1051" height="452">
+  </a>
+</div>
+
+2. To save the note after inputting the title and body, click on "Save Note"
+
+3. After saving, you will be redirected to the home page where you can view, delete, modify, or change the note's visibility to other users.
+
+4. To create another new note, click the "Notes" button on top and do the same thing as mentioned in step 2
+
+### Adding different typefaces and font styles
+1. You can modify your text with different typefaces and font styles using the buttons within the red box.
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/typefaces_fontstyles.png" alt="Logo" width="1051" height="452">
+  </a>
+</div>
+
+### Searching for notes
+
+
+### Sorting notes
+1. If you aren't already on it, click on the "Home" button on top
+   
+2. Here, you can sort by the title ascending/descending or by date created
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -162,54 +199,8 @@ Alternatively, running the website via python
 3. Logout of user account **(Benjamin Lim)**
    
 4. Create new notes **(Addison Ivan)**
-### Notes can be created using the notes pane after logging in:
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/notePage.png" alt="Logo" width="858" height="550">
-  </a>
-</div>
-
-### After note is created, you can create additional notes or manage your notes on the hompepage 
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/noteCreated.png" alt="Logo" width="858" height="800">
-  </a>
-</div>
 
 5. Forgotten passwords can be reset using stored security question or known password **(Stephen Shao)**
-### Users can reset password by selecting the forgot password function on the top right:
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/Location_of_Forgot_Password.png" alt="Logo" width="858" height="800">
-  </a>
-</div>
-
-### Users then gets redirected to another site in which they are asked for username and security answer:
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/Forgot_Password_Site.png" alt="Logo" width="858" height="800">
-  </a>
-</div>
-
-### Once users type in the correct answer, they will be sent to the reset password site in which they need to type in a new password and retype the new password:
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/Reset_Password_Site.png" alt="Logo" width="858" height="800">
-  </a>
-</div>
-
-### Once users type in the new password and confirm it, they will be relocated to the login page:
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/Back_to_Login_Page.png" alt="Logo" width="858" height="800">
-  </a>
-</div>
 
 6. Multipletypefaces and font styles **(Najm Masri)**
 ### Notes can be written using multipletypefaces and font styles:
@@ -223,13 +214,6 @@ Alternatively, running the website via python
 ### You can use the italics, underline, and bold feature as well include links, change font size, add numbers or bullet points, and undo.
         
 8. Modify existing user account details **(Najm Masri)**
-  ### You can modify existing user account details my clicking modify account in the upper right corner. Then you will be able to modify it, such as changing your username, password, and security questions and then save it. 
-  <br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/modifyaccountdetails.png" alt="Logo" width="858" height="550">
-  </a>
-</div>
     
 10. Multiple note sorting options **(Addison Ivan)**
     
