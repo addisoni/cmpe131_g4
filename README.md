@@ -101,7 +101,7 @@ Alternatively, running the website via python
 <!-- General Instructions -->
 ## User Account Functions
 ### Creating a new account
-1. Click on "**Create Account**" button in the menu bar
+1. Click on "**Create Account**" tab in the menu bar
 
 2. Now enter your account details 
 <div align="center">
@@ -112,7 +112,7 @@ Alternatively, running the website via python
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Logging in
-1. After creating your new account, you'll be sent to our login page where you enter your account details
+1. After creating your new account, you'll be sent to our login page where you enter your account details then click "Sign in" to login to your account
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/login.png" alt="Logo" width="317" height="331">
@@ -121,7 +121,7 @@ Alternatively, running the website via python
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Logging out
-1. Click on the "**Logout**" button in the menu bar to logout of your current session
+1. Click on the "**Logout**" tab in the menu bar to logout of your current session
 
 2. Puts you back onto to the login page when you're successfully logged out
 <div align="center">
@@ -132,22 +132,33 @@ Alternatively, running the website via python
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Forgot password
-1. Click on "**Forgot Password**" button on top
+1. Click on "**Forgot Password**" tab in the menu bar
+
+2. Enter the username and the correct security answer associated with it
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/forgot_password_1.png" alt="Logo" width="531" height="54">
+    <img src="images/readme/Forgot_Password_Site.png" alt="Logo" width="946" height="460">
   </a>
 </div>
 
-2. Enter the username and the correct security answer associated with it
-   
-4. Once successful, you will be redirected to the "**Reset Password**" where you can create a new password which will replace your current one
+3. Once successful, you will be redirected to the "**Reset Password**" page where you can create a new password which will replace your current one
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/Reset_Password_Site.png" alt="Logo" width="946" height="460">
+  </a>
+</div>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Modify account details
-1. Click on "**Modify Account**" button on top
+1. In the menu bar, click on the "**Modify Account**" tab
 
 2. Enter the user information you want to change, i.e. username, password, security question/answer then click the "**Modify Account**" button to implement those changes to your account
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/modifyaccountdetails.png" alt="Logo" width="946" height="390">
+  </a>
+</div>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Notes Functions
@@ -164,7 +175,7 @@ Alternatively, running the website via python
 
 3. After saving, you will be redirected to the home page where you can view, delete, modify, or change the note's visibility to other users.
 
-4. To create another new note, click the "**Notes**" button on top and do the same thing as mentioned in step 2
+4. To create another new note, click the "**Notes**" tab on the menu bar and do the same thing as mentioned in step 2
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Adding different typefaces and font styles
@@ -178,11 +189,6 @@ Alternatively, running the website via python
 
 ### Searching for notes
 1. Navigate to the menu bar and click on the "**Search**" tab
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/search_tab.png" alt="Logo" width="404" height="54">
-  </a>
-</div>
 
 2. You can search for notes containing the title or body that you inputted as shown below
 <div align="center">
