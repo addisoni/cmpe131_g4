@@ -101,12 +101,7 @@ Alternatively, running the website via python
 <!-- General Instructions -->
 ## User Account Functions
 ### Creating a new account
-1. Click on "**Create Account**" button on top
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/createaccount_1.png" alt="Logo" width="531" height="65">
-  </a>
-</div>
+1. Click on "**Create Account**" button in the menu bar
 
 2. Now enter your account details 
 <div align="center">
@@ -114,6 +109,7 @@ Alternatively, running the website via python
     <img src="images/readme/createaccount_2.png" alt="Logo" width="415" height="361">
   </a>
 </div>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Logging in
 1. After creating your new account, you'll be sent to our login page where you enter your account details
@@ -122,14 +118,10 @@ Alternatively, running the website via python
     <img src="images/readme/login.png" alt="Logo" width="317" height="331">
   </a>
 </div>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Logging out
-1. Click on the "**Logout**" button to logout of your current session
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/logout_1.png" alt="Logo" width="404" height="51">
-  </a>
-</div>
+1. Click on the "**Logout**" button in the menu bar to logout of your current session
 
 2. Puts you back onto to the login page when you're successfully logged out
 <div align="center">
@@ -137,6 +129,7 @@ Alternatively, running the website via python
     <img src="images/readme/logout_2.png" alt="Logo" width="293" height="327">
   </a>
 </div>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Forgot password
 1. Click on "**Forgot Password**" button on top
@@ -149,11 +142,13 @@ Alternatively, running the website via python
 2. Enter the username and the correct security answer associated with it
    
 4. Once successful, you will be redirected to the "**Reset Password**" where you can create a new password which will replace your current one
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Modify account details
 1. Click on "**Modify Account**" button on top
 
 2. Enter the user information you want to change, i.e. username, password, security question/answer then click the "**Modify Account**" button to implement those changes to your account
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Notes Functions
 
@@ -170,6 +165,7 @@ Alternatively, running the website via python
 3. After saving, you will be redirected to the home page where you can view, delete, modify, or change the note's visibility to other users.
 
 4. To create another new note, click the "**Notes**" button on top and do the same thing as mentioned in step 2
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Adding different typefaces and font styles
 1. You can modify your text with different typefaces and font styles using the buttons under '**Body**'
@@ -178,9 +174,10 @@ Alternatively, running the website via python
     <img src="images/readme/typefaces and font styles.png" alt="Logo" width="1005" height="526">
   </a>
 </div>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Searching for notes
-1. Navigate to the bar on top and click on the "**Search**" tab
+1. Navigate to the menu bar and click on the "**Search**" tab
 <div align="center">
   <a href="https://github.com/addisoni/cmpe131_g4">
     <img src="images/readme/search_tab.png" alt="Logo" width="404" height="54">
@@ -195,12 +192,17 @@ Alternatively, running the website via python
     <img src="images/readme/noteContents.png" alt="Logo" width="430" height="426">
   </a>
 </div>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Sorting notes
 1. If you aren't already on it, click on the "**Home**" tab on top
    
 2. Here, you can sort by the title ascending/descending or by date created
-
+<div align="center">
+  <a href="https://github.com/addisoni/cmpe131_g4">
+    <img src="images/readme/noteSort.png" alt="Logo" width="630" height="533">
+  </a>
+</div>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Implementation -->
@@ -217,61 +219,12 @@ Alternatively, running the website via python
 5. Forgotten passwords can be reset using stored security question or known password **(Stephen Shao)**
 
 6. Multipletypefaces and font styles **(Najm Masri)**
-### Notes can be written using multipletypefaces and font styles:
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/typefaces and font styles.png" alt="Logo" width="858" height="550">
-  </a>
-</div>
 
-### You can use the italics, underline, and bold feature as well include links, change font size, add numbers or bullet points, and undo.
-        
-8. Modify existing user account details **(Najm Masri)**
+7. Modify existing user account details **(Najm Masri)**
     
-10. Multiple note sorting options **(Addison Ivan)**
-    
-### We can sort our newly created notes in various orders, such as Ascending, Descending, or by Date:
+8. Multiple note sorting options **(Addison Ivan)**
 
-#### Navigate to menubar and click on the Home tab
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/noteAscending.png" alt="Logo" width="300" height="550">
-  </a>
-</div>
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/noteDescending.png" alt="Logo" width="300" height="500">
-  </a>
-</div>
-
-10. Search field for notes list **(Addison Ivan)**
-### We can also search for and within our newly created notes, including both note title and body contents:
-
-#### Navigate to menubar and click on the Search tab
-
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/searchBar.png" alt="Logo" width="500" height="800">
-  </a>
-</div>
-<br />
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/searchResult.png" alt="Logo" width="500" height="500">
-  </a>
-</div>
-
-#### You can also search for contents in the main search bar by the note's contents as well, such as "Pie" in the examplee below:
-   
-<div align="center">
-  <a href="https://github.com/addisoni/cmpe131_g4">
-    <img src="images/readme/noteContents.png" alt="Logo" width="500" height="500">
-  </a>
-</div>
+9. Search field for notes list **(Addison Ivan)**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
