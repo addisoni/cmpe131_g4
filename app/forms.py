@@ -14,7 +14,7 @@ class LoginForm(FlaskForm):
 #Create user account and specify username, questions, etc.
 class CreateAccount(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired(), EqualTo('confirm', message = 'Passwords must match')])
+    password = PasswordField('Password', validators=[DataRequired()])
     confirm = PasswordField('Repeat Password')
     security_question = SelectField('Security Question', choices=[
         ('q1', 'What city were you born in?'),

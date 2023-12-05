@@ -1,10 +1,8 @@
 from flask import flash, redirect, render_template, url_for, request
 from . import myapp_obj
 from .models import User
-from flask import flash, redirect, render_template, url_for, request, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
 from .forms import *
-from .utils import hash_new_password
 from app import myapp_obj, db, login_manager
 from app.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -175,7 +173,14 @@ def createaccount():
     form = CreateAccount()
 
     if form.validate_on_submit():
-        if not form.security_answer.data.isalpha():
+        existing_user = User.query.filter_by(username=form.username.data).first()
+        if existing_user:
+            flash('Username is already taken! Please try a different username.', 'danger')
+            return redirect('createaccount')
+        elif form.password.data != form.confirm.data:
+            flash('Passwords must match! Please try again.', 'danger')
+            return redirect('createaccount')
+        elif not form.security_answer.data.isalpha():
             flash('Invalid security answer! Please only enter letters.', 'danger')
             return redirect('createaccount')
         

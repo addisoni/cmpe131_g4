@@ -11,14 +11,15 @@
 <h2 class="subtitle" style="float: center">
     A simple and friendly web-based note app
 </h2>
+{% if current_user.is_authenticated %}
   <div class="container" style="float: top">
     <div class="row justify-content-center" style="float: top">
         <div class="col-2">
-            {% if notes %}
-            <form name="post" action="{{ url_for('home') }}" method="POST">
-              <label for="sorting">Sort Notes: </label>
-              <br>
-              <!-- We create the sort list dropdown menu and iterate over each sorting option (list of modes in routes.py) -->
+                {% if notes %}
+                <form name="post" action="{{ url_for('home') }}" method="POST">
+                    <label for="sorting">Sort Notes: </label>
+                    <br>
+                <!-- We create the sort list dropdown menu and iterate over each sorting option (list of modes in routes.py) -->
                 <select name="sorting" class="selectpicker form-control">
                     <option value=''>- Sorting Options -</option>
                     {% for sort_by in sort_list %}
@@ -59,6 +60,7 @@
         </div>
     </div>
   </div>
+{% endif %}
 </html>
 
 
