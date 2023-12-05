@@ -119,7 +119,7 @@ def modifyaccount():
         #redirect to notepage when done modifying account details
         return redirect(url_for('notePage'))
 
-    return render_template('modifyexistingnote.html', form=form)
+    return render_template('modifyaccount.html', form=form)
 
 @myapp_obj.route("/search.html", methods=['GET', 'POST'])
 @login_required
