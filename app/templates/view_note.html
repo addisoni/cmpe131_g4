@@ -6,6 +6,7 @@
     <br>
     <h2><b>Title:</b> {{ note.title }}</h2>
     <p><b>Body:</b> {{ note.body }}</p>
+    <p><b>Date Modified:</b> {{ note_list }}</p>
     <br>
     <form method="POST" action="{{ request.referrer }}">
         <button class="button is-info" name="Home" type="submit">

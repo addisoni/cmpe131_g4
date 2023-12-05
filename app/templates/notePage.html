@@ -32,7 +32,8 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
       var quill = new Quill('#editor', {
-        theme: 'snow'
+        theme: 'snow',
+        placeholder: "Enter Note Contents Here..."
       });
 
       // When the form is submitted, update the hidden textarea with Quill's HTML content
@@ -41,6 +42,7 @@
         var doc = new DOMParser().parseFromString(editorContent, 'text/html');
         var sanitizedText = doc.body.textContent || "";
         document.querySelector('#body').value = sanitizedText.trim();
+
       };
     </script>
   </body>

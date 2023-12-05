@@ -36,3 +36,12 @@ class Notes(db.Model):
     def __repr__(self):
         return '<Notes {}>'.format(self.body)
 
+class History(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    modified_on = db.Column(db.DateTime, default=datetime.today().replace(microsecond=0))
+    action = db.Column(db.String(10))
+    #appts = db.relationship("appts_db", back_populates="log_db")
+
+    def __repr__(self):
+        return '<Revision {}>'.format(self.id)
