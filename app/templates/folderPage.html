@@ -22,7 +22,7 @@
       <button type="submit" name="action" value="submit">Create Folder</button>
     </form>
     {% for folder in folders %}
-      {% for note in folders %}
+      {% for note in notes %}
                 {% if note.user_id == current_user.id or note.public %}
                     <br>
                     <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>

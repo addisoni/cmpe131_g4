@@ -61,7 +61,8 @@ def notePage():
 @login_required
 def folderPage():
     form = FolderForm()
-    post_folders = Folders.query.order_by(Notes.title.desc()).all()
+    post_folders = Folders.query.order_by(Folders.title.desc()).all()
+    notes = Notes.query.order_by(Notes.id.all())
 
     if form.validate_on_submit():
         title = form.title.data
