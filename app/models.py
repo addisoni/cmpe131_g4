@@ -45,3 +45,12 @@ class History(db.Model):
 
     def __repr__(self):
         return '<Revision {}>'.format(self.id)
+
+class Folders(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    title = db.Column(db.String, nullable=False)
+    note = db.relationship('Notes', backref='author', lazy='dynamic')
+    
+    def __repr__(self):
+        return '<Folders {}>'.format(self.id)

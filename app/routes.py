@@ -30,13 +30,12 @@ def home():
         post_notes = Notes.query.all()
 
     #notes, sort_list variables are relayed to html file
-    return render_template('home.html',notes=post_notes,sort_list=sort_list) 
+    return render_template('home.html', notes=post_notes, sort_list=sort_list) 
 
 @myapp_obj.route("/notePage", methods=['GET', 'POST'])
 @login_required
 def notePage():
     form = NoteForm()
-
 
     if form.validate_on_submit():
         title = form.title.data
@@ -58,11 +57,33 @@ def notePage():
 
     return render_template('notePage.html', form=form)
 
+@myapp_obj.route("/folderPage", methods=['GET', 'POST'])
+@login_required
+def folderPage():
+    form = FolderForm()
+    post_folders = Folders.query.order_by(Notes.title.desc()).all()
+
+    if form.validate_on_submit():
+        title = form.title.data
+
+        if title.strip():
+            n = Folders(title=title, user_id=current_user.id)
+            db.session.add(n)
+            db.session.commit()
+
+        return redirect(url_for('folderPage'))
+
+    #Check if no input is in body, if not return an error
+    title_default = form.title.data
+    if title_default == '' or None:
+        return redirect(url_for('error'))
+
+    return render_template('folderPage.html', form=form, folders=post_folders)
+
 #Error page
 @myapp_obj.route("/error", methods=['GET', 'POST'])
 def error():
     return render_template('error.html')
-
 
 @myapp_obj.route("/login", methods=['GET', 'POST'])
 def login():
