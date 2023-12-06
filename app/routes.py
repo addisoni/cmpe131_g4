@@ -52,7 +52,7 @@ def notePage():
     title_default = form.title.data
     body_default = form.body.data
     if title_default == '' or None:
-        if body_default != "<p><br></p>" or None:
+        if body_default != '' or None:
             return redirect(url_for('error'))
 
     return render_template('notePage.html', form=form)
@@ -61,14 +61,13 @@ def notePage():
 @login_required
 def folderPage():
     form = FolderForm()
-    post_folders = Folders.query.order_by(Folders.title.desc()).all()
-    notes = Notes.query.order_by(Notes.id.all())
+    post_folders = Folder.query.order_by(Folder.folder_name.desc()).all()
 
     if form.validate_on_submit():
         title = form.title.data
 
         if title.strip():
-            n = Folders(title=title, user_id=current_user.id)
+            n = Folder(folder_name=title, user_id=current_user.id)
             db.session.add(n)
             db.session.commit()
 
@@ -189,7 +188,7 @@ def modify_note(note_id):
     title_default = form.title.data
     body_default = form.body.data
     if title_default == '' or None:
-        if body_default != "<p><br></p>" or None:
+        if body_default != '' or None:
             return redirect(url_for('error'))
 
     return render_template('noteModify.html', note=my_note, form=form)
