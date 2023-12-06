@@ -1,10 +1,8 @@
 from flask import flash, redirect, render_template, url_for, request
 from . import myapp_obj
 from .models import User
-from flask import flash, redirect, render_template, url_for, request, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
 from .forms import *
-from .utils import hash_new_password
 from app import myapp_obj, db, login_manager
 from app.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -122,7 +120,7 @@ def modifyaccount():
         #redirect to notepage when done modifying account details
         return redirect(url_for('notePage'))
 
-    return render_template('modifyexistingnote.html', form=form)
+    return render_template('modifyaccount.html', form=form)
 
 @myapp_obj.route("/search.html", methods=['GET', 'POST'])
 @login_required
@@ -206,7 +204,14 @@ def createaccount():
     form = CreateAccount()
 
     if form.validate_on_submit():
-        if not form.security_answer.data.isalpha():
+        existing_user = User.query.filter_by(username=form.username.data).first()
+        if existing_user:
+            flash('Username is already taken! Please try a different username.', 'danger')
+            return redirect('createaccount')
+        elif form.password.data != form.confirm.data:
+            flash('Passwords must match! Please try again.', 'danger')
+            return redirect('createaccount')
+        elif not form.security_answer.data.isalpha():
             flash('Invalid security answer! Please only enter letters.', 'danger')
             return redirect('createaccount')
         
@@ -258,7 +263,7 @@ def forgotpassword():
             if check_security_question(user.security_question, form.security_question.data):
                 if check_security_answer_hash(user.security_answer, form.security_answer.data):
 #if everything checks out, they get sent to the resetpassword link
-                    return redirect(url_for('resetpassword'))
+                    return redirect(url_for('resetpassword', username=form.username.data))
                 else:
                     flash('Wrong answer, please try again.')
             else:
@@ -274,15 +279,14 @@ def check_security_question(user_security_question, provided_security_question):
 def check_security_answer_hash(user_security_answer_hash, provided_security_answer):
     return check_password_hash(user_security_answer_hash, provided_security_answer)
 
-@myapp_obj.route("/resetpassword", methods=['GET', 'POST'])
-def resetpassword():
+@myapp_obj.route("/resetpassword/<string:username>", methods=['GET', 'POST'])
+def resetpassword(username):
     form = ResetPassword()
 #checks if the passwords match when retyping
     if form.validate_on_submit():
         if form.new_password.data != form.confirm_new_password.data:
             flash('New password and confirmed password do not match. Please try again.', 'danger')
         else:
-            username = form.username.data
             user = User.query.filter_by(username=username).first()
 #when users type the new password and confirms the new password, the database will rewrite the old password with the new password 
             if user:
@@ -295,4 +299,4 @@ def resetpassword():
             else:
                 flash('User not found. Password reset failed.', 'danger')
 
-    return render_template('resetpassword.html', form=form)
+    return render_template('resetpassword.html', form=form, username=username)

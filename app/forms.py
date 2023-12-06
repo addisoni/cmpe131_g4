@@ -14,7 +14,7 @@ class LoginForm(FlaskForm):
 #Create user account and specify username, questions, etc.
 class CreateAccount(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired(), EqualTo('confirm', message = 'Passwords must match')])
+    password = PasswordField('Password', validators=[DataRequired()])
     confirm = PasswordField('Repeat Password')
     security_question = SelectField('Security Question', choices=[
         ('q1', 'What city were you born in?'),
@@ -41,9 +41,9 @@ class ForgotPassword(FlaskForm):
 
 #Form to spawn reset password, requires confirmation
 class ResetPassword(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    username = HiddenField()
     new_password = PasswordField('New Password', validators=[DataRequired()])
-    confirm_new_password = PasswordField('Confirm New Password', validators=[DataRequired(), EqualTo('new_password')])
+    confirm_new_password = PasswordField('Confirm New Password', validators=[DataRequired()])
     submit = SubmitField('Reset Password')
 
 #Form for creating new notes

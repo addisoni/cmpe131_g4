@@ -19,13 +19,13 @@
                             <a href="{{ url_for('home') }}" class="navbar-item">
                                 Home
                             </a>
-                            <a href="{{ url_for('notePage') }}" class="navbar-item">
-                                Notes
-                            </a>
-                            <a href="{{ url_for('search') }}" class="navbar-item">
-                                Search
-                            </a>
-                                {% if current_user.is_authenticated %}
+                            {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('notePage') }}" class="navbar-item">
+                                    Notes
+                                </a>
+                                <a href="{{ url_for('search') }}" class="navbar-item">
+                                    Search
+                                </a>
                                 <a href="{{ url_for('modifyaccount') }}" class="navbar-item">
                                     Modify Account
                                 </a>
@@ -39,10 +39,10 @@
                                 <a href="{{ url_for('createaccount') }}" class="navbar-item">
                                     Create Account
                                 </a>
-				<a href="{{ url_for('forgotpassword') }}" class="navbar-item">
-				    Forgot Password
-				</a>
-                                {% endif %}
+				                <a href="{{ url_for('forgotpassword') }}" class="navbar-item">
+				                    Forgot Password
+				                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
