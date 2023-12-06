@@ -173,8 +173,8 @@ width="946" height="460">
 2. You can search for notes containing the title or body that you inputted as shown below
 <p align="center"> 
   <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/searchBar.png" alt="Logo" width="200" height="511">
-    <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/searchResult.png" alt="Logo" width="430" height="511">
-    <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteContents.png" alt="Logo" width="430" height="426">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/searchResult.png" alt="Logo" width="430" height="511">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteContents.png" alt="Logo" width="430" height="426">
 </p>
 
 [back to top](#notetastic)
