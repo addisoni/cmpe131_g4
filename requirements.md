@@ -133,18 +133,18 @@ User does not answer the security questions correclty
   a. User gets shown an error and have 3 tries left 
   b. After the theree failed attempts, user would be locked out for security purposes
 
-### 7. Multiple typefaces and font styles (Najm Masri)
--  **Summary:** User creates a note and is able to customize the text with typefaces and font styles
+### 7. Multiple typefaces and font headings (Najm Masri)
+-  **Summary:** User creates a note and is able to customize the text with typefaces and font headers
 -  **Pre-condition:** User is logged in and creates a new note
 -  **Trigger:** User highlights a portion of the text they want to customize.
 -  **Primary Sequence:**
-1. User highlights the portion of the text they want to customize then selects the font style and typeface they want
+1. User highlights the portion of the text they want to customize then selects the font headers and typeface they want
 2. User clicks on one of the typeface buttons (Bold, italicize, etc.)
 3. User begins typing text in body
 
 - **Primary Postcondition:**<br>
-1. The text is displayed with the specified font/typeface in the notes
-2. Note is saved with customized font/typeface
+1. The text is displayed with the specified headers/typeface in the notes
+2. Note is saved with customized headers/typeface
 
 - **Alternate Sequence:**<br>
 User selects the wrong note to customize. 

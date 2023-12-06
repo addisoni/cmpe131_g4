@@ -154,7 +154,6 @@ def modify_note(note_id):
     print('---')
     print(my_note)
     print('---')
-    
     form = NoteForm()
 
     if form.validate_on_submit():
@@ -173,7 +172,7 @@ def modify_note(note_id):
         if body_default != "<p><br></p>" or None:
             return redirect(url_for('error'))
 
-    return render_template('notePage.html', note=my_note, form=form)
+    return render_template('noteModify.html', note=my_note, form=form)
 
 @myapp_obj.route('/<int:note_id>/rm', methods=['POST'])
 def delete_note(note_id):
