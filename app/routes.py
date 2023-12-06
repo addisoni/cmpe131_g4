@@ -11,7 +11,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
 
 @myapp_obj.route("/")
-@myapp_obj.route("/home.html",methods=['GET', 'POST'])
+@myapp_obj.route("/home",methods=['GET', 'POST'])
 def home():
     #pull sorting name from html file
     sort_type = request.form.get('sorting') 
@@ -96,6 +96,14 @@ def modifyaccount():
     if form.validate_on_submit():
         user = current_user
 
+        if form.username.data != user.username and User.query.filter_by(username=form.username.data).first():
+            flash('Username is already taken. Please choose a different one.', 'danger')
+            return render_template('modifyaccount.html', form=form)
+
+        if form.password.data != form.confirm.data:
+            flash('Passwords do not match. Please try again.', 'danger')
+            return render_template('modifyaccount.html', form=form)
+        
         # Update username
         if form.username.data:
             user.username = form.username.data
@@ -115,7 +123,7 @@ def modifyaccount():
         db.session.commit()
 
         # success message
-        flash('Account modified successfully!', 'success')
+        flash('Account modified successfully!')
 
         #redirect to home when done modifying account details
         return redirect(url_for('home'))
@@ -197,7 +205,7 @@ def createaccount():
         db.session.commit()
 
         # Flashes a message to user when they successfully create their account and redirects them to the login page to login
-        flash('Account created successfully!', 'success')
+        flash('Account created successfully!')
         return redirect('login')
     return render_template('create_account.html', form=form)
 
@@ -264,7 +272,7 @@ def resetpassword(username):
                 user.password_hash = new_password_hash
                 db.session.commit()
 #when it is successful, it will redirect user to the login page 
-                flash('Password reset successful. You can now log in with your new password.', 'success')
+                flash('Password reset successful. You can now log in with your new password.')
                 return redirect(url_for('login'))
             else:
                 flash('User not found. Password reset failed.', 'danger')

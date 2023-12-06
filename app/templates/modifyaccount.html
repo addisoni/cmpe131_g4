@@ -1,6 +1,14 @@
 {% extends "base.html"%}
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+     <div class="notification is-danger">
+         {{ messages[0] }}
+     </div>
+   {% endif %}
+{% endwith %}
+
   <h2>Modify Account</h2>
   <form method="post" action="{{ url_for('modifyaccount') }}">
     {{ form.hidden_tag() }}

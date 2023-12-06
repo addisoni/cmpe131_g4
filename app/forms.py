@@ -56,7 +56,7 @@ class NoteForm(FlaskForm):
 #Form for remodifying existing account information
 class ModifyAccountForm(FlaskForm):
     username = StringField('New Username')
-    password = PasswordField('New Password', validators=[EqualTo('confirm', message='Passwords must match')])
+    password = PasswordField('New Password')
     confirm = PasswordField('Repeat New Password')
     security_question = SelectField('New Security Question', choices=[
         ('q1', 'What city were you born in?'),
