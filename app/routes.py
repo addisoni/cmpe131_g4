@@ -32,9 +32,9 @@ def home():
     #notes, sort_list variables are relayed to html file
     return render_template('home.html',notes=post_notes,sort_list=sort_list) 
 
-@myapp_obj.route("/notePage", methods=['GET', 'POST'])
+@myapp_obj.route("/createnotes", methods=['GET', 'POST'])
 @login_required
-def notePage():
+def createnotes():
     form = NoteForm()
 
     if form.validate_on_submit():
@@ -43,6 +43,7 @@ def notePage():
 
         if title.strip() and body.strip():
             n = Notes(title=title, body=body, user_id=current_user.id)
+            n.body_html = request.form.get('body_html')
             db.session.add(n)
             db.session.commit()
 
@@ -55,7 +56,7 @@ def notePage():
         if body_default != "<p><br></p>" or None:
             return redirect(url_for('error'))
 
-    return render_template('notePage.html', form=form)
+    return render_template('createnotes.html', form=form)
 
 #Error page
 @myapp_obj.route("/error", methods=['GET', 'POST'])
@@ -74,8 +75,8 @@ def login():
             # checks if password provided by user matches the hashed password in the database
             if check_password_hash(user.password_hash, form.password.data):
                  login_user(user)
-                 # if it matches, redirect to user's note page
-                 return redirect(url_for('notePage'))
+                 # if it matches, redirect to user's home
+                 return redirect(url_for('home'))
             else:
                 # if it does not match, flash a message
                  flash('Incorrect Password - Please try again!')
@@ -116,8 +117,8 @@ def modifyaccount():
         # success message
         flash('Account modified successfully!', 'success')
 
-        #redirect to notepage when done modifying account details
-        return redirect(url_for('notePage'))
+        #redirect to home when done modifying account details
+        return redirect(url_for('home'))
 
     return render_template('modifyaccount.html', form=form)
 
