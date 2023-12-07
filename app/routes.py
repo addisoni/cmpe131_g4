@@ -40,9 +40,10 @@ def createnotes():
     if form.validate_on_submit():
         title = form.title.data
         body = form.body.data
+        body_html = form.body_html.data
 
         if title.strip() and body.strip():
-            n = Notes(title=title, body=body, user_id=current_user.id)
+            n = Notes(title=title, body=body, body_html=body_html, user_id=current_user.id)
             db.session.add(n)
             db.session.commit()
 
