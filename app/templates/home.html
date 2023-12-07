@@ -1,6 +1,13 @@
 {% extends "base.html"%}
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+     <div class="notification is-danger">
+         {{ messages[0] }}
+     </div>
+   {% endif %}
+{% endwith %}
 <!-- Home HTML where all links will usually go to -->
 <html>
 <br> 
