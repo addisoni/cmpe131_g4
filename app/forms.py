@@ -67,6 +67,8 @@ class ModifyAccountForm(FlaskForm):
     security_answer = StringField('New Security Answer')
     submit = SubmitField('Modify Account')
 
-
-
+class FolderForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+    action = HiddenField()
 

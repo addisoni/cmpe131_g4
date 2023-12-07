@@ -30,7 +30,7 @@ def home():
         post_notes = Notes.query.all()
 
     #notes, sort_list variables are relayed to html file
-    return render_template('home.html',notes=post_notes,sort_list=sort_list) 
+    return render_template('home.html', notes=post_notes, sort_list=sort_list) 
 
 @myapp_obj.route("/notePage", methods=['GET', 'POST'])
 @login_required
@@ -52,16 +52,51 @@ def notePage():
     title_default = form.title.data
     body_default = form.body.data
     if title_default == '' or None:
-        if body_default != "<p><br></p>" or None:
+        if body_default != '' or None:
             return redirect(url_for('error'))
 
     return render_template('notePage.html', form=form)
+
+@myapp_obj.route("/folderPage", methods=['GET', 'POST'])
+@login_required
+def folderPage():
+    form = FolderForm()
+    post_folders = Folder.query.order_by(Folder.folder_name.desc()).all()
+
+    if form.validate_on_submit():
+        title = form.title.data
+
+        if title.strip():
+            n = Folder(folder_name=title, user_id=current_user.id)
+            db.session.add(n)
+            db.session.commit()
+
+        return redirect(url_for('folderPage'))
+
+    #Check if no input is in body, if not return an error
+    title_default = form.title.data
+    if title_default == '' or None:
+        return redirect(url_for('error'))
+
+    return render_template('folderPage.html', form=form, folders=post_folders)
+
+
+@myapp_obj.route('/<int:note_id>/gofolder', methods=['GET','POST'])
+def gofolder(note_id):
+    #Unsure whether to use note.id or folder.id here (or both)
+    get_folder = Notes.query.get(note_id)
+    print(note_id)
+    print(get_folder)
+    n = Notes(folder_id=get_folder) #also Notes or Folder call here
+    #Either session.add or insert 
+    db.session.add(n)
+    db.session.commit()
+    return redirect(url_for('folderPage'))
 
 #Error page
 @myapp_obj.route("/error", methods=['GET', 'POST'])
 def error():
     return render_template('error.html')
-
 
 @myapp_obj.route("/login", methods=['GET', 'POST'])
 def login():
@@ -140,6 +175,27 @@ def view_note(note_id):
     #simply return requested specific note_id details to forefront in HMTL view
     note = Notes.query.get_or_404(note_id)
     return render_template("view_note.html", note=note)
+
+@myapp_obj.route("/<int:note_id>/modify", methods=["GET", "POST"])
+def modify_note(note_id):
+    # Fetch the note from the database
+    my_note = Notes.query.get_or_404(note_id)
+    
+    # Create a NoteForm instance and populate it with the existing note data
+    form = NoteForm(title=my_note.title, body=my_note.body)
+
+    if form.validate_on_submit():
+        # Update the note data with the form data
+        my_note.title = form.title.data
+        my_note.body = form.body.data
+
+        # Commit the changes to the database
+        db.session.commit()
+
+        # Redirect to the home page after successful modification
+        return redirect(url_for('home'))
+
+    return render_template('noteModify.html', note=my_note, form=form)
 
 @myapp_obj.route('/<int:note_id>/rm', methods=['POST'])
 def delete_note(note_id):

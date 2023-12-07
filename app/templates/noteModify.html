@@ -1,4 +1,4 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 
 {% block content %}
 <html>
@@ -13,34 +13,32 @@
     <h1 class="" style="font-size: 24pt; font-weight:bold">{{ current_user.username }}'s Notes</h1>
     <br>
     <br>
-    <form method="POST" action="{{ url_for('notePage') }}">
+    <form method="POST" action="{{ url_for('modify_note', note_id=note.id) }}">
       {{ form.hidden_tag() }}
       <div class="text-lg">
         <label class="block" for="title" style="font-size: 16pt; font-weight:bold">Title: </label>
-        <input class="text-gray-700" id="title" name="title" style="font-size: 16pt" type="text" placeholder="Enter Note Title">
+        <input class="text-gray-700" id="title" name="title" style="font-size: 16pt" type="text" placeholder="Enter Note Title" value="{{ note.title }}">
       </div>
       <br>
       <div>
         <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Body: </label>
         <br>
-        <div id="editor" style="height: 300px;"></div>
-        <textarea name="body" style="display:none;" id="body" rows="20" cols="40"></textarea>
+        <div id="editor" style="height: 300px;">{{ note.body|safe }}</div>
+        <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.body }}</textarea>
       </div>
-      <button type="submit" name="action" value="submit">Save Note</button>
+      <button type="submit" name="action" value="modify">Modify Note</button>
     </form>
     <!--include quill editor javascript file-->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
       var quill = new Quill('#editor', {
         theme: 'snow',
-        placeholder: "Enter Note Contents Here..."
       });
 
       // When the form is submitted, update the hidden textarea with Quill's HTML content
       document.querySelector('form').onsubmit = function() {
     var editorContent = quill.root.innerHTML;
     document.querySelector('#body').value = editorContent;
-
       };
     </script>
   </body>

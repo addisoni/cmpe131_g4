@@ -11,15 +11,14 @@
 <h2 class="subtitle" style="float: center">
     A simple and friendly web-based note app
 </h2>
-{% if current_user.is_authenticated %}
   <div class="container" style="float: top">
     <div class="row justify-content-center" style="float: top">
         <div class="col-2">
-                {% if notes %}
-                <form name="post" action="{{ url_for('home') }}" method="POST">
-                    <label for="sorting">Sort Notes: </label>
-                    <br>
-                <!-- We create the sort list dropdown menu and iterate over each sorting option (list of modes in routes.py) -->
+            {% if notes %}
+            <form name="post" action="{{ url_for('home') }}" method="POST">
+              <label for="sorting">Sort Notes: </label>
+              <br>
+              <!-- We create the sort list dropdown menu and iterate over each sorting option (list of modes in routes.py) -->
                 <select name="sorting" class="selectpicker form-control">
                     <option value=''>- Sorting Options -</option>
                     {% for sort_by in sort_list %}
@@ -34,12 +33,12 @@
             {% for note in notes %}
                 {% if note.user_id == current_user.id or note.public %}
                     <br>
-                    <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
+                    <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">note {{ note.id }}: {{ note.title }}</h2>
                     <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
                     <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
                     <br>
-                    <form method="POST" action="{{ note.id }}/view">
-                        <button class="button is-warning" name="Note View" type="submit">View Note</button>
+                    <form method="POST" action="{{ note.id }}/modify">
+                        <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
                     </form>
                     {% if note.user_id == current_user.id %}
                     <form method="POST" action="{{ note.id }}/rm">
@@ -60,7 +59,6 @@
         </div>
     </div>
   </div>
-{% endif %}
 </html>
 
 
