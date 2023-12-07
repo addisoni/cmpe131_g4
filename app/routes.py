@@ -11,7 +11,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
 
 @myapp_obj.route("/")
-@myapp_obj.route("/home",methods=['GET', 'POST'])
+@myapp_obj.route("/home.html",methods=['GET', 'POST'])
 def home():
     #pull sorting name from html file
     sort_type = request.form.get('sorting') 
@@ -43,7 +43,6 @@ def createnotes():
 
         if title.strip() and body.strip():
             n = Notes(title=title, body=body, user_id=current_user.id)
-            n.body_html = form.body_html.data
             db.session.add(n)
             db.session.commit()
 
@@ -110,8 +109,8 @@ def login():
             # checks if password provided by user matches the hashed password in the database
             if check_password_hash(user.password_hash, form.password.data):
                  login_user(user)
-                 # if it matches, redirect to user's home
-                 return redirect(url_for('home'))
+                 # if it matches, redirect to user's note page
+                 return redirect(url_for('createnotes'))
             else:
                 # if it does not match, flash a message
                  flash('Incorrect Password - Please try again!')
@@ -131,14 +130,6 @@ def modifyaccount():
     if form.validate_on_submit():
         user = current_user
 
-        if form.username.data != user.username and User.query.filter_by(username=form.username.data).first():
-            flash('Username is already taken. Please choose a different one.', 'danger')
-            return render_template('modifyaccount.html', form=form)
-
-        if form.password.data != form.confirm.data:
-            flash('Passwords do not match. Please try again.', 'danger')
-            return render_template('modifyaccount.html', form=form)
-        
         # Update username
         if form.username.data:
             user.username = form.username.data
@@ -150,11 +141,7 @@ def modifyaccount():
         # Update security question and answer
         if form.security_question.data:
             user.security_question = form.security_question.data
-    
         if form.security_answer.data:
-            if not form.security_answer.data.isalpha():
-                flash('Invalid security answer! Please only enter letters.', 'danger')
-                return render_template('modifyaccount.html', form=form)
             hashed_sa = hashed_sa = generate_password_hash(form.security_answer.data)
             user.security_answer = hashed_sa
 
@@ -162,10 +149,10 @@ def modifyaccount():
         db.session.commit()
 
         # success message
-        flash('Account modified successfully!')
+        flash('Account modified successfully!', 'success')
 
-        #redirect to home when done modifying account details
-        return redirect(url_for('home'))
+        #redirect to createnotes when done modifying account details
+        return redirect(url_for('createnotes'))
 
     return render_template('modifyaccount.html', form=form)
 
@@ -182,12 +169,6 @@ def search():
         search_notes = Notes.query.all()
 
     return render_template('search.html',notes=search_notes)
-
-@myapp_obj.route("/<int:note_id>/view", methods=["GET", "POST"])
-def view_note(note_id):
-    #simply return requested specific note_id details to forefront in HMTL view
-    note = Notes.query.get_or_404(note_id)
-    return render_template("view_note.html", note=note)
 
 @myapp_obj.route("/<int:note_id>/modify", methods=["GET", "POST"])
 def modify_note(note_id):
@@ -265,7 +246,7 @@ def createaccount():
         db.session.commit()
 
         # Flashes a message to user when they successfully create their account and redirects them to the login page to login
-        flash('Account created successfully!')
+        flash('Account created successfully!', 'success')
         return redirect('login')
     return render_template('create_account.html', form=form)
 
@@ -332,7 +313,7 @@ def resetpassword(username):
                 user.password_hash = new_password_hash
                 db.session.commit()
 #when it is successful, it will redirect user to the login page 
-                flash('Password reset successful. You can now log in with your new password.')
+                flash('Password reset successful. You can now log in with your new password.', 'success')
                 return redirect(url_for('login'))
             else:
                 flash('User not found. Password reset failed.', 'danger')
