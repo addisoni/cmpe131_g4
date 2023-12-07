@@ -139,10 +139,6 @@ def modifyaccount():
             flash('Passwords do not match. Please try again.', 'danger')
             return render_template('modifyaccount.html', form=form)
         
-        if not form.security_answer.data.isalpha():
-            flash('Invalid security answer! Please only enter letters.', 'danger')
-            return render_template('modifyaccount.html', form=form)
-        
         # Update username
         if form.username.data:
             user.username = form.username.data
@@ -154,7 +150,11 @@ def modifyaccount():
         # Update security question and answer
         if form.security_question.data:
             user.security_question = form.security_question.data
+    
         if form.security_answer.data:
+            if not form.security_answer.data.isalpha():
+                flash('Invalid security answer! Please only enter letters.', 'danger')
+                return render_template('modifyaccount.html', form=form)
             hashed_sa = hashed_sa = generate_password_hash(form.security_answer.data)
             user.security_answer = hashed_sa
 
