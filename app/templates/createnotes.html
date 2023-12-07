@@ -40,7 +40,6 @@
       document.querySelector('form').onsubmit = function() {
         var plainText = quill.getText();
         var htmlContent = quill.root.innerHTML;
-        var f
         // Update the hidden input fields
         document.querySelector('#body').value = plainText;
         document.querySelector('#body_html').value = htmlContent.trim();
