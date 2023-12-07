@@ -22,7 +22,7 @@
 
 11. View revision history from past savestate
 
-12. Undo/Redo revision history (restore pre-existing note savestates)
+12. Undo/Redo revision history (restore previous note savestate)
 
 13. Multiple Note sorting options
 
