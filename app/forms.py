@@ -50,6 +50,7 @@ class ResetPassword(FlaskForm):
 class NoteForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     body = TextAreaField('Body', render_kw={'class': 'editor'}, validators=[DataRequired()])
+    body_html = HiddenField()
     submit = SubmitField('Submit')
     action = HiddenField()
     

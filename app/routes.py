@@ -43,7 +43,7 @@ def createnotes():
 
         if title.strip() and body.strip():
             n = Notes(title=title, body=body, user_id=current_user.id)
-            n.body_html = request.form.get('body_html')
+            n.body_html = form.body_html.data
             db.session.add(n)
             db.session.commit()
 
