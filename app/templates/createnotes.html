@@ -13,7 +13,7 @@
     <h1 class="" style="font-size: 24pt; font-weight:bold">{{ current_user.username }}'s Notes</h1>
     <br>
     <br>
-    <form method="POST" action="{{ url_for('notePage') }}">
+    <form method="POST" action="{{ url_for('createnotes') }}">
       {{ form.hidden_tag() }}
       <div class="text-lg">
         <label class="block" for="title" style="font-size: 16pt; font-weight:bold">Title: </label>
@@ -38,8 +38,11 @@
 
       // When the form is submitted, update the hidden textarea with Quill's HTML content
       document.querySelector('form').onsubmit = function() {
-    var editorContent = quill.root.innerHTML;
-    document.querySelector('#body').value = editorContent;
+        var plainText = quill.getText();
+        var htmlContent = quill.root.innerHTML;
+        // Update the hidden input fields
+        document.querySelector('#body').value = plainText;
+        document.querySelector('#body_html').value = htmlContent.trim();
 
       };
     </script>
