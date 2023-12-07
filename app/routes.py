@@ -178,31 +178,22 @@ def view_note(note_id):
 
 @myapp_obj.route("/<int:note_id>/modify", methods=["GET", "POST"])
 def modify_note(note_id):
-    #simply return requested specific note_id details to forefront in HMTL view
-    #my_note = db.session.execute(db.select(Notes).filter_by(id=note_id)).first()
-    my_note = db.get_or_404(Notes,note_id)
-    #my_note = Notes.query.filter(Notes.body.contains(request.args.get())
-    #my_note = db.session.query(Notes).order_by(note_id)
-    print('---')
-    print(my_note)
-    print('---')
-    form = NoteForm()
+    # Fetch the note from the database
+    my_note = Notes.query.get_or_404(note_id)
+    
+    # Create a NoteForm instance and populate it with the existing note data
+    form = NoteForm(title=my_note.title, body=my_note.body)
 
     if form.validate_on_submit():
-        title = form.title.data
-        body = form.body.data
+        # Update the note data with the form data
+        my_note.title = form.title.data
+        my_note.body = form.body.data
 
-        if title.strip() and body.strip():
-            db.session.commit()
+        # Commit the changes to the database
+        db.session.commit()
 
+        # Redirect to the home page after successful modification
         return redirect(url_for('home'))
-
-    #Check if no input is in body, if not return an error
-    title_default = form.title.data
-    body_default = form.body.data
-    if title_default == '' or None:
-        if body_default != '' or None:
-            return redirect(url_for('error'))
 
     return render_template('noteModify.html', note=my_note, form=form)
 
