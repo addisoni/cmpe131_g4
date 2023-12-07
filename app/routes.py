@@ -83,8 +83,12 @@ def folderPage():
 
 @myapp_obj.route('/<int:note_id>/gofolder', methods=['GET','POST'])
 def gofolder(note_id):
-    get_note = Notes.query.first_or_404(note_id)
-    n = Notes(folder_id=get_note)
+    #Unsure whether to use note.id or folder.id here (or both)
+    get_folder = Notes.query.get(note_id)
+    print(note_id)
+    print(get_folder)
+    n = Notes(folder_id=get_folder) #also Notes or Folder call here
+    #Either session.add or insert 
     db.session.add(n)
     db.session.commit()
     return redirect(url_for('folderPage'))
