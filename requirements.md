@@ -165,23 +165,21 @@ User selects the wrong note to customize.
 1. Folder already exists, error is displayed indicating there is a name conflict
 2. No notes exist, folder is created anyway (no notes to move to folder)
 
-### 9. Copy, paste, and duplicate note(s) (Najm Masri)
+### 9. Duplicate note(s) (Najm Masri)
 -  **Summary:**  User can copy, paste, and duplicate their notes
 -  **Pre-condition:** User is logged in and can view their notes
 -  **Trigger:** User selects the note they want to copy/paste/duplicate. 
 -  **Primary Sequence:**
 1. User logs into account, opens to notes list
-2. User selects note they want to copy/paste/duplicate
-3. User clicks “copy” to the note they want to copy
-4. User creates new note and clicks “paste” to paste the copied note onto the new note
-5. User selects a note and clicks “duplicate” which will create a duplicate copy of that same note
-6. User saves, and can later access and edit the new notes. 
+2. User selects note they want to duplicate
+3. User selects a note and clicks “duplicate” which will create a duplicate copy of that same note
+4. User saves, and can later access and edit the new notes. 
 
 - **Primary Postcondition:**<br>
-1. The note that was copied/pasted/duplicated is now in a new note that contains it.
+1. The note that was duplicated is now in a new note that contains it.
    
 - **Alternate Sequence:**<br>
-1. User selects more than one note to copy/duplicate which will result in an error
+1. User selects more than one note to duplicate which will result in an error
 
 ### 10. Modify existing user account details (Najm Masri)
 -  **Summary:** User can modify existing user account info/details
