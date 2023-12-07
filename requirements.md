@@ -22,7 +22,7 @@
 
 11. View revision history from past savestate
 
-12. Undo/Redo revision history (restore pre-existing note savestates)
+12. Undo/Redo revision history (restore previous note savestate)
 
 13. Multiple Note sorting options
 
@@ -206,7 +206,7 @@ User inserts incorrect info, like for names they type in numbers, so an error oc
 2. User saves note
 3. User reopens note and modifies at least one character
 4. User navigates to revision header in revision pane
-5. In revision pane, multiple entries appear for past revisions
+5. In revision pane, previous entry appears for previous revision
 
 - **Primary Postcondition:**<br>
 1. Original modified date and new revision (from Primary Sequence) are shown in revision pane
@@ -226,9 +226,6 @@ User inserts incorrect info, like for names they type in numbers, so an error oc
 
 - **Primary Postcondition:**<br>
 Note is remodified to most recent revision (since last save)
-
-- **Alternate Sequence:**<br>
-Clicking on Undo button, changed to “Redo”, reverts back to original state (before any “Undo” changes were made)
 
 ### 13. Multiple note sorting options (Addison Ivan)
 -  **Pre-condition:** User has at least one saved note in list
