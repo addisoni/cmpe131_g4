@@ -80,6 +80,15 @@ def folderPage():
 
     return render_template('folderPage.html', form=form, folders=post_folders)
 
+
+@myapp_obj.route('/<int:note_id>/gofolder', methods=['GET','POST'])
+def gofolder(note_id):
+    get_note = Notes.query.first_or_404(note_id)
+    n = Notes(folder_id=get_note)
+    db.session.add(n)
+    db.session.commit()
+    return redirect(url_for('folderPage'))
+
 #Error page
 @myapp_obj.route("/error", methods=['GET', 'POST'])
 def error():

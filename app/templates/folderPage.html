@@ -21,44 +21,68 @@
       </div>
       <button type="submit" name="action" value="submit">Create Folder</button>
     </form>
+
+      {% for note in folders %}
+        {% if not note.folder_id %}
+                    {% if note.user_id == current_user.id or note.public %}
+                        <br>
+                        <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
+                        <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
+                        <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
+                        
+                        {% for folder in folders %}
+                        <form method="POST" action="{{ note.id }}/toFolder">
+                            <button class="button is-link" name="{{ folder.folder_name }}" type="submit">Add to Folder: "{{ folder.folder_name }}"</button>
+                        </form>
+                        {% endfor %}
+                    {% endif %}
+                  {% endif %}
+
+                {% endfor %}
+
+
     {% for folder in folders %}
                     <br>
                     <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Folder {{ folder.id }}: {{ folder.folder_name }}</h2>
                     <i class="text-sm" style="font-size: 16pt">{{ folder.user_id }}</i>
                     <br>
               {% for note in folders %}
-                {% if note.user_id == current_user.id or note.public %}
-                    <br>
-                    <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
-                    <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
-                    <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
-                    <br>
-                    <form method="POST" action="{{ note.id }}/view">
-                        <button class="button is-default" name="Note View" type="submit">View Note</button>
-                    </form>
-                    <form method="POST" action="{{ note.id }}/modify">
-                        <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
-                    </form>
-                    <form method="POST" action="{{ folder.id }}/modify">
-                        <button class="button is-link" name="{{ folder.folder_name }}" type="submit">Add to Folder: "{{ folder.folder_name }}"</button>
-                    </form>
-                    {% if note.user_id == current_user.id %}
-                    <form method="POST" action="{{ note.id }}/rm">
-                        <button class="button is-danger" name="Note Delete" type="submit">Delete Note</button>
-                    </form>
-                        <form method="POST" action="{{ note.id }}/toggle_visibility">
-                            <button class="button is-info" name="Toggle Visibility" type="submit">
-                                {% if note.public %}
-                                    Make Private
-                                {% else %}
-                                    Make Public
-                                {% endif %}
-                        </button>
-                    </form>
-                    {% endif %}
-                {% endif %}
-              {% endfor %}
-          {% endfor %}
-  </body>
-</html>
-{% endblock %}
+                      <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">FolderID-> "{{ folder.id }}" FolderNoteID -> "{{ note.folder_id }}"</h2>
+
+                {% if folder.id == note.folder_id %}
+                  {% if note.user_id == current_user.id or note.public %}
+                      <br>
+                      <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
+                      <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
+                      <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
+                      <br>
+                      <form method="POST" action="{{ note.id }}/view">
+                          <button class="button is-default" name="Note View" type="submit">View Note</button>
+                      </form>
+                      <form method="POST" action="{{ note.id }}/modify">
+                          <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
+                      </form>
+                      <form method="POST" action="{{ note.folder_id }}/modify">
+                          <button class="button is-link" name="{{ folder.folder_name }}" type="submit">Add to Folder: "{{ folder.folder_name }}"</button>
+                      </form>
+                      {% if note.user_id == current_user.id %}
+                      <form method="POST" action="{{ note.id }}/rm">
+                          <button class="button is-danger" name="Note Delete" type="submit">Delete Note</button>
+                      </form>
+                          <form method="POST" action="{{ note.id }}/toggle_visibility">
+                              <button class="button is-info" name="Toggle Visibility" type="submit">
+                                  {% if note.public %}
+                                      Make Private
+                                  {% else %}
+                                      Make Public
+                                  {% endif %}
+                          </button>
+                      </form>
+                      {% endif %}
+                   {% endif %}
+                  {% endif %}
+                {% endfor %}
+            {% endfor %}
+    </body>
+  </html>
+  {% endblock %}
