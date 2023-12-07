@@ -27,7 +27,7 @@
                     {% if note.user_id == current_user.id or note.public %}
                         <br>
                         <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
-                        <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
+                        <i class="text-sm" style="font-size: 16pt">{{ note.date_created }}</i>
                         <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
                         
                         {% for folder in folders %}
@@ -53,7 +53,7 @@
                   {% if note.user_id == current_user.id or note.public %}
                       <br>
                       <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
-                      <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
+                      <i class="text-sm" style="font-size: 16pt">{{ note.date_created }}</i>
                       <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
                       <br>
                       <form method="POST" action="{{ note.id }}/modify">

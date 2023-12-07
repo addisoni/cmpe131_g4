@@ -5,6 +5,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 from .forms import *
 from app import myapp_obj, db, login_manager
 from app.models import *
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 #list of sorting note options 
@@ -17,7 +18,7 @@ def home():
     sort_type = request.form.get('sorting') 
     #Determine how notes are sorted (displayed)
     if sort_type == 'DateCreated':
-        post_notes = Notes.query.order_by(Notes.timestamp.desc()).all()
+        post_notes = Notes.query.order_by(Notes.date_created.desc()).all()
 
     elif sort_type == 'AscendingName':
         post_notes = Notes.query.order_by(Notes.title).all()
@@ -40,10 +41,10 @@ def createnotes():
     if form.validate_on_submit():
         title = form.title.data
         body = form.body.data
-        body_html = form.body_html.data
+        last_modified = datetime.today().replace(microsecond=0)
 
         if title.strip() and body.strip():
-            n = Notes(title=title, body=body, body_html=body_html, user_id=current_user.id)
+            n = Notes(title=title, body=body, last_modified=last_modified, user_id=current_user.id)
             db.session.add(n)
             db.session.commit()
 
@@ -175,14 +176,18 @@ def search():
 def modify_note(note_id):
     # Fetch the note from the database
     my_note = Notes.query.get_or_404(note_id)
-    
+    old_body = my_note.body
+
     # Create a NoteForm instance and populate it with the existing note data
-    form = NoteForm(title=my_note.title, body=my_note.body)
+    form = NoteForm(title=my_note.title, body=my_note.body, old_body=old_body)
 
     if form.validate_on_submit():
+        time_mod = datetime.today().replace(microsecond=0)
+
         # Update the note data with the form data
         my_note.title = form.title.data
         my_note.body = form.body.data
+        my_note.last_modified = time_mod
 
         # Commit the changes to the database
         db.session.commit()
@@ -191,6 +196,35 @@ def modify_note(note_id):
         return redirect(url_for('home'))
 
     return render_template('noteModify.html', note=my_note, form=form)
+
+@myapp_obj.route("/<int:note_id>/revisions", methods=["GET", "POST"])
+def revision_history(note_id):
+    # Fetch the note from the database
+    my_note = Notes.query.get_or_404(note_id)
+
+    # Create a NoteForm instance and populate it with the old note data
+    form = NoteForm(title=my_note.title, body=my_note.body, last_modified=my_note.last_modified)
+
+    if form.validate_on_submit():
+        time_mod = datetime.today().replace(microsecond=0)
+
+        # Update the note data with the form data
+        my_note.title = form.title.data
+        my_note.old_body = form.body.data
+        my_note.last_modified = time_mod
+
+        """
+        if my_note.last_modified == db.session.query(Notes.last_modified):
+            print("1")
+            print(my_note.last_modified)
+        """
+        # Commit the changes to the database
+        db.session.commit()
+
+        # Redirect to the home page after successful modification
+        return redirect(url_for('home'))
+
+    return render_template('revisionHistory.html', note=my_note, form=form)
 
 @myapp_obj.route('/<int:note_id>/rm', methods=['POST'])
 def delete_note(note_id):
