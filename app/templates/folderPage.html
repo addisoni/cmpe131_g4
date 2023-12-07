@@ -56,9 +56,6 @@
                       <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
                       <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
                       <br>
-                      <form method="POST" action="{{ note.id }}/view">
-                          <button class="button is-default" name="Note View" type="submit">View Note</button>
-                      </form>
                       <form method="POST" action="{{ note.id }}/modify">
                           <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
                       </form>
