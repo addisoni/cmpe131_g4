@@ -16,7 +16,7 @@
 
 8. User is able to create folders to organize notes
 
-9. Copy, paste, and duplicate note(s)
+9. Duplicate note(s)
 
 10. Modify existing user account details
 
