@@ -38,10 +38,8 @@
 
       // When the form is submitted, update the hidden textarea with Quill's HTML content
       document.querySelector('form').onsubmit = function() {
-        var editorContent = quill.root.innerHTML;
-        var doc = new DOMParser().parseFromString(editorContent, 'text/html');
-        var sanitizedText = doc.body.textContent || "";
-        document.querySelector('#body').value = sanitizedText.trim();
+    var editorContent = quill.root.innerHTML;
+    document.querySelector('#body').value = editorContent;
 
       };
     </script>
