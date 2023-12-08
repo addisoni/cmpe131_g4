@@ -31,7 +31,7 @@ Stephen Shao (@stephen-shao)
      - [Searching for notes](#searching-for-notes)
      - [Sorting notes](#sorting-notes)
      - [Adding different typefaces and font styles](#adding-different-typefaces-and-font-styles)
-     - [Duplicate Note(s)](#duplicate-note-s)
+     - [Duplicate Note(s)](#duplicate-notes)
   5. [Functional Requirements (To-Date)](#functional-requirements-to-date)
 </details>
 
