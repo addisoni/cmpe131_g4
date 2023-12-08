@@ -32,6 +32,8 @@ Stephen Shao (@stephen-shao)
      - [Sorting notes](#sorting-notes)
      - [Adding different typefaces and font styles](#adding-different-typefaces-and-font-styles)
      - [Duplicate Note(s)](#duplicate-notes)
+     - [Creating Folders](#user-is-able-to-create-folders-to-organize-notes)
+     - [Private/Public Visibility](#notes-created-on-webpage-are-restricted-to-the-corresponding-user-and-can-change-visibility-based-on-users-selection)
   5. [Functional Requirements (To-Date)](#functional-requirements-to-date)
 </details>
 
@@ -213,6 +215,36 @@ width="946" height="460">
   <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteHistory1.png" alt="Logo" width="918" height="898">
   <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteHistory2.png" alt="Logo" width="972" height="870">
 </p>
+
+[back to top](#notetastic)
+
+### User is able to create folders to organize notes
+1. Click on the "Folder" tab on top to create a folder then type in your folder name
+<p align="center">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/folderPage_1.png" alt="Logo" width="353" height="151">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/folderPage_2.png" alt="Logo" width="367" height="274">
+</p>
+2. To access the folder, press on the green button with your folder name on it
+<p align="center">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/folderPage_6.png" alt="Logo" width="404" height="207">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/folderPage_3.png" alt="Logo" width="436" height="136">
+</p>
+3. When you're inside "Create Note", you choose what folder to send it to
+<p align="center">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/folderPage_4.png" alt="Logo" width="291" height="178">
+</p>
+4. You can also do this on the "Home Page"
+<p align="center">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/folderPage_5.png" alt="Logo" width="424" height="247">
+</p>
+
+[back to top](#notetastic)
+
+### Notes created on webpage are restricted to the corresponding user and can change visibility based on user's selection
+1. By clicking the "Make Public" or "Make Private" button, it will change the visibility of the note to be shown to all users or only to yourself
+   <p align="center">
+     <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/private-public.png" alt="Logo" width="238" height="243">
+   </p>
 
 [back to top](#notetastic)
 
