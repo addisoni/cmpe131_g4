@@ -16,8 +16,8 @@
       <div>
         <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Current Revision: </label>
         <br>
-        <div id="editor" style="height: 300px;">{{ note.body|safe }}</div>
-        <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.body }}</textarea>
+        <div id="editor" style="height: 300px;">{{ note.body_html|safe }}</div>
+        <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.body_html }}</textarea>
       </div>
       <br>
       <div>

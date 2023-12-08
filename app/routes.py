@@ -233,7 +233,7 @@ def modify_note(note_id):
     # Fetch the note from the database
     my_note = Notes.query.get_or_404(note_id)
     # Create a NoteForm instance and populate it with the existing note data
-    form = NoteForm(title=my_note.title, body=my_note.body, old_body=my_note.old_body)
+    form = NoteForm(title=my_note.title, body=my_note.body, old_body=my_note.old_body, body_html=my_note.body_html)
 
     form.folder.choices = [(folder.id, folder.folder_name) for folder in Folder.query.all()]
 
@@ -243,6 +243,7 @@ def modify_note(note_id):
         # Update the note data with the form data
         my_note.title = form.title.data
         my_note.body = form.body.data
+        my_note.body_html = form.body_html.data
         my_note.last_modified = time_mod
 
         # Commit the changes to the database
@@ -252,7 +253,7 @@ def modify_note(note_id):
         return redirect(url_for('home'))
 
     else:
-        my_note.old_body = form.body.data
+        my_note.old_body = form.body_html.data
         db.session.commit()
 
     return render_template('noteModify.html', note=my_note, form=form)
@@ -264,11 +265,11 @@ def revision_history(note_id):
     my_note_copy = Notes.query.get_or_404(note_id)
 
     # Create a NoteForm instance and populate it with the old note data
-    form = NoteForm(title=my_note.title, body=my_note.body, old_body=my_note_copy.old_body)
+    form = NoteForm(title=my_note.title, body=my_note.body, body_html=my_note.body_html, old_body=my_note_copy.old_body)
     print('1')
     if form.validate_on_submit():
         time_mod = datetime.today().replace(microsecond=0)
-        my_note.body, my_note.old_body = form.old_body.data, form.body.data
+        my_note.body_html, my_note.old_body = form.old_body.data, form.body_html.data
 
         # Commit the changes to the database
         db.session.commit()
