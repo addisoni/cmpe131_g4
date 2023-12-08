@@ -34,7 +34,7 @@ Stephen Shao (@stephen-shao)
      - [Duplicate Note(s)](#duplicate-notes)
      - [Creating Folders](#user-is-able-to-create-folders-to-organize-notes)
      - [Private/Public Visibility](#notes-created-on-webpage-are-restricted-to-the-corresponding-user-and-can-change-visibility-based-on-users-selection)
-     - [Undo/Redo revision history](#undoredo-revision-history-restore-previous-note-savestate)
+     - [View and Undo/Redo revision history](#view-revision-history-from-past-savestate-and-undoredo-revision-history-restore-previous-note-savestate)
   5. [Functional Requirements (To-Date)](#functional-requirements-to-date)
 </details>
 
@@ -264,8 +264,8 @@ width="946" height="460">
 
 [back to top](#notetastic)
 
-### Undo/Redo revision history (restore previous note savestate)
-1. After creating a note modifying it and saving it, click on the Note History button in Home.
+### View revision history from past savestate and Undo/Redo revision history (restore previous note savestate)
+1. After creating a note, modifying it, and saving it, click on the Note History button in Home to view it
 2. Next click on restore last version and it will undo your revision
 
 <p align="center"> 
