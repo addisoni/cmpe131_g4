@@ -206,20 +206,12 @@ def revision_history(note_id):
     my_note_copy = Notes.query.get_or_404(note_id)
 
     # Create a NoteForm instance and populate it with the old note data
-    form = NoteForm(ody=my_note.body, old_body=my_note.old_body, last_modified=my_note.last_modified)
-
+    form = NoteForm(title=my_note.title, body=my_note.body, old_body=my_note_copy.old_body)
+    print('1')
     if form.validate_on_submit():
         time_mod = datetime.today().replace(microsecond=0)
+        my_note.body, my_note.old_body = form.old_body.data, form.body.data
 
-        # Update the note data with the form data
-        my_note.body = form.old_body.data
-        my_note.old_body = form.body.data
-
-        """
-        if my_note.last_modified == db.session.query(Notes.last_modified):
-            print("1")
-            print(my_note.last_modified)
-        """
         # Commit the changes to the database
         db.session.commit()
 
