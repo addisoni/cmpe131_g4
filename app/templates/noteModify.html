@@ -27,6 +27,7 @@
         <br>
         <div id="editor" style="height: 300px;">{{ note.body_html|safe }}</div>
         <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.body_html }}</textarea>
+        <input type="hidden" name="body_html" id="body_html" value="{{ note.body_html }}">
       </div>
       <button type="submit" name="action" value="modify">Modify Note</button>
    <div class="container">

@@ -1,85 +1,68 @@
-{% extends "base.html"%}
+{% extends 'base.html' %}
 
 {% block content %}
-<html>
-<head>
-  <title>Flask Example</title>
-  <!-- include two diff stylesheets-->
-  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-</head>
-<body>
-  <div class="container mx-auto py-4">
-    <h1 class="" style="font-size: 24pt; font-weight:bold">{{ current_user.username }}'s Folders</h1>
-    <br>
-    <br>
-    <form method="POST" action="{{ url_for('folderPage') }}">
-      {{ form.hidden_tag() }}
-      <div class="text-lg">
-        <label class="block" for="title" style="font-size: 16pt; font-weight:bold">Folder Title: </label>
-        <input class="text-gray-700" id="title" name="title" style="font-size: 16pt" type="text" placeholder="Enter Folder Title">
-      </div>
-      <button type="submit" name="action" value="submit">Create Folder</button>
-    </form>
+  <style>
+    .folder-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-      {% for note in folders %}
-        {% if not note.folder_id %}
-                    {% if note.user_id == current_user.id or note.public %}
-                        <br>
-                        <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
-                        <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
-                        <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
-                        
-                        {% for folder in folders %}
-                        <form method="POST" action="{{ note.id }}/gofolder">
-                            <button class="button is-link" name="{{ folder.folder_name }}" type="submit">Add to Folder: "{{ folder.folder_name }}"</button>
-                        </form>
-                        {% endfor %}
-                    {% endif %}
-                  {% endif %}
+    .folder-button-container {
+      margin: 0 10px 10px 0;
+    }
 
-                {% endfor %}
+    .folder-button, .folder-button-danger {
+      background-color: #3ebe42; 
+      color: white;
+      padding: 8px 13px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
+    .folder-button-danger {
+      background-color: #f44336; 
+      border: none;
+    }
+  </style>
 
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+     <div class="notification is-danger">
+         {{ messages[0] }}
+     </div>
+   {% endif %}
+{% endwith %}
+
+  <h2>Create a Folder</h2>
+  <form method="POST" action="{{ url_for('folderPage') }}">
+    {{ form.hidden_tag() }}
+    {{ form.title.label }} {{ form.title(size=32) }}
+    {{ form.submit }}
+  </form>
+
+  <h2>Your Folders</h2>
+  <div class="folder-buttons">
     {% for folder in folders %}
-                    <br>
-                    <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Folder {{ folder.id }}: {{ folder.folder_name }}</h2>
-                    <i class="text-sm" style="font-size: 16pt">{{ folder.user_id }}</i>
-                    <br>
-              {% for note in folders %}
-                      <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">FolderID-> "{{ folder.id }}" FolderNoteID -> "{{ note.folder_id }}"</h2>
+      <div class="folder-button-container">
+        <a class="folder-button" href="{{ url_for('gotofolder', folder_id=folder.id) }}">
+          {{ folder.folder_name }}
+        </a>
+        <form method="POST" action="{{ url_for('delete_folder') }}">
+          {{ form.hidden_tag() }}
+          <button type="submit" name="folder_id" value="{{ folder.id }}" class="btn btn-danger folder-button folder-button-danger">Delete Folder</button>
+        </form>
+      </div>
+    {% endfor %}
+  </div>
 
-                {% if folder.id == note.folder_id %}
-                  {% if note.user_id == current_user.id or note.public %}
-                      <br>
-                      <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
-                      <i class="text-sm" style="font-size: 16pt">{{ note.timestamp }}</i>
-                      <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
-                      <br>
-                      <form method="POST" action="{{ note.id }}/modify">
-                          <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
-                      </form>
-                      <form method="POST" action="{{ note.folder_id }}/gofolder">
-                          <button class="button is-link" name="{{ folder.folder_name }}" type="submit">Add to Folder: "{{ folder.folder_name }}"</button>
-                      </form>
-                      {% if note.user_id == current_user.id %}
-                      <form method="POST" action="{{ note.id }}/rm">
-                          <button class="button is-danger" name="Note Delete" type="submit">Delete Note</button>
-                      </form>
-                          <form method="POST" action="{{ note.id }}/toggle_visibility">
-                              <button class="button is-info" name="Toggle Visibility" type="submit">
-                                  {% if note.public %}
-                                      Make Private
-                                  {% else %}
-                                      Make Public
-                                  {% endif %}
-                          </button>
-                      </form>
-                      {% endif %}
-                   {% endif %}
-                  {% endif %}
-                {% endfor %}
-            {% endfor %}
-    </body>
-  </html>
-  {% endblock %}
+  {% if not folders %}
+    <p>No folders available.</p>
+  {% endif %}
+{% endblock %}

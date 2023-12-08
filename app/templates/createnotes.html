@@ -15,6 +15,13 @@
     <h1 class="" style="font-size: 24pt; font-weight:bold">{{ current_user.username }}'s Notes</h1>
     <br>
     <br>
+    {% with messages = get_flashed_messages() %}
+       {% if messages %}
+         <div class="notification is-warning">
+             {{ messages[0] }}
+         </div>
+       {% endif %}
+    {% endwith %}
     <form method="POST" action="{{ url_for('createnotes') }}">
       {{ form.hidden_tag() }}
       <div class="text-lg">
@@ -28,6 +35,16 @@
         <div id="editor" style="height: 300px;"></div>
         <textarea name="body" style="display:none;" id="body" rows="20" cols="40"></textarea>
       </div>
+      <!-- Add the new folder field -->
+      <div>
+        <label for="folder-select">Select Folder:</label>
+        <select name="folder" class="text-gray-700" style="font-size: 16pt">
+            <option value=''>- Folder -</option>
+            {% for folder in form.folder.choices %}
+                <option value="{{ folder[0] }}">{{ folder[1] }}</option>
+            {% endfor %}
+        </select>
+    </div>
       <button type="submit" name="action" value="submit">Save Note</button>
    <div class="container">
      <div class="panel">
@@ -59,6 +76,7 @@
         var htmlContent = quill.root.innerHTML;
         document.querySelector('#body').value = plainText;
         document.querySelector('#body_html').value = htmlContent.trim();
+
       };
       document.getElementById('insertTableBtn').onclick = function() {
       var table = '<table border="1"><tr><td>Edit this cell</td><td>Edit this cell</td></tr><tr><td>Edit this cell</td><td>Edit this cell</td></tr></table>';

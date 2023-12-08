@@ -26,12 +26,16 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
 class Notes(db.Model):
-    # Creates the database entries for all notes, this includes the specific ID (queried note), and the reamining data including title/body/timestamp
+    # Creates the database entries for all notes, this includes the specific ID (queried note), and the reamining data including title/body/date_created
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     body = db.Column(db.Text, nullable=True)
     body_html = db.Column(db.Text, nullable=True)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.today().replace(microsecond=0))
+    old_body = db.Column(db.Text, nullable=True)
+
+    date_created = db.Column(db.DateTime, index=True, default=datetime.today().replace(microsecond=0))
+    last_modified = db.Column(db.String, index=True)
+
     # Create user_id, folder_id, and public to enable/disable note sharing between users and isolate notes from other users (when private)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     folder_id = db.Column(db.Integer, db.ForeignKey('folder.id'))
@@ -56,3 +60,6 @@ class Folder(db.Model):
 
     def __repr__(self):
         return '<Folder {}>'.format(self.folder_name)
+    
+    def get_absolute_url(self):
+        return url_for('gotofolder', folder_id=self.id)
