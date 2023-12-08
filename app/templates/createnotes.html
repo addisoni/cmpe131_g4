@@ -13,6 +13,13 @@
     <h1 class="" style="font-size: 24pt; font-weight:bold">{{ current_user.username }}'s Notes</h1>
     <br>
     <br>
+    {% with messages = get_flashed_messages() %}
+       {% if messages %}
+         <div class="notification is-warning">
+             {{ messages[0] }}
+         </div>
+       {% endif %}
+    {% endwith %}
     <form method="POST" action="{{ url_for('createnotes') }}">
       {{ form.hidden_tag() }}
       <div class="text-lg">
@@ -26,6 +33,16 @@
         <div id="editor" style="height: 300px;"></div>
         <textarea name="body" style="display:none;" id="body" rows="20" cols="40"></textarea>
       </div>
+      <!-- Add the new folder field -->
+      <div>
+        <label for="folder-select">Select Folder:</label>
+        <select name="folder" class="text-gray-700" style="font-size: 16pt">
+            <option value=''>- Folder -</option>
+            {% for folder in form.folder.choices %}
+                <option value="{{ folder[0] }}">{{ folder[1] }}</option>
+            {% endfor %}
+        </select>
+    </div>
       <button type="submit" name="action" value="submit">Save Note</button>
     </form>
     <!--include quill editor javascript file-->
@@ -42,7 +59,19 @@
         var htmlContent = quill.root.innerHTML;
         // Update the hidden input fields
         document.querySelector('#body').value = plainText;
+        document.querySelector('#body_html').value = htmlContent.trim();
 
+        var titleInput = document.querySelector('[name="title"]');
+        if (!titleInput.value || titleInput.value.trim() === '') {
+          alert('Please enter a title for your note.');
+          return false; // Prevent form submission
+        }
+        
+        var folderSelect = document.querySelector('[name="folder"]');
+        if (!folderSelect.value || folderSelect.value === '') {
+          alert('Please choose a folder for your note.');
+        return false; // Prevent form submission
+        }
       };
     </script>
   </body>

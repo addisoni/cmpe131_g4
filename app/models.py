@@ -30,6 +30,7 @@ class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     body = db.Column(db.Text, nullable=True)
+    body_html = db.Column(db.Text, nullable=True)
     old_body = db.Column(db.Text, nullable=True)
 
     date_created = db.Column(db.DateTime, index=True, default=datetime.today().replace(microsecond=0))
@@ -59,3 +60,6 @@ class Folder(db.Model):
 
     def __repr__(self):
         return '<Folder {}>'.format(self.folder_name)
+    
+    def get_absolute_url(self):
+        return url_for('gotofolder', folder_id=self.id)

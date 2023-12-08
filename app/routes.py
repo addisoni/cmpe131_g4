@@ -14,48 +14,52 @@ sort_list = ['AscendingName', 'DescendingName', 'DateCreated']
 @myapp_obj.route("/")
 @myapp_obj.route("/home.html",methods=['GET', 'POST'])
 def home():
-    #pull sorting name from html file
+    # pull sorting name from the HTML file
     sort_type = request.form.get('sorting') 
-    #Determine how notes are sorted (displayed)
+
+    # Determine how notes are sorted (displayed)
     if sort_type == 'DateCreated':
         post_notes = Notes.query.order_by(Notes.date_created.desc()).all()
-
     elif sort_type == 'AscendingName':
         post_notes = Notes.query.order_by(Notes.title).all()
-
     elif sort_type == 'DescendingName':
         post_notes = Notes.query.order_by(Notes.title.desc()).all()
-
     else:
-        #otherwise just query all available notes to current user
+        # otherwise just query all available notes to the current user
         post_notes = Notes.query.all()
 
-    #notes, sort_list variables are relayed to html file
-    return render_template('home.html', notes=post_notes, sort_list=sort_list) 
+    folders = Folder.query.all()
+    
+    # Make sure to pass the form to the template context
+    return render_template('home.html', notes=post_notes, sort_list=sort_list, folders=folders, form=NoteForm())
 
 @myapp_obj.route("/createnotes", methods=['GET', 'POST'])
 @login_required
 def createnotes():
     form = NoteForm()
 
+    # Check if the user has any folders
+    folders_exist = current_user.folders.first() is not None
+
+    # If the user doesn't have any folders, flash a message and redirect to the folder creation page
+    if not folders_exist:
+        flash('You need to create a folder before creating a note.', 'info')
+        return redirect(url_for('folderPage'))
+    
+    form.folder.choices = [(folder.id, folder.folder_name) for folder in Folder.query.all()]
+
     if form.validate_on_submit():
         title = form.title.data
         body = form.body.data
+        folder_id = form.folder.data
+        body_html = form.body_html.data
         last_modified = datetime.today().replace(microsecond=0)
 
         if title.strip() and body.strip():
-            n = Notes(title=title, body=body, last_modified=last_modified, user_id=current_user.id)
+            n = Notes(title=title, body=body, body_html=body_html, last_modified=last_modified, user_id=current_user.id, folder_id=folder_id)
             db.session.add(n)
             db.session.commit()
-
         return redirect(url_for('home'))
-
-    #Check if no input is in body, if not return an error
-    title_default = form.title.data
-    body_default = form.body.data
-    if title_default == '' or None:
-        if body_default != '' or None:
-            return redirect(url_for('error'))
 
     return render_template('createnotes.html', form=form)
 
@@ -63,42 +67,94 @@ def createnotes():
 @login_required
 def folderPage():
     form = FolderForm()
-    post_folders = Folder.query.order_by(Folder.folder_name.desc()).all()
 
     if form.validate_on_submit():
-        title = form.title.data
+        folder_name = form.title.data
+        user_id = current_user.id
 
-        if title.strip():
-            n = Folder(folder_name=title, user_id=current_user.id)
-            db.session.add(n)
+        folder = Folder(folder_name=folder_name, user_id=user_id)
+        db.session.add(folder)
+        db.session.commit()
+
+        flash('Folder created successfully!', 'success')
+        return redirect(url_for('folderPage'))
+    
+    folders = current_user.folders.all()
+
+    return render_template('folderPage.html', form=form, folders=folders)
+
+@myapp_obj.route("/gotofolder/<int:folder_id>", methods=['GET', 'POST'])
+@login_required
+def gotofolder(folder_id):
+    folder = Folder.query.get_or_404(folder_id)
+    # Retrieve the sorting option from request.args
+    sort_type = request.args.get('sorting')
+
+    # Fetch all folders for the dropdown
+    folders = Folder.query.all()
+    
+    if sort_type == 'DateCreated':
+        notes_in_folder = folder.notes.order_by(Notes.date_created.desc()).all()
+    elif sort_type == 'AscendingName':
+        notes_in_folder = folder.notes.order_by(Notes.title).all()
+    elif sort_type == 'DescendingName':
+        notes_in_folder = folder.notes.order_by(Notes.title.desc()).all()
+    else:
+        notes_in_folder = folder.notes.all()
+
+    return render_template('gotofolder.html', folder=folder, sort_list=sort_list, notes=notes_in_folder, folders=folders, form=NoteForm())
+
+
+@myapp_obj.route('/delete_folder', methods=['POST'])
+@login_required
+def delete_folder():
+    folder_id = request.form.get('folder_id')
+
+    if folder_id:
+        folder = Folder.query.get_or_404(int(folder_id))
+
+        # Check if the current user owns the folder
+        if folder.user_id == current_user.id:
+            # Delete all notes in the folder
+            notes_in_folder = folder.notes.all()
+            for note in notes_in_folder:
+                db.session.delete(note)
+
+            # Delete the folder itself
+            db.session.delete(folder)
             db.session.commit()
 
-        return redirect(url_for('folderPage'))
+            flash('Folder and its contents deleted successfully!', 'success')
+        else:
+            flash('You do not have permission to delete this folder!', 'danger')
 
-    #Check if no input is in body, if not return an error
-    title_default = form.title.data
-    if title_default == '' or None:
-        return redirect(url_for('error'))
-
-    return render_template('folderPage.html', form=form, folders=post_folders)
-
-
-@myapp_obj.route('/<int:note_id>/gofolder', methods=['GET','POST'])
-def gofolder(note_id):
-    #Unsure whether to use note.id or folder.id here (or both)
-    get_folder = Notes.query.get(note_id)
-    print(note_id)
-    print(get_folder)
-    n = Notes(folder_id=get_folder) #also Notes or Folder call here
-    #Either session.add or insert 
-    db.session.add(n)
-    db.session.commit()
+    # Redirect to the same page after processing the form
     return redirect(url_for('folderPage'))
 
-#Error page
-@myapp_obj.route("/error", methods=['GET', 'POST'])
-def error():
-    return render_template('error.html')
+
+@myapp_obj.route('/transfer_note/<int:note_id>', methods=['POST'])
+@login_required
+def transfer_note(note_id):
+    # Get the note from the database
+    note = Notes.query.get_or_404(note_id)
+
+    # Check if the current user is the owner of the note
+    if note.user_id == current_user.id:
+        # Get the folder ID from the form data
+        folder_id = request.form.get('folder_id')
+
+        # Check if the folder ID is valid
+        folder = Folder.query.get(folder_id)
+        if folder:
+            # Update the note's folder ID
+            note.folder_id = folder.id
+            db.session.commit()
+
+            flash('Note transferred to folder successfully!', 'success')
+        else:
+            flash('Invalid folder selected!', 'danger')
+
+    return redirect(url_for('home'))
 
 @myapp_obj.route("/login", methods=['GET', 'POST'])
 def login():
@@ -181,6 +237,8 @@ def modify_note(note_id):
     # Create a NoteForm instance and populate it with the existing note data
     form = NoteForm(title=my_note.title, body=my_note.body, old_body=old_body)
 
+    form.folder.choices = [(folder.id, folder.folder_name) for folder in Folder.query.all()]
+
     if form.validate_on_submit():
         time_mod = datetime.today().replace(microsecond=0)
 
@@ -250,6 +308,10 @@ def toggle_visibility(note_id):
     # Checks for a referrer and if 'search' is also in the referrer URL
     if request.referrer and 'search' in request.referrer:
         return redirect(url_for('search'))
+    elif request.referrer and 'gotofolder' in request.referrer:
+        # Extract folder_id from the referrer URL and redirect to the specific folder
+        folder_id = request.referrer.split('/')[-1]
+        return redirect(url_for('gotofolder', folder_id=folder_id))
     else:
         return redirect(url_for('home'))
 

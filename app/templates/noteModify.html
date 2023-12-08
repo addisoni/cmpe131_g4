@@ -23,8 +23,9 @@
       <div>
         <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Body: </label>
         <br>
-        <div id="editor" style="height: 300px;">{{ note.body|safe }}</div>
-        <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.body }}</textarea>
+        <div id="editor" style="height: 300px;">{{ note.body_html|safe }}</div>
+        <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.body_html }}</textarea>
+        <input type="hidden" name="body_html" id="body_html" value="{{ note.body_html }}">
       </div>
       <button type="submit" name="action" value="modify">Modify Note</button>
     </form>
@@ -37,9 +38,10 @@
 
       // When the form is submitted, update the hidden textarea with Quill's HTML content
       document.querySelector('form').onsubmit = function() {
-      var editorContent = quill.root.innerHTML;
-      document.querySelector('#body').value = editorContent;
-
+        var editorContent = quill.getText();
+        var htmlContent = quill.root.innerHTML;
+        document.querySelector('#body').value = editorContent;
+        document.querySelector('#body_html').value = htmlContent.trim();
       };
     </script>
   </body>
