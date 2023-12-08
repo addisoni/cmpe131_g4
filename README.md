@@ -155,14 +155,15 @@ width="946" height="460">
 ### Creating notes
 1. After logging in, you will be redirected to the notes creation page where you can create new notes
 <p align="center"> 
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteCreated.png" alt="Logo" width="500" height="452">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/createnotes.png" alt="Logo" width="1413" height="685">
 </p>
 
 2. To save the note after inputting the title and body, click on "**Save note**"
 
 3. After saving, you will be redirected to the home page where you can view, delete, modify, or change the note's visibility to other users.
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteCreated.png" alt="Logo" width="500" height="452">
 
-4. To create another new note, click the "**notes**" tab on the menu bar and do the same thing as mentioned in step 2
+5. To create another new note, click the "**notes**" tab on the menu bar and do the same thing as mentioned in step 2
 
 [back to top](#notetastic)
 
