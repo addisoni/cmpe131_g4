@@ -216,6 +216,17 @@ width="946" height="460">
 
 [back to top](#notetastic)
 
+### Undo/Redo revision history (restore previous note savestate)
+1. After creating a note modifying it and saving it, click on the Note History button in Home.
+2. Next click on restore last version and it will undo your revision
+
+<p align="center"> 
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/undo1.png" alt="Logo" width="914" height="886">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/undo2.png" alt="Logo" width="812" height="858">
+</p>
+
+[back to top](#notetastic)
+
 
 [//]: # (IMPLEMENTATION)
 ## Functional Requirements (To-Date)
