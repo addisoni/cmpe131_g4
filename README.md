@@ -160,8 +160,8 @@ width="946" height="460">
 
 2. To save the note after inputting the title and body, click on "**Save note**"
 
-3. After saving, you will be redirected to the home page where you can view, delete, modify, or change the note's visibility to other users.
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteCreated.png" alt="Logo" width="500" height="452">
+3. After saving, you will be redirected to the home page where you can select the folder to transfer it to, modify note, view note history, delete note, and change the visibility of the note
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/note_home.png" alt="Logo" width="380" height="360">
 
 5. To create another new note, click the "**notes**" tab on the menu bar and do the same thing as mentioned in step 2
 
