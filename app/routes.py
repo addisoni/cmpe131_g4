@@ -320,3 +320,28 @@ def resetpassword(username):
                 flash('User not found. Password reset failed.', 'danger')
 
     return render_template('resetpassword.html', form=form, username=username)
+
+@myapp_obj.route('/<int:note_id>/duplicate', methods=['GET', 'POST'])
+@login_required
+def duplicate_note(note_id):
+    if request.method == 'POST':
+        original_note = Notes.query.get_or_404(note_id)
+
+        # Create a new note with the same content as the original
+        new_note = Notes(
+            title=f"{original_note.title} (Copy)",
+            body=original_note.body,
+            body_html=original_note.body_html,
+            user_id=current_user.id,
+            folder_id=original_note.folder_id,  # If you want to duplicate the folder as well
+            public=original_note.public,
+        )
+
+        # Commit the new note to the database
+        db.session.add(new_note)
+        db.session.commit()
+
+        # Redirect to the home page after successful duplication
+        return redirect(url_for('home'))
+
+    return render_template('noteModify.html', note=Notes.query.get_or_404(note_id), form=NoteForm())
