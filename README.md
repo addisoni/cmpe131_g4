@@ -198,7 +198,7 @@ width="946" height="460">
 
 <p align="center"> 
   <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step1forDuplicateNote.png" alt="Logo" width="578" height="550">
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step2forDuplicateNote.png" alt="Logo" width="2312" height="896">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step2forDuplicateNote.png" alt="Logo" width="2412" height="996">
   <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/duplicatedNote.png" alt="Logo" width="582" height="1066">
 </p>
 
