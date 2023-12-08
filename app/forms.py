@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired, EqualTo
 from markupsafe import Markup
 from wtforms.fields import TextAreaField, HiddenField
@@ -50,6 +50,8 @@ class ResetPassword(FlaskForm):
 class NoteForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     body = TextAreaField('Body', render_kw={'class': 'editor'}, validators=[DataRequired()])
+    body_html = HiddenField()
+    folder = SelectField('Folder', coerce=int, validate_choice=False)
     old_body = HiddenField()
     submit = SubmitField('Submit')
     action = HiddenField()

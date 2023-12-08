@@ -1,4 +1,4 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 
 {% block content %}
 {% with messages = get_flashed_messages() %}
@@ -18,14 +18,15 @@
 <h2 class="subtitle" style="float: center">
     A simple and friendly web-based note app
 </h2>
-  <div class="container" style="float: top">
+<div class="container" style="float: top">
     <div class="row justify-content-center" style="float: top">
         <div class="col-2">
             {% if notes %}
+            <br>
             <form name="post" action="{{ url_for('home') }}" method="POST">
-              <label for="sorting">Sort Notes: </label>
-              <br>
-              <!-- We create the sort list dropdown menu and iterate over each sorting option (list of modes in routes.py) -->
+                <label for="sorting">Sort Notes: </label>
+                <br>
+                <!-- We create the sort list dropdown menu and iterate over each sorting option (list of modes in routes.py) -->
                 <select name="sorting" class="selectpicker form-control">
                     <option value=''>- Sorting Options -</option>
                     {% for sort_by in sort_list %}
@@ -40,12 +41,26 @@
             {% for note in notes %}
                 {% if note.user_id == current_user.id or note.public %}
                     <br>
-                    <h2 class="text-lg" style="font-size: 24pt; font-weight:bold">note {{ note.id }}: {{ note.title }}</h2>
+                    <h2 class="text-lg" style="font-size: 24pt; font-weight:bold">Note ID {{ note.id }}: {{ note.title }}</h2>
                     <i class="text-sm" style="font-size: 16pt">Date Created: {{ note.date_created }}</i>
                     <br>
                     <i class="text-sm" style="font-size: 16pt">Last Modified: {{ note.last_modified }}</i>
                     <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
                     <br>
+                    
+                    <!-- Add a dropdown button for selecting folders -->
+                    <form method="POST" action="{{ url_for('transfer_note', note_id=note.id) }}">
+                        {{ form.hidden_tag() }}
+                        <label for="folder-select">Select Folder:</label>
+                        <select id="folder-select" name="folder_id">
+                            <option value=''>- Folders -</option>
+                            {% for folder in folders %}
+                                <option value="{{ folder.id }}">{{ folder.folder_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Transfer to Folder">
+                    </form>
+
                     <form method="POST" action="{{ note.id }}/modify">
                         <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
                     </form>
@@ -70,9 +85,7 @@
             {% endfor %}
         </div>
     </div>
-  </div>
+</div>
 </html>
 
-
 {% endblock %}
-

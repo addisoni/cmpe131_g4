@@ -59,3 +59,6 @@ class Folder(db.Model):
 
     def __repr__(self):
         return '<Folder {}>'.format(self.folder_name)
+    
+    def get_absolute_url(self):
+        return url_for('gotofolder', folder_id=self.id)
