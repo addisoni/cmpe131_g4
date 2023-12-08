@@ -46,7 +46,8 @@ def createnotes():
         flash('You need to create a folder before creating a note.', 'info')
         return redirect(url_for('folderPage'))
     
-    form.folder.choices = [(folder.id, folder.folder_name) for folder in Folder.query.all()]
+    # Set choices for the folder dropdown, only including folders created by the current user
+    form.folder.choices = [(folder.id, folder.folder_name) for folder in current_user.folders]
 
     if form.validate_on_submit():
         title = form.title.data
