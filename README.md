@@ -155,7 +155,7 @@ width="946" height="460">
 ### Creating notes
 1. After logging in, you will be redirected to the notes creation page where you can create new notes
 <p align="center"> 
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/createnotes.png" alt="Logo" width="1051" height="452">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteCreated.png" alt="Logo" width="1051" height="452">
 </p>
 
 2. To save the note after inputting the title and body, click on "**Save note**"
