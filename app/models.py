@@ -30,7 +30,7 @@ class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     body = db.Column(db.Text, nullable=True)
-    old_body = db.Column(db.Text, nullable=True)
+    old_body = db.Column(db.Text, nullable=True, default='')
 
     date_created = db.Column(db.DateTime, index=True, default=datetime.today().replace(microsecond=0))
     last_modified = db.Column(db.String, index=True)
