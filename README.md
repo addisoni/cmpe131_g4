@@ -159,14 +159,6 @@ width="946" height="460">
 
 [back to top](#notetastic)
 
-### Adding different typefaces and font styles
-1. You can modify your text with different typefaces and font styles using the buttons under '**Body**'
-<p align="center"> 
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/typefaces%20and%20font%20styles.png" alt="Logo" width="1005" height="526">
-</p>
-
-[back to top](#notetastic)
-
 ### Searching for notes
 1. Navigate to the menu bar and click on the "**Search**" tab
 
