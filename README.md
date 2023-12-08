@@ -34,6 +34,7 @@ Stephen Shao (@stephen-shao)
      - [Duplicate Note(s)](#duplicate-notes)
      - [Creating Folders](#user-is-able-to-create-folders-to-organize-notes)
      - [Private/Public Visibility](#notes-created-on-webpage-are-restricted-to-the-corresponding-user-and-can-change-visibility-based-on-users-selection)
+     - [Undo/Redo revision history](#undo-redo-revision-history-restore-previous-note-savestate)
   5. [Functional Requirements (To-Date)](#functional-requirements-to-date)
 </details>
 
