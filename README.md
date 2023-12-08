@@ -192,23 +192,33 @@ width="946" height="460">
 [//]: # (IMPLEMENTATION)
 ## Functional Requirements (To-Date)
 
-1. notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection **(Benjamin Lim)** 
+1. Notes created on webpage are restricted to corresponding user and can change visiblity based on user's selection **(Benjamin Lim)**
 
-2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset) **(Benjamin Lim)** 
+2. A simple user registration web page is incorporated for new users to create their personalized account with a username and password and security question (password reset) **(Benjamin Lim)**
 
 3. Logout of user account **(Benjamin Lim)**
-   
+
 4. Create new notes **(Addison Ivan)**
 
-5. Forgotten passwords can be reset using stored security question or known password **(Stephen Shao)**
+5. Insertable tables into notes **(Stephen Shao)**
 
-6. Multipletypefaces and font styles **(Najm Masri)**
+6. Forgotten passwords can be reset using stored security question or known password **(Stephen Shao)**
 
-7. Modify existing user account details **(Najm Masri)**
-    
-8. Multiple note sorting options **(Addison Ivan)**
+7. Multiple typefaces and font styles **(Najm  Masri)**
 
-9. Search field for notes list **(Addison Ivan)**
+8. User is able to create folders to organize notes **(Benjamin Lim)**
+
+9. Duplicate note(s) **(Najm  Masri)**
+
+10. Modify existing user account details **(Najm  Masri)**
+
+11. View revision history from past savestate **(Addison Ivan)**
+
+12. Undo/Redo revision history (restore previous note savestate) **(Addison Ivan)**
+
+13. Multiple Note sorting options **(Addison Ivan)**
+
+14. Search field for notes list **(Addison Ivan)**
 
 [back to top](#notetastic)
 
