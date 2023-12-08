@@ -7,6 +7,8 @@
   <!-- include two diff stylesheets-->
   <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdn.quilljs.com/2.0.0-dev.2/quill.bubble.css">
+  <link rel="stylesheet" href="https://cdn.quilljs.com/2.0.0-dev.2/quill.snow.css">
 </head>
 <body>
   <div class="container mx-auto py-4">
@@ -44,35 +46,42 @@
         </select>
     </div>
       <button type="submit" name="action" value="submit">Save Note</button>
-    </form>
+   <div class="container">
+     <div class="panel">
+       <div id="snow-container"></div>
+     </div>
+     <div class="panel">
+       <div id="bubble-container"></div>
+     </div>
+     <div class="panel">
+       <div id="output-container"></div>
+     </div>
+   </div>
+      <button type="button" id="insertTableBtn">Insert Table</button>  
+   </form>
+
     <!--include quill editor javascript file-->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+   <script src="https://cdn.quilljs.com/2.0.0-dev.2/quill.js"></script>
     <script>
       var quill = new Quill('#editor', {
-        theme: 'snow',
-        placeholder: "Enter Note Contents Here..."
+        theme: 'snow', 
+        placeholder: "Enter Note Contents Here...",
+      
       });
 
       // When the form is submitted, update the hidden textarea with Quill's HTML content
       document.querySelector('form').onsubmit = function() {
         var plainText = quill.getText();
         var htmlContent = quill.root.innerHTML;
-        // Update the hidden input fields
         document.querySelector('#body').value = plainText;
         document.querySelector('#body_html').value = htmlContent.trim();
 
-        var titleInput = document.querySelector('[name="title"]');
-        if (!titleInput.value || titleInput.value.trim() === '') {
-          alert('Please enter a title for your note.');
-          return false; // Prevent form submission
-        }
-        
-        var folderSelect = document.querySelector('[name="folder"]');
-        if (!folderSelect.value || folderSelect.value === '') {
-          alert('Please choose a folder for your note.');
-        return false; // Prevent form submission
-        }
       };
+      document.getElementById('insertTableBtn').onclick = function() {
+      var table = '<table border="1"><tr><td>Edit this cell</td><td>Edit this cell</td></tr><tr><td>Edit this cell</td><td>Edit this cell</td></tr></table>';
+    quill.clipboard.dangerouslyPasteHTML(quill.getSelection(true).index, table);
+  };
     </script>
   </body>
 </html>
