@@ -204,6 +204,19 @@ width="946" height="460">
 
 [back to top](#notetastic)
 
+### View revision history from past savestate
+1. Create a note and save it
+2. Click on note history
+3. From there you will be able to view the revision history
+
+<p align="center"> 
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteHistory1.png" alt="Logo" width="918" height="898">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/noteHistory2.png" alt="Logo" width="972" height="870">
+</p>
+
+[back to top](#notetastic)
+
+
 [//]: # (IMPLEMENTATION)
 ## Functional Requirements (To-Date)
 
