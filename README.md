@@ -47,7 +47,7 @@ extensions to provide the user with an easy and simple way to save their thought
 be able to do basic things such as creating your own personal account, creating and modifying your notes with different 
 typefaces and font styles, have the ability to share them to the public or keep it private, and so much more!
 
-Video Tutorial How to use Notetastic: https://drive.google.com/file/d/1srhB_0Yp-0xZQ47ax78GgxKB7mD-YTg-/view?usp=sharing
+Video Tutorial How to use Notetastic: https://drive.google.com/file/d/1F4cwNxkI3lSwEvxZgDKcQST1Odl4nKNP/view?usp=sharing
 
 ### Built With:
 * [![Flask][Flask.com]][Flask-url]
