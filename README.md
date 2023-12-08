@@ -28,9 +28,10 @@ Stephen Shao (@stephen-shao)
      - [Modify account details](#modify-account-details)
   4. [Notes Functions](#Notes-functions)
      - [Creating notes](#creating-notes)
-     - [Adding different typefaces and font styles](#adding-different-typefaces-and-font-styles)
      - [Searching for notes](#searching-for-notes)
      - [Sorting notes](#sorting-notes)
+     - [Adding different typefaces and font styles](#adding-different-typefaces-and-font-styles)
+     - [Duplicate Note(s)](#duplicate-note-s)
   5. [Functional Requirements (To-Date)](#functional-requirements-to-date)
 </details>
 
