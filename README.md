@@ -193,6 +193,21 @@ width="946" height="460">
 
 [back to top](#notetastic)
 
+### Creating Tables
+1. Users are able to create tables inside of the creating notes area.
+
+2. Users would need to select "insert table" button
+
+3. Users would then be presented a table in which is 2x2
+
+4. The table cells are editable and will be saved once the user hits submit
+
+<p align="center"> 
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/CreateTable.png" alt="Logo" width="1406" height="698">
+</p>
+
+[back to top](#notetastic)
+
 ### Duplicate Note(s)
 1. Craeate a note and save it.
 2. Click on Modify
