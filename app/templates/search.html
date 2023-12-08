@@ -11,31 +11,34 @@
 </form>
 <!-- We iterate over all notes, and check for every note whether the present user is the originator or whether the note is public or not -->
 {% for note in notes %}
-    {% if note.user_id == current_user.id or note.public %}
-        <br>
-        <h2 class="text-lg" style="font-size: 16pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
-        <i class="text-sm" style="font-size: 16pt">{{ note.date_created }}</i>
-        <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
-        <br>
-        <form method="POST" action="{{ note.id }}/view">
-            <button class="button is-default" name="Note View" type="submit">View Note</button>
-        </form>
-        <form method="POST" action="{{ note.id }}/modify">
-                        <button class="button is-warning" name="Note View" type="submit">Modify Note</button>
-        </form>
-        {% if note.user_id == current_user.id %}
-        <form method="POST" action="{{ note.id }}/rm">
-            <button class="button is-danger" name="Note Delete" type="submit">Delete Note</button>
-        </form>
-            <form method="POST" action="{{ note.id }}/toggle_visibility">
-                <button class="button is-info" name="Toggle Visibility" type="submit">
-                    {% if note.public %}
-                        Make Private
-                    {% else %}
-                        Make Public
-                    {% endif %}
-                </button>
-            </form>
+                {% if note.user_id == current_user.id or note.public %}
+                    <br>
+                    <h2 class="text-lg" style="font-size: 18pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
+                    <i class="text-sm" style="font-size: 14pt">Date Created: {{ note.date_created }}</i>
+                    <br>
+                    <i class="text-sm" style="font-size: 14pt">Last Modified: {{ note.last_modified }}</i>
+                    <h3 class="text-sm" style="font-size: 14pt; font-style:italic">Note owned by: {{ get_username(note.user_id) }}</h3>
+                    <br>
+
+                    <form method="POST" action="{{ note.id }}/modify">
+                        <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
+                    </form>
+                    <form method="POST" action="{{ note.id }}/revisions">
+                        <button class="button is-link" name="Note History" type="submit">Note History</button>
+                    </form>
+                    {% if note.user_id == current_user.id %}
+                    <form method="POST" action="{{ note.id }}/rm">
+                        <button class="button is-danger" name="Note Delete" type="submit">Delete Note</button>
+                    </form>
+                        <form method="POST" action="{{ note.id }}/toggle_visibility">
+                            <button class="button is-info" name="Toggle Visibility" type="submit">
+                                {% if note.public %}
+                                    Make Private
+                                {% else %}
+                                    Make Public
+                                {% endif %}
+                        </button>
+                    </form>
         {% endif %}
     {% endif %}
 {% endfor %}

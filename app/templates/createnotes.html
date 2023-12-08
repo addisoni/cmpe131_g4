@@ -12,8 +12,6 @@
 </head>
 <body>
   <div class="container mx-auto py-4">
-    <h1 class="" style="font-size: 24pt; font-weight:bold">{{ current_user.username }}'s Notes</h1>
-    <br>
     <br>
     {% with messages = get_flashed_messages() %}
        {% if messages %}
@@ -45,6 +43,8 @@
             {% endfor %}
         </select>
     </div>
+      <button type="button" id="insertTableBtn">Insert Table</button>  
+      <br>
       <button type="submit" name="action" value="submit">Save Note</button>
    <div class="container">
      <div class="panel">
@@ -57,7 +57,6 @@
        <div id="output-container"></div>
      </div>
    </div>
-      <button type="button" id="insertTableBtn">Insert Table</button>  
    </form>
 
     <!--include quill editor javascript file-->

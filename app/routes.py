@@ -267,7 +267,7 @@ def revision_history(note_id):
 
     # Create a NoteForm instance and populate it with the old note data
     form = NoteForm(title=my_note.title, body=my_note.body, body_html=my_note.body_html, old_body=my_note_copy.old_body)
-    print('1')
+
     if form.validate_on_submit():
         time_mod = datetime.today().replace(microsecond=0)
         my_note.body_html, my_note.old_body = form.old_body.data, form.body_html.data

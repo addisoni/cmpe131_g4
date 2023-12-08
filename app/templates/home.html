@@ -34,24 +34,24 @@
                     {% endfor %}
                 </select>
                 <input type="submit" value="Submit">
-                <br>
             </form>
             {% endif %}
             <!-- We iterate over all notes, and check for every note whether the present user is the originator or whether the note is public or not -->
             {% for note in notes %}
                 {% if note.user_id == current_user.id or note.public %}
                     <br>
-                    <h2 class="text-lg" style="font-size: 24pt; font-weight:bold">Note ID {{ note.id }}: {{ note.title }}</h2>
-                    <i class="text-sm" style="font-size: 16pt">Date Created: {{ note.date_created }}</i>
+                    <h2 class="text-lg" style="font-size: 18pt; font-weight:bold">Note {{ note.id }}: {{ note.title }}</h2>
+                    <i class="text-sm" style="font-size: 14pt">Date Created: {{ note.date_created }}</i>
                     <br>
-                    <i class="text-sm" style="font-size: 16pt">Last Modified: {{ note.last_modified }}</i>
-                    <h3>Note owned by: {{ get_username(note.user_id) }}</h3>
+                    <i class="text-sm" style="font-size: 14pt">Last Modified: {{ note.last_modified }}</i>
+                    <h3 class="text-sm" style="font-size: 14pt; font-style:italic">Note owned by: {{ get_username(note.user_id) }}</h3>
                     <br>
                     
                     <!-- Add a dropdown button for selecting folders -->
                     <form method="POST" action="{{ url_for('transfer_note', note_id=note.id) }}">
                         {{ form.hidden_tag() }}
-                        <label for="folder-select">Select Folder:</label>
+                        <label for="folder-select" style="font-size: 12pt; font-weight:bold">Select Folder:</label>
+                        <br>
                         <select id="folder-select" name="folder_id">
                             <option value=''>- Folders -</option>
                             {% for folder in folders if folder.user_id == current_user.id %}
