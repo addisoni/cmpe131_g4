@@ -14,9 +14,10 @@ table, th, td{
     <br>
     <i class="text-sm" style="font-size: 16pt">Last Modified: {{ note.last_modified }}</i>
     <br>
+    <br>
     <form method="POST" action="{{ url_for('revision_history', note_id=note.id) }}">
       {{ form.hidden_tag() }}
-      <button type="submit" name="action" value="revision">Restore Last Version</button>
+      <button type="submit" name="action" value="revision">Restore Previous Version</button>
       <br>
       <div>
         <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Current Revision: </label>
