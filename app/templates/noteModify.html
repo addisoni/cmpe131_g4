@@ -53,11 +53,10 @@
 
       // When the form is submitted, update the hidden textarea with Quill's HTML content
       document.querySelector('form').onsubmit = function() {
-        var editorContent = quill.root.innerHTML;
+        var editorContent = quill.getText();
+        var htmlContent = quill.root.innerHTML;
         document.querySelector('#body').value = editorContent;
         document.querySelector('#body_html').value = htmlContent.trim();
-        var table = '<table border="1"><tr><td>Edit this cell</td><td>Edit this cell</td></tr><tr><td>Edit this cell</td><td>Edit this cell</td></tr></table>';
-      quill.clipboard.dangerouslyPasteHTML(quill.getSelection(true).index, table);      
   };
     </script>
   </body>
