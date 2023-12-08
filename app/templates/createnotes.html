@@ -40,8 +40,10 @@
         <label for="folder-select">Select Folder:</label>
         <select name="folder" class="text-gray-700" style="font-size: 16pt">
             <option value=''>- Folder -</option>
-            {% for folder in form.folder.choices %}
-                <option value="{{ folder[0] }}">{{ folder[1] }}</option>
+            {% for folder_id, folder_name in form.folder.choices %}
+              {% if folder_id == current_user.id %}
+                <option value="{{ folder_id }}">{{ folder_name }}</option>
+              {% endif %}
             {% endfor %}
         </select>
     </div>

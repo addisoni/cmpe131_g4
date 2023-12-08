@@ -46,7 +46,7 @@
                     <label for="folder-select">Select Folder:</label>
                     <select id="folder-select" name="folder_id">
                         <option value=''>- Folders -</option>
-                        {% for folder in folders %}
+                        {% for folder in folders if folder.user_id == current_user.id %}
                             <option value="{{ folder.id }}">{{ folder.folder_name }}</option>
                         {% endfor %}
                     </select>
