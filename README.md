@@ -185,7 +185,7 @@ width="946" height="460">
 ### Adding different typefaces and font styles
 1. You can modify your text with different typefaces and font styles using the buttons under '**Body**'
 <p align="center"> 
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/typefaces%20and%20font%20styles.png" alt="Logo" width="1005" height="526">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/typefaces%20and%20font%20styles.png" alt="Logo" width="805" height="326">
 </p>
 
 [back to top](#notetastic)
@@ -197,9 +197,9 @@ width="946" height="460">
 4. You can see the duplicated in your list of notes
 
 <p align="center"> 
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step1forDuplicateNote.png" alt="Logo" width="200" height="511">
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step2forDuplicateNote.png" alt="Logo" width="430" height="511">
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/duplicatedNote.png" alt="Logo" width="430" height="426">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step1forDuplicateNote.png" alt="Logo" width="478" height="450">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step2forDuplicateNote.png" alt="Logo" width="805" height="326">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/duplicatedNote.png" alt="Logo" width="482" height="966">
 </p>
 
 [back to top](#notetastic)
