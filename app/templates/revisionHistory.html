@@ -4,27 +4,26 @@
 <html>
 <body>
   <div class="container mx-auto py-4">
-    <h1 class="" style="font-size: 24pt; font-weight:bold">{{ current_user.username }}'s recent note for: "{{ note.title }}" </h1>
+    <h1 class="" style="font-size: 24pt; font-weight:bold">Most Recent Revision For: "{{ note.title }}" </h1>
     <i class="text-sm" style="font-size: 16pt">Date Created: {{ note.date_created }}</i>
     <br>
     <i class="text-sm" style="font-size: 16pt">Last Modified: {{ note.last_modified }}</i>
     <br>
-    <button type="submit" name="action" value="modify">Restore Original Note</button>
-    <br>
-    <form method="POST" action="{{ url_for('modify_note', note_id=note.id) }}">
+    <form method="POST" action="{{ url_for('revision_history', note_id=note.id) }}">
       {{ form.hidden_tag() }}
+      <button type="submit" name="action" value="revision">Restore Last Version</button>
       <br>
       <div>
-        <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Current Note: </label>
+        <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Current Revision: </label>
         <br>
         <div id="editor" style="height: 300px;">{{ note.body|safe }}</div>
         <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.body }}</textarea>
       </div>
       <br>
       <div>
-        <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Original Note: </label>
+        <label class="text-lg" for="body" style="font-size: 16pt; font-weight:bold">Previous Revision: </label>
         <br>
-        <div id="editor" style="height: 300px;">{{ note.body|safe }}</div>
+        <div id="editor" style="height: 300px;">{{ note.old_body|safe }}</div>
         <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.old_body }}</textarea>
       </div>
     </form>

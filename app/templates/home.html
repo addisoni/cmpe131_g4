@@ -65,7 +65,7 @@
                         <button class="button is-warning" name="Note Modify" type="submit">Modify Note</button>
                     </form>
                     <form method="POST" action="{{ note.id }}/revisions">
-                        <button class="button is-info" name="Note History" type="submit">Note History</button>
+                        <button class="button is-link" name="Note History" type="submit">Note History</button>
                     </form>
                     {% if note.user_id == current_user.id %}
                     <form method="POST" action="{{ note.id }}/rm">

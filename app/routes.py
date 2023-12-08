@@ -232,10 +232,8 @@ def search():
 def modify_note(note_id):
     # Fetch the note from the database
     my_note = Notes.query.get_or_404(note_id)
-    old_body = my_note.body
-
     # Create a NoteForm instance and populate it with the existing note data
-    form = NoteForm(title=my_note.title, body=my_note.body, old_body=old_body)
+    form = NoteForm(title=my_note.title, body=my_note.body, old_body=my_note.old_body)
 
     form.folder.choices = [(folder.id, folder.folder_name) for folder in Folder.query.all()]
 
@@ -253,29 +251,25 @@ def modify_note(note_id):
         # Redirect to the home page after successful modification
         return redirect(url_for('home'))
 
+    else:
+        my_note.old_body = form.body.data
+        db.session.commit()
+
     return render_template('noteModify.html', note=my_note, form=form)
 
 @myapp_obj.route("/<int:note_id>/revisions", methods=["GET", "POST"])
 def revision_history(note_id):
     # Fetch the note from the database
     my_note = Notes.query.get_or_404(note_id)
+    my_note_copy = Notes.query.get_or_404(note_id)
 
     # Create a NoteForm instance and populate it with the old note data
-    form = NoteForm(title=my_note.title, body=my_note.body, last_modified=my_note.last_modified)
-
+    form = NoteForm(title=my_note.title, body=my_note.body, old_body=my_note_copy.old_body)
+    print('1')
     if form.validate_on_submit():
         time_mod = datetime.today().replace(microsecond=0)
+        my_note.body, my_note.old_body = form.old_body.data, form.body.data
 
-        # Update the note data with the form data
-        my_note.title = form.title.data
-        my_note.old_body = form.body.data
-        my_note.last_modified = time_mod
-
-        """
-        if my_note.last_modified == db.session.query(Notes.last_modified):
-            print("1")
-            print(my_note.last_modified)
-        """
         # Commit the changes to the database
         db.session.commit()
 
