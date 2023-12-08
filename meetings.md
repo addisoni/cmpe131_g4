@@ -1,6 +1,12 @@
 ## Meetings - Sync every Tuesday for project milestones
 ### Coordinating milestone meetings at least once a week
 
+### 2023-12-28 at 21:00 
+- Attendees: Addison, Benjamin, Najm, and Stephen
+- Milestone 3: Finished everything related to our functions and did LOTS of debugging (3 hours)
+- Lots of pull requests and fixing code that did not get merged in correctly.
+- <Addison> Worked on the video to go over our website and explain everything
+
 ### 2023-11-29 at 21:30 
 - Attendees: Addison, Benjamin, Najm, and Stephen
 - Milestone 2: Finished up rubric requires (40 minutes)
