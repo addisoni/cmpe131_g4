@@ -74,14 +74,22 @@
       document.querySelector('form').onsubmit = function() {
         var plainText = quill.getText();
         var htmlContent = quill.root.innerHTML;
+        // Update the hidden input fields
         document.querySelector('#body').value = plainText;
         document.querySelector('#body_html').value = htmlContent.trim();
 
+        var titleInput = document.querySelector('[name="title"]');
+        if (!titleInput.value || titleInput.value.trim() === '') {
+          alert('Please enter a title for your note.');
+          return false; // Prevent form submission
+        }
+        
+        var folderSelect = document.querySelector('[name="folder"]');
+        if (!folderSelect.value || folderSelect.value === '') {
+          alert('Please choose a folder for your note.');
+        return false; // Prevent form submission
+        }
       };
-      document.getElementById('insertTableBtn').onclick = function() {
-      var table = '<table border="1"><tr><td>Edit this cell</td><td>Edit this cell</td></tr><tr><td>Edit this cell</td><td>Edit this cell</td></tr></table>';
-    quill.clipboard.dangerouslyPasteHTML(quill.getSelection(true).index, table);
-  };
     </script>
   </body>
 </html>
