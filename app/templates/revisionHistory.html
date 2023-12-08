@@ -2,6 +2,11 @@
 
 {% block content %}
 <html>
+<style>
+table, th, td{
+   border:1px solid black;
+}
+</style>
 <body>
   <div class="container mx-auto py-4">
     <h1 class="" style="font-size: 24pt; font-weight:bold">Most Recent Revision For: "{{ note.title }}" </h1>
@@ -27,6 +32,7 @@
         <textarea name="body" style="display:none;" id="body" rows="20" cols="40">{{ note.old_body }}</textarea>
       </div>
     </form>
+   </div>
   </body>
 </html>
 {% endblock %}

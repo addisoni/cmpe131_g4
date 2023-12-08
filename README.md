@@ -28,9 +28,10 @@ Stephen Shao (@stephen-shao)
      - [Modify account details](#modify-account-details)
   4. [Notes Functions](#Notes-functions)
      - [Creating notes](#creating-notes)
-     - [Adding different typefaces and font styles](#adding-different-typefaces-and-font-styles)
      - [Searching for notes](#searching-for-notes)
      - [Sorting notes](#sorting-notes)
+     - [Adding different typefaces and font styles](#adding-different-typefaces-and-font-styles)
+     - [Duplicate Note(s)](#duplicate-notes)
   5. [Functional Requirements (To-Date)](#functional-requirements-to-date)
 </details>
 
@@ -159,14 +160,6 @@ width="946" height="460">
 
 [back to top](#notetastic)
 
-### Adding different typefaces and font styles
-1. You can modify your text with different typefaces and font styles using the buttons under '**Body**'
-<p align="center"> 
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/typefaces%20and%20font%20styles.png" alt="Logo" width="1005" height="526">
-</p>
-
-[back to top](#notetastic)
-
 ### Searching for notes
 1. Navigate to the menu bar and click on the "**Search**" tab
 
@@ -192,7 +185,7 @@ width="946" height="460">
 ### Adding different typefaces and font styles
 1. You can modify your text with different typefaces and font styles using the buttons under '**Body**'
 <p align="center"> 
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/typefaces%20and%20font%20styles.png" alt="Logo" width="1005" height="526">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/typefaces%20and%20font%20styles.png" alt="Logo" width="805" height="326">
 </p>
 
 [back to top](#notetastic)
@@ -204,9 +197,9 @@ width="946" height="460">
 4. You can see the duplicated in your list of notes
 
 <p align="center"> 
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step1forDuplicateNote.png" alt="Logo" width="200" height="511">
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step2forDuplicateNote.png" alt="Logo" width="430" height="511">
-  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/duplicatedNote.png" alt="Logo" width="430" height="426">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step1forDuplicateNote.png" alt="Logo" width="578" height="550">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/step2forDuplicateNote.png" alt="Logo" width="1406" height="698">
+  <img src="https://github.com/addisoni/cmpe131_g4/blob/main/images/readme/duplicatedNote.png" alt="Logo" width="582" height="1066">
 </p>
 
 [back to top](#notetastic)
